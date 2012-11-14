@@ -7,4 +7,4 @@ To use the module, place your VMware Tools .tar.gz file within the module's file
 
 NOTE: This module is designed to replace both the OSP packages provided by VMware's repositories and also the open-vm-tools package.
 
-Currently only tested on Ubuntu 12.04 server.
+Currently only tested on Ubuntu 12.04 server and CentOS 6.3 x86-64.
