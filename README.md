@@ -23,15 +23,15 @@ Supported Operating Systems:
 Examples
 --------
 
-  class { 'vmwaretools':
-    version     = '8.6.5-621624',
-    working_dir = '/opt/vmware'
-  }
+    class { 'vmwaretools':
+      version     = '8.6.5-621624',
+      working_dir = '/opt/vmware'
+    }
 
 
 To use the module, place your VMware Tools .tar.gz file within the module's files directory and either declare the class as above or:
 
-  include vmwaretools
+    include vmwaretools
 
 Notes
 -----
