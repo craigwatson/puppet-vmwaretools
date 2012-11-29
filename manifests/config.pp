@@ -4,16 +4,15 @@ class vmwaretools::config {
     owner  => 'root',
     group  => 'root',
     mode   => '0700',
-    ensure => file,
   }
 
   file {
-    $vmwaretools::params::working_dir:
+    $vmwaretools::working_dir:
       ensure => directory;
 
-    "${vmwaretools::params::working_dir}/version-check.sh":
+    "${vmwaretools::working_dir}/version-check.sh":
       source => 'puppet:///modules/vmwaretools/version-check.sh',
-      require => File[$vmwaretools::params::working_dir];
+      require => File[$vmwaretools::working_dir];
   }
 
 
