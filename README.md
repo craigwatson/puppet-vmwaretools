@@ -1,6 +1,8 @@
 puppet-vmwaretools
 ==================
 
+[![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
+
 Introduction
 ------------
 
