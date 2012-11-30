@@ -1,10 +1,10 @@
 name 'craigwatson1987-vmwaretools'
-version '0.0.1'
+version '0.0.2'
 author 'Craig Watson'
 license 'GNU General Public License v3'
 project_page 'https://github.com/craigwatson/puppet-vmwaretools'
 source 'git://github.com/craigwatson/puppet-vmwaretools.git'
-description 'puppet-vmwaretools
+description "puppet-vmwaretools
 ==================
 
 [![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
@@ -49,4 +49,4 @@ Notes
 Copyright and License
 ---------------------
 * Copyright (C) 2012 Craig Watson - <craig@cwatson.org>
-* Distributed under the terms of the GNU General Public License v3 - see LICENSE.md for details.'
+* Distributed under the terms of the GNU General Public License v3 - see LICENSE.md for details."
