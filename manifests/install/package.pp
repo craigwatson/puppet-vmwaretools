@@ -4,7 +4,7 @@ class vmwaretools::install::package {
     ensure => purged,
   }
 
-  if (!defined(package['perl'])) {
+  if (!defined(Package['perl'])) {
     package { 'perl':
       ensure => installed,
     }
