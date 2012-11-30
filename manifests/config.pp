@@ -11,7 +11,7 @@ class vmwaretools::config {
       ensure => directory;
 
     "${vmwaretools::working_dir}/version-check.sh":
-      source => 'puppet:///modules/vmwaretools/version-check.sh',
+      source  => 'puppet:///modules/vmwaretools/version-check.sh',
       require => File[$vmwaretools::working_dir];
   }
 

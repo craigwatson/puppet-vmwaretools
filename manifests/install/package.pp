@@ -1,4 +1,4 @@
-class vmware::install::package {
+class vmwaretools::install::package {
 
   package { 'open-vm-tools':
     ensure => purged,
@@ -13,7 +13,7 @@ class vmware::install::package {
   case $::osfamily {
 
     'Debian' : {
-       package { ['linux-headers-server','build-essential'] :
+      package { ['linux-headers-server','build-essential'] :
         ensure => present,
       }
     }
@@ -22,7 +22,7 @@ class vmware::install::package {
       if $vmwaretools::redhat_install_devel == true {
         package { 'kernel-devel':
           ensure => present,
-        }  
+        }
       }
     }
 
