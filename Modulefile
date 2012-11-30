@@ -42,7 +42,6 @@ To use the module, place your VMware Tools .tar.gz file within the module's file
 Notes
 -----
 
-*
 * This module is designed to replace both the OSP packages provided by VMware's repositories and also the open-vm-tools package.
 * Installer accepts all defaults.
 
