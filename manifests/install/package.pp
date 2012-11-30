@@ -1,3 +1,22 @@
+# == Class: vmwaretools::install::package
+#
+# This class handles VMware Tools package-related installation duties
+#
+# == Actions:
+#
+# Ensures open-vm-tools is absent - this module directly conflicts.
+# Installs Perl if it hasn't been installed by another module
+# If we're running on a Debian system, install kernel headers and build tools
+# On a RedHat system and we really want to install kernel headers, do it.
+#
+# === Authors:
+#
+# Craig Watson <craig@cwatson.org>
+#
+# === Copyright:
+#
+# Copyright (C) 2012 Craig Watson
+#
 class vmwaretools::install::package {
 
   package { 'open-vm-tools':

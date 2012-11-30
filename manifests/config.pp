@@ -1,3 +1,19 @@
+# == Class: vmwaretools::config
+#
+# This class handles configuring the vmwaretools module.
+#
+# == Actions:
+#
+# Deploys the version-comparison script
+#
+# === Authors:
+#
+# Craig Watson <craig@cwatson.org>
+#
+# === Copyright:
+#
+# Copyright (C) 2012 Craig Watson
+#
 class vmwaretools::config {
 
   File {

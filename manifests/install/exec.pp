@@ -1,3 +1,23 @@
+# == Class: vmwaretools::config
+#
+# This class handles the VMware Tools compilation and uncompressing.
+#
+# == Actions:
+#
+# Uncompresses the VMware Tools tarball
+# Installs VMware Tools, accepting all installer defaults
+# Cleans up old tarballs
+# Cleans up VMware Tools uncompressed files
+#
+# === Authors:
+#
+# Craig Watson <craig@cwatson.org>
+#
+# === Copyright:
+#
+# Copyright (C) 2012 Craig Watson
+#
+
 class vmwaretools::install::exec {
   Exec {
     path    => ['/bin','/usr/bin'],

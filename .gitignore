@@ -1,2 +1,4 @@
 pkg
 *.save
+Gemfile
+Gemfile.lock
