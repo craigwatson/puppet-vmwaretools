@@ -55,8 +55,6 @@ class vmwaretools (
   $redhat_install_devel = false,
 ) {
 
-  validate_bool($redhat_install_devel)
-
   # Only proceed if we're on a VMware platform
   if $::virtual == 'vmware' {
     include vmwaretools::install
