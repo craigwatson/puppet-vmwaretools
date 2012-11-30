@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Published under the GNU General Public License v3
+# Copyright (c) Craig Watson 2012
+
 function usage() {
   echo -e "
 Usage: $0 [ version ]
