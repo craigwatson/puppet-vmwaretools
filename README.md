@@ -42,5 +42,5 @@ Notes
 
 Copyright and License
 ---------------------
-* Copyright (C) 2012 Craig Watson <craig@cwatson.org>
-* Distributed under the terms of the Creative Commons Attribution Share-Alike License 3.0
+* Copyright (C) 2012 Craig Watson - <craig@cwatson.org>
+* Distributed under the terms of the GNU General Public License v3 - see LICENSE.md for details.
