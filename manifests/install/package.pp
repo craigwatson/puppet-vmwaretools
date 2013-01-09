@@ -32,7 +32,7 @@ class vmwaretools::install::package {
   case $::osfamily {
 
     'Debian' : {
-      package { ['linux-headers-server','build-essential'] :
+      package { ["linux-headers-${kernelrelease}",'build-essential'] :
         ensure => present,
       }
     }
