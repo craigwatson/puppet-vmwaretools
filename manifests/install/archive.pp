@@ -24,7 +24,6 @@ class vmwaretools::install::archive {
     owner   => 'root',
     group   => 'root',
     notify  => Exec['uncompress_vmware_tools'],
-    source  => "puppet:///modules/vmwaretools/VMwareTools-${vmwaretools::version}.tar.gz",
     require => File[$vmwaretools::working_dir],
   }
 
