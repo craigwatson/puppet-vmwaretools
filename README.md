@@ -1,5 +1,4 @@
-puppet-vmwaretools
-==================
+## puppet-vmwaretools
 
 This module manages the installation of VMware Tools via the source code tarballs distributed with vSphere.
 
@@ -16,7 +15,7 @@ This module manages the installation of VMware Tools via the source code tarball
 * RedHat family (RHEL 6 tested)
 * Debian family (written but untested - reports appreciated)
 
-### Examples
+## Examples
 
 To accept defaults:
 
