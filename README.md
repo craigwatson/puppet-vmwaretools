@@ -1,19 +1,19 @@
 puppet-vmwaretools
 ==================
 
-[![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
-
 Introduction
 ------------
 
 This module manages the installation of VMware Tools via the source code tarballs distributed with vSphere.
 
-Actions:
+[![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
+
+## Actions
 
 * Transfer the VMware Tools tarball to the target agent
 * Untar the archive and run vmware-install-tools.pl
 
-Supported Operating Systems:
+## Supported Operating Systems
 
 * Ubuntu 12.04 x86_64 (tested)
 * RedHat family (RHEL 6 tested)
