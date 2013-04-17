@@ -83,7 +83,7 @@ class vmwaretools (
   $installer_md5        = 'unset',
 ) {
 
-  if $installer_location != 'puppet' and $installer_md5 != 'unset' {
+  if $installer_location != 'puppet' and $installer_md5 == 'unset' {
     fail 'MD5 not given for VMware Tools installer package'
   }
 
