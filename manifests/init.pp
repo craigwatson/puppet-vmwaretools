@@ -75,7 +75,7 @@
 # Published under the GNU General Public License v3
 #
 class vmwaretools (
-  $version              = '8.6.5-621624',
+  $version              = '9.0.0-782409',
   $working_dir          = '/opt/vmware',
   $redhat_install_devel = false,
   $clobber_modules      = false,

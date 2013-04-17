@@ -25,6 +25,14 @@ class vmwaretools::install::exec {
     unless  => "${vmwaretools::working_dir}/version-check.sh \"${vmwaretools::version}\"",
   }
 
+  if $vmwaretools::installer_location != 'puppet' {
+    exec { 'download_vmware_tools':
+      notify  => Exec['install_vmware_tools'],
+      command => "${vmwaretools::working_dir}/download.sh",
+      require => File["${vmwaretools::working_dir}/download.sh"];
+    }
+  }
+
   exec {
     'clean_old_vmware_tools':
       command => "find ${vmwaretools::working_dir}/*.tar.gz -not -name ${vmwaretools::version}.tar.gz -delete",
