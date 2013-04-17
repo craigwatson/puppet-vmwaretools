@@ -19,6 +19,7 @@ check_exec "/usr/bin/md5sum"
 check_exec "/usr/bin/awk"
 
 /usr/bin/wget -q -O ${DOWNLOAD_LOCATION} ${DOWNLOAD_URL}
+chmod 600 ${DOWNLOAD_LOCATION}
 
 DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum ${DOWNLOAD_LOCATION} | /usr/bin/awk '{ print $1 }')
 
