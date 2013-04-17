@@ -23,18 +23,18 @@ Examples
 --------
 
 *  To accept defaults:
- 
+
     include vmwaretools
- 
+
 *  To specify a version and working directory
- 
+
     class { 'vmwaretools':
       version     => '8.6.5-621624',
-      working_dir => '/opt/vmware'
+      working_dir => '/opt/vmware',
     }
- 
+
 *  To specify a download location:
- 
+
     class { 'vmwaretools':
       version            => '9.0.0-782409',
       installer_location => 'http://server.local/VMwareTools-9.0.0-782409.tar.gz',
