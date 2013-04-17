@@ -22,15 +22,24 @@ Supported Operating Systems:
 Examples
 --------
 
-    class { 'vmwaretools':
-      version     => '8.6.5-621624',
-      working_dir => '/opt/vmware'
-    }
-
-
-To use the module, place your VMware Tools .tar.gz file within the module's files directory and either declare the class as above or:
-
-    include vmwaretools
+*  To accept defaults:
+ 
+  include vmwaretools
+ 
+*  To specify a version and working directory
+ 
+  class { 'vmwaretools':
+    version     => '8.6.5-621624',
+    working_dir => '/opt/vmware'
+  }
+ 
+*  To specify a download location:
+ 
+  class { 'vmwaretools':
+    version            => '9.0.0-782409',
+    installer_location => 'http://server.local/VMwareTools-9.0.0-782409.tar.gz',
+    installer_md5      => '9df56c317ecf466f954d91f6c5ce8a6f',
+  }
 
 Notes
 -----

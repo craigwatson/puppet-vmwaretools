@@ -11,13 +11,27 @@
 #
 # [*working_dir*]
 #   The directory to store files in.
-#   Default: /opt/vmware
+#   Default: /opt/vmware (string)
 #
 # [*redhat_install_devel*]
 #   If you really want to install kernel headers on RedHat-derivative operating
 #   systems - you will likely not need this as most RH distros have
 #   pre-compiled kernel modules.
-#   Default: false
+#   Default: false (boolean)
+#
+# [*clobber_modules*]
+#   Whether to overwrite modules compiled by other packages (including default
+#   kernel modules.
+#   Default: false (boolean)
+#
+# [*installer_location*]
+#   Specify an HTTP location to download the install tarball from - this is
+#   useful when you want to avoid packaging the installer with your Puppet code.
+#   Default: 'puppet' (string)
+#
+# [*installer_md5*]
+#   MD5sum of your installer package - required if using an HTTP location above.
+#   Default: 'unset' (string)
 #
 # == Actions:
 #
@@ -32,14 +46,24 @@
 #
 # === Sample Usage:
 #
-#   class { 'vmwaretools':
-#     version     = '8.6.5-621624',
-#     working_dir = '/opt/vmware'
-#   }
-#
-# Or to accept defaults:
+# To accept defaults:
 #
 #   include vmwaretools
+#
+# To specify a version and working directory
+#
+#   class { 'vmwaretools':
+#     version     => '8.6.5-621624',
+#     working_dir => '/opt/vmware'
+#   }
+#
+# To specify a download location:
+#
+#   class { 'vmwaretools':
+#     version            => '9.0.0-782409',
+#     installer_location => 'http://server.local/VMwareTools-9.0.0-782409.tar.gz',
+#     installer_md5      => '9df56c317ecf466f954d91f6c5ce8a6f',
+#   }
 #
 # === Authors:
 #
@@ -47,16 +71,22 @@
 #
 # === Copyright:
 #
-# Copyright (C) 2012 Craig Watson
+# Copyright (C) 2013 Craig Watson
+# Published under the GNU General Public License v3
 #
 class vmwaretools (
   $version              = '8.6.5-621624',
   $working_dir          = '/opt/vmware',
   $redhat_install_devel = false,
   $clobber_modules      = false,
+  $installer_location   = 'puppet',
+  $installer_md5        = 'unset',
 ) {
 
-  # Only proceed if we're on a VMware platform
+  if $installer_location != 'puppet' and $installer_md5 != 'unset' {
+    fail 'MD5 not given for VMware Tools installer package'
+  }
+
   if $::virtual == 'vmware' {
     include vmwaretools::install
     include vmwaretools::config

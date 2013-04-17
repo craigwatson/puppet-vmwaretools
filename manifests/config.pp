@@ -12,7 +12,8 @@
 #
 # === Copyright:
 #
-# Copyright (C) 2012 Craig Watson
+# Copyright (C) 2013 Craig Watson
+# Published under the GNU General Public License v3
 #
 class vmwaretools::config {
 
@@ -25,7 +26,6 @@ class vmwaretools::config {
   file {
     $vmwaretools::working_dir:
       ensure => directory;
-
     "${vmwaretools::working_dir}/version-check.sh":
       source  => 'puppet:///modules/vmwaretools/version-check.sh',
       require => File[$vmwaretools::working_dir];

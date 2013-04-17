@@ -4,7 +4,7 @@
 #
 # == Actions:
 #
-# Includes the package/exec installation submodules
+# Includes the archive/package/exec installation submodules
 #
 # === Authors:
 #
@@ -12,9 +12,15 @@
 #
 # === Copyright:
 #
-# Copyright (C) 2012 Craig Watson
+# Copyright (C) 2013 Craig Watson
+# Published under the GNU General Public License v3
 #
 class vmwaretools::install {
+  include vmwaretools::install::archive
   include vmwaretools::install::package
   include vmwaretools::install::exec
+
+  Class['vmwaretools::install::package'] ->
+  Class['vmwaretools::install::archive'] ->
+  Class['vmwaretools::install::exec']
 }

@@ -1,0 +1,29 @@
+#! /bin/bash
+
+# Published under the GNU General Public License v3
+# Copyright (c) Craig Watson 2012
+
+function check_exec {
+  if [ !-x $1 ]; then
+    echo "$1 not found" >&2
+    exit 1
+  fi
+}
+
+DOWNLOAD_URL="<%= scope.lookupvar('vmwaretools::installer_location') %>"
+DOWNLOAD_LOCATION="<%= scope.lookupvar('vmwaretools::working_dir') %>/<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
+GOOD_CHECKSUM="<%= scope.lookupvar('vmwaretools::installer_md5') %>"
+
+check_exec "/usr/bin/wget"
+check_exec "/usr/bin/md5sum"
+
+/usr/bin/wget -q -O ${DOWNLOAD_LOCATION} ${DOWNLOAD_URL}
+
+DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum ${DOWNLOAD_LOCATION})
+
+if [ ${DOWNLOADED_CHECKSUM} -ne ${GOOD_CHECKSUM} ]; then
+  echo "Checksum mismatch. Got ${DOWNLOADED_CHECKSUM}, should have been ${GOOD_CHECKSUM}" > &2
+  exit 1
+else
+  exit 0
+fi

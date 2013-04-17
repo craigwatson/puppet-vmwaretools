@@ -1,4 +1,4 @@
-# == Class: vmwaretools::config
+# == Class: vmwaretools::install::exec
 #
 # This class handles the VMware Tools compilation and uncompressing.
 #
@@ -15,22 +15,14 @@
 #
 # === Copyright:
 #
-# Copyright (C) 2012 Craig Watson
+# Copyright (C) 2013 Craig Watson
+# Published under the GNU General Public License v3
 #
-
 class vmwaretools::install::exec {
   Exec {
     path    => ['/bin','/usr/bin'],
     timeout => 0,
     unless  => "${vmwaretools::working_dir}/version-check.sh \"${vmwaretools::version}\"",
-  }
-
-  file { "${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz":
-    mode    => '0600',
-    owner   => 'root',
-    group   => 'root',
-    source  => "puppet:///modules/vmwaretools/VMwareTools-${vmwaretools::version}.tar.gz",
-    require => File[$vmwaretools::working_dir];
   }
 
   exec {

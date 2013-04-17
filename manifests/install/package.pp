@@ -16,6 +16,7 @@
 # === Copyright:
 #
 # Copyright (C) 2012 Craig Watson
+# Published under the GNU General Public License v3
 #
 class vmwaretools::install::package {
 
@@ -32,7 +33,7 @@ class vmwaretools::install::package {
   case $::osfamily {
 
     'Debian' : {
-      package { ["linux-headers-${kernelrelease}",'build-essential'] :
+      package { ["linux-headers-${::kernelrelease}",'build-essential'] :
         ensure => present,
       }
     }
