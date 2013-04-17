@@ -16,9 +16,8 @@ Actions:
 Supported Operating Systems:
 
 * Ubuntu 12.04 x86_64 (tested)
-* CentOS 6.4 x86_64 (written but untested)
+* RedHat family (RHEL 6 tested)
 * Debian family (written but untested - reports appreciated)
-* RedHat family (written but untested - reports appreciated)
 
 Examples
 --------
