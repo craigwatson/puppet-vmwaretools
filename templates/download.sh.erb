@@ -23,7 +23,7 @@ chmod 600 ${DOWNLOAD_LOCATION}
 
 DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum ${DOWNLOAD_LOCATION} | /usr/bin/awk '{ print $1 }')
 
-if [ ${DOWNLOADED_CHECKSUM} -ne ${GOOD_CHECKSUM} ]; then
+if [ "${DOWNLOADED_CHECKSUM}" != "${GOOD_CHECKSUM}" ]; then
   echo "Checksum mismatch. Got ${DOWNLOADED_CHECKSUM}, should have been ${GOOD_CHECKSUM}"
   exit 1
 else
