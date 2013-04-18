@@ -16,7 +16,7 @@ GOOD_CHECKSUM="<%= scope.lookupvar('vmwaretools::installer_md5') %>"
 
 check_exec "/usr/bin/wget"
 check_exec "/usr/bin/md5sum"
-check_exec "/usr/bin/awk"
+check_exec "<%= scope.lookupvar('vmwaretools::params::awk_path') %>"
 
 /usr/bin/wget -q -O ${DOWNLOAD_LOCATION} ${DOWNLOAD_URL}
 chmod 600 ${DOWNLOAD_LOCATION}

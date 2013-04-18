@@ -35,14 +35,14 @@
 #
 # == Actions:
 #
-# Compares installed version with the configured version
-# Transfer the VMware Tools tarball to the target agent
-# Untar the archive and run vmware-install-tools.pl
-# Removes open-vm-tools
+# * Compares installed version with the configured version
+# * Transfer the VMware Tools tarball to the target agent (via Puppet or HTTP)
+# * Untar the archive and run vmware-install-tools.pl
+# * Removes open-vm-tools
 #
 # === Requires:
 #
-# Nothing
+# * HTTP download script: wget, awk, md5sum
 #
 # === Sample Usage:
 #
@@ -88,8 +88,15 @@ class vmwaretools (
   }
 
   if $::virtual == 'vmware' {
+
+    include vmwaretools::params
     include vmwaretools::install
     include vmwaretools::config
+
+    Class['vmwaretools::params'] ->
+    Class['vmwaretools::install'] ->
+    Class['vmwaretools::config']
+
   } else {
     fail 'Not a VMware platform.'
   }
