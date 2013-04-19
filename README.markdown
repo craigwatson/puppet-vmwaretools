@@ -8,14 +8,16 @@ This module manages the installation of VMware Tools via the source code tarball
 Actions
 -------
 
-* Transfer the VMware Tools tarball to the target agent
+* Compares installed version with the configured version
+* Transfer the VMware Tools archive to the target agent (via Puppet or HTTP)
 * Untar the archive and run vmware-install-tools.pl
+* Removes open-vm-tools
 
 Supported Operating Systems
 ---------------------------
 
-* Ubuntu 12.04 x86_64 (tested)
-* Red Hat family (RHEL 6 tested)
+* Ubuntu (12.04 LTS tested)
+* Red Hat family (RHEL 5 and 6 tested)
 * Debian family (written but untested - reports appreciated)
 
 Examples
@@ -25,19 +27,13 @@ To accept defaults:
 
     include vmwaretools
 
-To specify a version and working directory
+To specify a non-default version, working directory and HTTP URL:
 
     class { 'vmwaretools':
       version     => '8.6.5-621624',
-      working_dir => '/opt/vmware',
-    }
-
-To specify a download location:
-
-    class { 'vmwaretools':
-      version            => '9.0.0-782409',
-      installer_location => 'http://server.local/VMwareTools-9.0.0-782409.tar.gz',
-      installer_md5      => '9df56c317ecf466f954d91f6c5ce8a6f',
+      working_dir => '/tmp/vmwaretools'
+      archive_url => 'http://server.local/my/dir',
+      archive_md5 => '9df56c317ecf466f954d91f6c5ce8a6f',
     }
 
 Notes
