@@ -80,8 +80,8 @@ class vmwaretools (
   $version              = '9.0.0-782409',
   $working_dir          = '/tmp/vmwaretools',
   $redhat_install_devel = false,
-  $archive_url          = 'http://preseed.valhalla.local',
-  $archive_md5          = '9df56c317ecf466f954d91f6c5ce8a6f',
+  $archive_url          = 'puppet',
+  $archive_md5          = '',
   $fail_on_non_vmware   = false,
   $keep_working_dir     = false,
 ) {
