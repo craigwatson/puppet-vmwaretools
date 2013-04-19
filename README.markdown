@@ -15,7 +15,7 @@ Supported Operating Systems
 ---------------------------
 
 * Ubuntu 12.04 x86_64 (tested)
-* RedHat family (RHEL 6 tested)
+* Red Hat family (RHEL 6 tested)
 * Debian family (written but untested - reports appreciated)
 
 Examples
@@ -50,4 +50,5 @@ Copyright and License
 ---------------------
 
 * Copyright (C) 2013 Craig Watson - <craig@cwatson.org>
+* VMware Tools fact adapted from https://github.com/janorn/puppet-vmwaretools
 * Distributed under the terms of the GNU General Public License v3 - see LICENSE file for details.

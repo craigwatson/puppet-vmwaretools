@@ -1,10 +1,12 @@
 # == Class: vmwaretools::install::archive
 #
-# This class handles the VMware Tools compilation and uncompressing.
+# This class handles the placing the archive.
 #
 # == Actions:
 #
-# Either places the tarball via Puppet or downloads via wget
+# * Either via:
+#   - HTTP, with an md5 checksum comparison
+#   - Puppet filebucket
 #
 # === Authors:
 #
@@ -18,28 +20,33 @@
 #
 class vmwaretools::install::archive {
 
-
-  file { "${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz":
+  file { "${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz":
     mode    => '0600',
     owner   => 'root',
     group   => 'root',
-    notify  => Exec['uncompress_vmware_tools'],
     require => File[$vmwaretools::working_dir],
   }
 
-  if $vmwaretools::installer_location == 'puppet' {
-    File["${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz"] {
+  if $vmwaretools::archive_url == 'puppet' {
+
+    File["${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz"] {
+      ensure  => file,
       source  => "puppet:///modules/vmwaretools/VMwareTools-${vmwaretools::version}.tar.gz",
+      notify  => Exec['uncompress_vmwaretools'],
     }
+
   } else {
-    file {
-      "${vmwaretools::working_dir}/download.sh":
-        content => template('vmwaretools/download.sh.erb'),
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0700',
-        require => File[$vmwaretools::working_dir];
+
+    file { "${vmwaretools::working_dir}/download.sh":
+      content => template('vmwaretools/download.sh.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0700',
+      notify  => Exec['download_vmwaretools'],
+      require => File[$vmwaretools::working_dir];
     }
+
   }
+
 }
 

@@ -10,9 +10,9 @@ function check_exec {
   fi
 }
 
-DOWNLOAD_URL="<%= scope.lookupvar('vmwaretools::installer_location') %>"
-DOWNLOAD_LOCATION="<%= scope.lookupvar('vmwaretools::working_dir') %>/<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
-GOOD_CHECKSUM="<%= scope.lookupvar('vmwaretools::installer_md5') %>"
+DOWNLOAD_URL="<%= scope.lookupvar('vmwaretools::archive_url') %>/VMwareTOols-<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
+DOWNLOAD_LOCATION="<%= scope.lookupvar('vmwaretools::working_dir') %>/VMwareTools-<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
+GOOD_CHECKSUM="<%= scope.lookupvar('vmwaretools::archive_md5') %>"
 
 check_exec "/usr/bin/wget"
 check_exec "/usr/bin/md5sum"

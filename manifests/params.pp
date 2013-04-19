@@ -4,7 +4,7 @@
 #
 # == Actions:
 #
-# Deploys the version-comparison script
+# None
 #
 # === Authors:
 #
@@ -16,6 +16,11 @@
 # Published under the GNU General Public License v3
 #
 class vmwaretools::params {
+
+  $deploy_files = $::vmwaretools_version ? {
+    $vmwaretools::version => false,
+    default               => true,
+  }
 
   $awk_path = $::osfamily ? {
     'RedHat' => '/bin/awk',

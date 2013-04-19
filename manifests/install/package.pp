@@ -4,10 +4,10 @@
 #
 # == Actions:
 #
-# Ensures open-vm-tools is absent - this module directly conflicts.
-# Installs Perl if it hasn't been installed by another module
-# If we're running on a Debian system, install kernel headers and build tools
-# On a RedHat system and we really want to install kernel headers, do it.
+# * Ensures open-vm-tools is absent - this module directly conflicts.
+# * Installs Perl if it hasn't been installed by another module
+# * If we're running on a Debian system, install kernel headers and build tools
+# * On a Red Hat system and we really want to install kernel headers, do it.
 #
 # === Authors:
 #

@@ -19,51 +19,52 @@
 # Published under the GNU General Public License v3
 #
 class vmwaretools::install::exec {
+
   Exec {
-    path    => ['/bin','/usr/bin'],
-    timeout => 0,
-    unless  => "${vmwaretools::working_dir}/version-check.sh \"${vmwaretools::version}\"",
+    path        => ['/bin','/usr/bin'],
+    refreshonly => true,
+    timeout     => 0,
   }
 
-  if $vmwaretools::installer_location != 'puppet' {
-    exec { 'download_vmware_tools':
-      notify  => Exec['install_vmware_tools'],
+  if $vmwaretools::archive_location != 'puppet' {
+    exec { 'download_vmwaretools':
       command => "${vmwaretools::working_dir}/download.sh",
-      require => File["${vmwaretools::working_dir}/download.sh"];
+      require => File["${vmwaretools::working_dir}/download.sh"],
+      notify  => Exec['uncompress_vmwaretools'],
+    }
+
+    Exec['uncompress_vmwaretools'] {
+      require => Exec['download_vmwaretools'],
+    }
+
+  } else {
+    Exec['uncompress_vmwaretools'] {
+      require => File["${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz"],
     }
   }
 
   exec {
-    'clean_old_vmware_tools':
-      command => "find ${vmwaretools::working_dir}/*.tar.gz -not -name ${vmwaretools::version}.tar.gz -delete",
-      require => [
-        File[ "${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz","${vmwaretools::working_dir}/version-check.sh"],
-        Class['vmwaretools::install::package']
-      ];
-
-    'uncompress_vmware_tools':
+    'uncompress_vmwaretools':
       cwd     => $vmwaretools::working_dir,
-      command => "tar -xf ${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz",
-      require => [
-        File[ "${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz","${vmwaretools::working_dir}/version-check.sh"],
-        Class['vmwaretools::install::package'],
-        Exec['clean_old_vmware_tools']
-      ];
-
-    'install_vmware_tools':
+      command => "tar -xf ${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz",
+      notify  => Exec['install_vmwaretools'];
+    'install_vmwaretools':
       command => "${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl -d",
-      require => [
-        File[ "${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz","${vmwaretools::working_dir}/version-check.sh"],
-        Class['vmwaretools::install::package'],
-        Exec['uncompress_vmware_tools']
-      ];
+      require => Exec['uncompress_vmwaretools'],
+      notify  => Exec['clean_vmwaretools'];
+    'clean_vmwaretools':
+      command => "rm -rf ${vmwaretools::working_dir}/vmware-tools-distrib && find ${vmwaretools::working_dir}/*.tar.gz -not -name VMwareTools-${vmwaretools::version}.tar.gz -delete",
+      require => Exec['install_vmwaretools'];
+  }
 
-    'clean_up_vmware_tools_install':
-      command => "rm -rf ${vmwaretools::working_dir}/vmware-tools-distrib",
-      require => [
-        File[ "${vmwaretools::working_dir}/${vmwaretools::version}.tar.gz","${vmwaretools::working_dir}/version-check.sh"],
-        Class['vmwaretools::install::package'],
-        Exec['install_vmware_tools']
-      ];
+  if $vmwaretools::keep_working_dir == false {
+    Exec['clean_vmwaretools'] {
+      notify => Exec['remove_vmwaretools_working_dir'],
+    }
+
+    exec { 'remove_vmwaretools_working_dir':
+      command => "rm -rf ${vmwaretools::working_dir}",
+      require => Exec['clean_vmwaretools'],
+    }
   }
 }

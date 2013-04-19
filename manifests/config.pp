@@ -4,7 +4,7 @@
 #
 # == Actions:
 #
-# Deploys the version-comparison script
+# Creates the working directory
 #
 # === Authors:
 #
@@ -17,19 +17,11 @@
 #
 class vmwaretools::config {
 
-  File {
+  file { $vmwaretools::working_dir:
     owner  => 'root',
     group  => 'root',
     mode   => '0700',
+    ensure => directory;
   }
-
-  file {
-    $vmwaretools::working_dir:
-      ensure => directory;
-    "${vmwaretools::working_dir}/version-check.sh":
-      source  => 'puppet:///modules/vmwaretools/version-check.sh',
-      require => File[$vmwaretools::working_dir];
-  }
-
 
 }
