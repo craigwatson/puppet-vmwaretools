@@ -59,7 +59,7 @@ To specify a non-default version, working directory and HTTP URL:
 
 ##Limitations
 
-Supported Operating Systems:
+###Supported Operating Systems:
 
 * Ubuntu (12.04 LTS tested)
 * Red Hat family (RHEL 5 and 6 tested)
