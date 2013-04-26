@@ -1,4 +1,4 @@
-#####puppet-vmwaretools
+####puppet-vmwaretools
 
 [![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
 
@@ -68,9 +68,9 @@ Supported Operating Systems:
 ##Development
 
 * Copyright (C) 2013 Craig Watson - <craig@cwatson.org>
-* VMware Tools fact adapted from https://github.com/janorn/puppet-vmwaretools
+* VMware Tools fact by [janorn](https://github.com/janorn/puppet-vmwaretools)
 * Distributed under the terms of the GNU General Public License v3 - see LICENSE file for details.
-* Further contributions are extremely welcome - please submit a pull request on GitHub: https://github.com/craigwatson/puppet-vmwaretools
+* Further contributions are extremely welcome - please submit a pull request on [GitHub](https://github.com/craigwatson/puppet-vmwaretools)
 
 ##Release Notes
 
