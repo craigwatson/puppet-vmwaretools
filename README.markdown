@@ -1,4 +1,4 @@
-    #puppet-vmwaretools
+#####puppet-vmwaretools
 
 [![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
 
@@ -32,7 +32,7 @@ This module is designed to replace both the OSP packages provided by VMware's re
 * Untar the archive and run vmware-install-tools.pl
 * Removes open-vm-tools
 
-###Setup Requirements **OPTIONAL**
+###Setup Requirements
 
 * Pluginsync must be enabled, due to the vmwaretools custom fact distributed with this module.
 	
@@ -55,7 +55,7 @@ To specify a non-default version, working directory and HTTP URL:
 
 ##Reference
 
-* Installer accepts all defaults
+* Perl VMware Tools installer accepts all defaults
 
 ##Limitations
 
