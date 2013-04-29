@@ -17,7 +17,7 @@
 
 ##Overview
 
-This module manages the installation and upgrade of VMware Tools via the source code tarballs distributed with vSphere.
+This module manages the installation and upgrade of VMware Tools via the source code tarballs distributed with vSphere. The tarballs are transferred to the target by either HTTP download or Puppet filebucket (the default mechanism is the latter).
 
 ##Module Description
 
@@ -44,7 +44,9 @@ To accept default class parameters:
 
 ##Usage
 
-To specify a non-default version, working directory and HTTP URL:
+The mechanism can be customised by declaring the module with `archive_url` and `archive_md5` parameters (default is to use Puppet filebuckets).
+
+To specify a non-default version, working directory and HTTP URL (other variables can be viewed and/or modified in `manifests/init.pp`):
 
     class { 'vmwaretools':
       version     => '8.6.5-621624',
