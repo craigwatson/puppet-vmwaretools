@@ -17,11 +17,15 @@
 
 ##Overview
 
-This module manages the installation and upgrade of VMware Tools via the source code tarballs distributed with vSphere. The tarballs are transferred to the target by either HTTP download or Puppet filebucket (the default mechanism is the latter).
+This module manages the installation and upgrade of VMware Tools via the source code tarballs distributed by VMware.
 
 ##Module Description
 
-This module is designed to replace both the OSP packages provided by VMware's repositories and also the `open-vm-tools` package.
+This module is designed to replace both the OSP packages provided by VMware's repositories and also the `open-vm-tools` package. The module is O/S independant (tested on Ubuntu and Red Hat systems).
+
+The tarballs are transferred to the target by either HTTP download or Puppet filebucket (the default mechanism), and then uncompressed and installed via the archive's Perl installation script.
+
+Upgrading of currently installed VMware Tools packages is also supported - the module obtains the currently-installed VMware Tools version via a custom fact, and only deploys the tarball if a version mismatch occurs or if VMware Tools is not installed on the target system.
 
 ##Setup
 
@@ -29,11 +33,12 @@ This module is designed to replace both the OSP packages provided by VMware's re
 
 * Compares installed version with the configured version via the `vmwaretools` fact
 * Transfer the VMware Tools archive to the target agent (via Puppet or HTTP)
-* Untar the archive and run vmware-install-tools.pl
-* Removes open-vm-tools
+* Untar the archive and run vmware-install-tools.pl (warning: this installer is run with the `-d` flag to accept all default answers).
+* Removes the `open-vm-tools` package.
 
 ###Setup Requirements
 
+* Perl must be installed on the target systems in order to run the VMware Tools installer.
 * Pluginsync must be enabled, due to the vmwaretools custom fact distributed with this module.
 	
 ###Beginning with puppet-vmwaretools	
@@ -44,7 +49,7 @@ To accept default class parameters:
 
 ##Usage
 
-The mechanism can be customised by declaring the module with `archive_url` and `archive_md5` parameters (default is to use Puppet filebuckets).
+The source distribution mechanism can be customised by declaring the module with `archive_url` and `archive_md5` parameters (default is to use Puppet filebuckets).
 
 To specify a non-default version, working directory and HTTP URL (other variables can be viewed and/or modified in `manifests/init.pp`):
 
@@ -72,7 +77,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * Copyright (C) 2013 Craig Watson - <craig@cwatson.org>
 * VMware Tools fact by [janorn](https://github.com/janorn/puppet-vmwaretools)
 * Distributed under the terms of the GNU General Public License v3 - see LICENSE file for details.
-* Further contributions are extremely welcome - please submit a pull request on [GitHub](https://github.com/craigwatson/puppet-vmwaretools)
+* Further contributions and testing reports are extremely welcome - please submit a pull request or issue on [GitHub](https://github.com/craigwatson/puppet-vmwaretools)
 
 ##Release Notes
 
