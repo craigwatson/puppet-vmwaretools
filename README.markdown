@@ -62,7 +62,13 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Reference
 
-* Perl VMware Tools installer accepts all defaults
+###Facts:
+* `vmwaretools`: Detects any existing VMware Tools installations and, if found, reports the installed version.
+
+###Classes:
+* `vmwaretools::install::exec`: Declares all `exec` commands run by the module.
+* `vmwaretools::install::archive`: Handles the archive distribution (either places a download script or the archive).
+* `vmwaretools::params`: O/S-specific and module configuration (e.g. paths to binaries and a boolean variable to control file deployment)
 
 ##Limitations
 
