@@ -63,7 +63,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 ##Reference
 
 ###Facts:
-* `vmwaretools` - Detects any existing VMware Tools installations and, if found, reports the installed version.
+* `vmwaretools_version` - Detects any existing VMware Tools installations and, if found, reports the installed version.
 
 ###Classes:
 * `vmwaretools::install::exec` - Declares all `exec` commands run by the module.
