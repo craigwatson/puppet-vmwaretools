@@ -18,10 +18,10 @@
 class vmwaretools::config {
 
   file { $vmwaretools::working_dir:
+    ensure => directory,
     owner  => 'root',
     group  => 'root',
     mode   => '0700',
-    ensure => directory;
   }
 
 }
