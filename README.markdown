@@ -87,4 +87,8 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Release Notes
 
-* 0.0.4 - Including new README format.
+### 0.0.5
+* Bugfix - `archive_location` replaced by `archive_url` in `vmwaretools::install::exec`
+
+### 0.0.4
+* Including new README format
