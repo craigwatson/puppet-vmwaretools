@@ -26,7 +26,7 @@ class vmwaretools::install::exec {
     timeout     => 0,
   }
 
-  if $vmwaretools::archive_location != 'puppet' {
+  if $vmwaretools::archive_url != 'puppet' {
     exec { 'download_vmwaretools':
       command => "${vmwaretools::working_dir}/download.sh",
       require => File["${vmwaretools::working_dir}/download.sh"],
