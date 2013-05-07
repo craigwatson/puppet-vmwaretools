@@ -14,7 +14,7 @@
 #
 # [*working_dir*]
 #   The directory to store files in.
-#   Default: /opt/vmware (string)
+#   Default: '/tmp/vmwaretools' (string)
 #
 # [*redhat_install_devel*]
 #   If you really want to install kernel headers on RedHat-derivative operating

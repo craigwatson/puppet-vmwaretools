@@ -89,6 +89,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ### 0.0.5
 * Bugfix - `archive_location` replaced by `archive_url` in `vmwaretools::install::exec`
+* `manifests/init.pp` parameter Typo fixed
 
 ### 0.0.4
 * Including new README format
