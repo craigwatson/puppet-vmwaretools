@@ -35,7 +35,7 @@ class vmwaretools::params {
 
     } else {
 
-      # If we're not handling downgrades, 
+      # If we're not handling downgrades, deploy on version mismatch
       $deploy_files = $::vmwaretools_version ? {
         $vmwaretools::version => false,
         default               => true,
