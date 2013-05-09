@@ -18,7 +18,8 @@
 class vmwaretools::params {
 
   if $vmwaretools::prevent_downgrade {
-    if versioncmp($::vmwaretools_version,$vmwaretools::version) > 0 {
+
+    if versioncmp($vmwaretools::version,$::vmwaretools_version) > 0 {
       $deploy_files = true
     } else {
       $deploy_files = false

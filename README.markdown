@@ -21,7 +21,7 @@ This module manages the installation and upgrade of VMware Tools via the source 
 
 ##Module Description
 
-This module is designed to replace both the OSP packages provided by VMware's repositories and also the `open-vm-tools` package. The module is O/S independant (tested on Ubuntu and Red Hat systems).
+This module is designed to replace both the OSP packages provided by VMware's repositories and also the `open-vm-tools` package. The module is O/S independent (tested on Ubuntu and Red Hat systems).
 
 The tarballs are transferred to the target by either HTTP download or Puppet filebucket (the default mechanism), and then uncompressed and installed via the archive's Perl installation script.
 
