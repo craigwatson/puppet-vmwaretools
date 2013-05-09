@@ -17,17 +17,24 @@
 #
 class vmwaretools::params {
 
-  if $vmwaretools::prevent_downgrade {
-
-    if versioncmp($vmwaretools::version,$::vmwaretools_version) < 0 {
-      $deploy_files = true
-    } else {
-      $deploy_files = false
-    }
+  if $::vmwaretools_version == 'not installed' {
+    $deploy_files = true
   } else {
-    $deploy_files = $::vmwaretools_version ? {
-      $vmwaretools::version => false,
-      default               => true,
+    if $vmwaretools::prevent_downgrade {
+
+      if versioncmp($::vmwaretools_versionvmwaretools::version,$::vmwaretools_version) < 0 {
+        $deploy_files = true
+      } else {
+        $deploy_files = false
+      }
+
+    } else {
+
+      $deploy_files = $::vmwaretools_version ? {
+        $vmwaretools::version => false,
+        default               => true,
+      }
+
     }
   }
 
