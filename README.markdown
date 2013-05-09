@@ -87,9 +87,18 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Release Notes
 
+### 0.0.6 -- in progress
+
+#### `templates/download.sh.erb`
+* Using awk path from `vmwaretools::params` in script
+
 ### 0.0.5
-* Bugfix - `archive_location` replaced by `archive_url` in `vmwaretools::install::exec`
-* `manifests/init.pp` parameter Typo fixed
+
+#### `vmwaretools::install::exec`
+* `archive_location` replaced by `archive_url`
+
+#### `vmwaretools`
+* Parameter Typo fixed
 
 ### 0.0.4
 * Including new README format
