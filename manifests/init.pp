@@ -41,6 +41,11 @@
 #   Keep the working dir on disk after installation.
 #   Default: false (boolean)
 #
+# [*prevent_downgrade*]
+#   If the system has a version of the tools installed which is newer that what is set in the version parameter, 
+#   do not downgrade the tools.
+#   Default: true (boolean)
+#
 # == Actions:
 #
 # * Compares installed version with the configured version
@@ -84,6 +89,7 @@ class vmwaretools (
   $archive_md5          = '',
   $fail_on_non_vmware   = false,
   $keep_working_dir     = false,
+  $prevent_downgrade    = true,
 ) {
 
   if $archive_url != 'puppet' and $archive_md5 == '' {
