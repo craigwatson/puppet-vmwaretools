@@ -86,8 +86,6 @@ class vmwaretools (
   $keep_working_dir     = false,
 ) {
 
-  include vmwaretools::params
-
   if $archive_url != 'puppet' and $archive_md5 == '' {
     fail 'MD5 not given for VMware Tools installer package'
   }
@@ -96,9 +94,9 @@ class vmwaretools (
     fail 'Not a VMware platform.'
   }
 
-  if $::virtual == 'vmware' and $vmwaretools::params::deploy_files == true {
-    include vmwaretools::install
-    include vmwaretools::config
-  }
+  include vmwaretools::params
+  include vmwaretools::kernel_upgrade
+  include vmwaretools::install
+  include vmwaretools::config
 
 }

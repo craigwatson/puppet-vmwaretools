@@ -69,6 +69,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * `vmwaretools::install::exec` - Declares all `exec` commands run by the module.
 * `vmwaretools::install::archive` - Handles the archive distribution (either places a download script or the archive).
 * `vmwaretools::params` - O/S-specific and module configuration (e.g. paths to binaries and a boolean variable to control file deployment)
+* `vmwaretools::kernel_upgrade` - Executes `vmware-config-tools.pl -d` if the `vmci.ko` module doesn't exist for the running kernel
 
 ##Limitations
 
@@ -87,7 +88,10 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Release Notes
 
-### 0.0.6 -- in progress
+### 0.1.0
+
+#### `vmwaretools::kernel_upgrade`
+* New class: handles re-compiling VMware Tools following a kernel upgrade
 
 #### `templates/download.sh.erb`
 * Using awk path from `vmwaretools::params` in script
