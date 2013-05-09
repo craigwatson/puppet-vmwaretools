@@ -21,7 +21,7 @@ check_exec "<%= scope.lookupvar('vmwaretools::params::awk_path') %>"
 /usr/bin/wget -q -O ${DOWNLOAD_LOCATION} ${DOWNLOAD_URL}
 chmod 600 ${DOWNLOAD_LOCATION}
 
-DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum ${DOWNLOAD_LOCATION} | /usr/bin/awk '{ print $1 }')
+DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum ${DOWNLOAD_LOCATION} | <%= scope.lookupvar('vmwaretools::params::awk_path') %> '{ print $1 }')
 
 if [ "${DOWNLOADED_CHECKSUM}" != "${GOOD_CHECKSUM}" ]; then
   echo "Checksum mismatch. Got ${DOWNLOADED_CHECKSUM}, should have been ${GOOD_CHECKSUM}"
