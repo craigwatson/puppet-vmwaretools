@@ -88,10 +88,13 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Release Notes
 
-### 0.1.0
+### 0.1.0 -- in progress
 
 #### `vmwaretools::kernel_upgrade`
 * New class: handles re-compiling VMware Tools following a kernel upgrade
+
+#### `vmwaretools`
+* New parameter: `prevent_downgrade`  - will prevent downgrading if the version installed is newer than the version that would be deployed via Puppet (default: true)
 
 #### `templates/download.sh.erb`
 * Using awk path from `vmwaretools::params` in script

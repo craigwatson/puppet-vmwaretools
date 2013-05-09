@@ -42,8 +42,8 @@
 #   Default: false (boolean)
 #
 # [*prevent_downgrade*]
-#   If the system has a version of the tools installed which is newer that what is set in the version parameter, 
-#   do not downgrade the tools.
+#   If the system has a version of the tools installed which is newer that what
+#   is set in the version parameter, do not downgrade the tools.
 #   Default: true (boolean)
 #
 # == Actions:

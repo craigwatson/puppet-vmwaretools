@@ -16,9 +16,9 @@
 # Published under the GNU General Public License v3
 #
 class vmwaretools::params {
- 
+
   if $vmwaretools::prevent_downgrade {
-    if versioncmp($vmwaretools::version,$::vmwaretools_version) < 0 {
+    if versioncmp($::vmwaretools_version,$vmwaretools::version) > 0 {
       $deploy_files = false
     } else {
       $deploy_files = true
