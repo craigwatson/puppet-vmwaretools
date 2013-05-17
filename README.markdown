@@ -93,10 +93,13 @@ To specify a non-default version, working directory and HTTP URL (other variable
   * Added "not installed" output if VMware Tools isn't installed
 * `vmwaretools::kernel_upgrade`
   * New class: handles re-compiling VMware Tools following a kernel upgrade
+* `vmwaretools::install::package`
+  * Installing curl if download script is used, and adding `open-vm-dkms` to the list of purged packages
 * `vmwaretools`
   * New parameter: `prevent_downgrade`  - will prevent downgrading if the version installed is newer than the version that would be deployed via Puppet (default: true)
 * `templates/download.sh.erb`
   * Using awk path from `vmwaretools::params` in script
+  * Using curl rather than wget - [pull request #7](https://github.com/craigwatson/puppet-vmwaretools/pull/7)
 
 ### 0.0.5
 * `vmwaretools::install::exec`

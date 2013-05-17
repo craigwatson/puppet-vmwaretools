@@ -6,6 +6,7 @@
 #
 # * Ensures open-vm-tools is absent - this module directly conflicts.
 # * Installs Perl if it hasn't been installed by another module
+# * Installs curl if we're using the download script
 # * If we're running on a Debian system, install kernel headers and build tools
 # * On a Red Hat system and we really want to install kernel headers, do it.
 #
@@ -20,13 +21,21 @@
 #
 class vmwaretools::install::package {
 
-  package { 'open-vm-tools':
+  package { ['open-vm-tools','open-vm-dkms']:
     ensure => purged,
   }
 
-  if (!defined(Package['perl'])) {
+  if !defined(Package['perl']) {
     package { 'perl':
       ensure => installed,
+    }
+  }
+
+  if $vmwaretools::params::archive_url != 'puppet' {
+    if !defined(Package['curl']) {
+      package { 'curl':
+        ensure => installed,
+      }
     }
   }
 
