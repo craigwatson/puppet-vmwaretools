@@ -95,11 +95,12 @@ To specify a non-default version, working directory and HTTP URL (other variable
   * New class: handles re-compiling VMware Tools following a kernel upgrade
 * `vmwaretools::install::package`
   * Installing curl if download script is used, and adding `open-vm-dkms` to the list of purged packages
+  * Made the `kernel-devel` package installation explicitly use the running kernel - [pull request #8](https://github.com/craigwatson/puppet-vmwaretools/pull/8) by [mattiasgeniar](https://github.com/mattiasgeniar)
 * `vmwaretools`
   * New parameter: `prevent_downgrade`  - will prevent downgrading if the version installed is newer than the version that would be deployed via Puppet (default: true)
 * `templates/download.sh.erb`
   * Using awk path from `vmwaretools::params` in script
-  * Using curl rather than wget - [pull request #7](https://github.com/craigwatson/puppet-vmwaretools/pull/7)
+  * Using curl rather than wget - [pull request #7](https://github.com/craigwatson/puppet-vmwaretools/pull/7) by [mattiasgeniar](https://github.com/mattiasgeniar)
 
 ### 0.0.5
 * `vmwaretools::install::exec`
