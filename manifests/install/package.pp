@@ -40,7 +40,7 @@ class vmwaretools::install::package {
 
     'RedHat' : {
       if $vmwaretools::redhat_install_devel == true {
-        package { 'kernel-devel':
+        package { [ "kernel-devel-${::kernelrelease}", 'gcc' ]:
           ensure => present,
         }
       }
