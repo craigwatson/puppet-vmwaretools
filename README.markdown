@@ -88,7 +88,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Release Notes
 
-### 0.1.0 -- in progress
+### 0.1.0
 * `vmwaretools_version` fact
   * Added "not installed" output if VMware Tools isn't installed
 * `vmwaretools::kernel_upgrade`
