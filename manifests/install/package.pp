@@ -42,15 +42,29 @@ class vmwaretools::install::package {
   case $::osfamily {
 
     'Debian' : {
-      package { ["linux-headers-${::kernelrelease}",'build-essential'] :
-        ensure => present,
+      if ! defined(Package['build-essential']) {
+        package{'build-essential':
+          ensure => installed,
+        }
+      }
+      if ! defined(Package["linux-headers-${::kernelrelease}"]) {
+        package{"linux-headers-${::kernelrelease}":
+          ensure => installed,
+        }
       }
     }
 
     'RedHat' : {
       if $vmwaretools::redhat_install_devel == true {
-        package { [ "kernel-devel-${::kernelrelease}", 'gcc' ]:
-          ensure => present,
+        if ! defined(Package["kernel-devel-${::kernelrelease}"]) {
+          package{"kernel-devel-${::kernelrelease}":
+            ensure => installed,
+          }
+        }
+        if ! defined(Package['gcc']) {
+          package{'gcc':
+            ensure => installed,
+          }
         }
       }
     }
