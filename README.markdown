@@ -62,10 +62,10 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Reference
 
-###Facts:
+###Facts
 * `vmwaretools_version` - Detects any existing VMware Tools installations and, if found, reports the installed version.
 
-###Classes:
+###Classes
 * `vmwaretools::install::exec` - Declares all `exec` commands run by the module.
 * `vmwaretools::install::archive` - Handles the archive distribution (either places a download script or the archive).
 * `vmwaretools::params` - O/S-specific and module configuration (e.g. paths to binaries and a boolean variable to control file deployment)
@@ -73,13 +73,13 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Limitations
 
-###Supported Operating Systems:
+###Supported Operating Systems
 
 * Ubuntu (12.04 LTS tested)
 * Red Hat family (RHEL 5 and 6 tested)
 * Debian family (written but untested - reports appreciated)
 
-###Unsupported Operating Systems:
+###Unsupported Operating Systems
 
 * Ubuntu 13.04 (see [VMware KB2050666](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2050666 and [bug #12](https://github.com/craigwatson/puppet-vmwaretools/issues/12))
 
