@@ -25,7 +25,7 @@ class vmwaretools::kernel_upgrade {
 
   exec { 'vmware_config_tools':
     command => '/usr/bin/vmware-config-tools.pl -d',
-    creates => "/lib/modules/${::kernelrelease}/misc/vmci.ko",
+    creates => "/lib/modules/${::kernelrelease}/kernel/drivers/scsi/vmw_pvscsi.ko",
   }
 
 }
