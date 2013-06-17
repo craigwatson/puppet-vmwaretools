@@ -81,7 +81,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ###Unsupported Operating Systems
 
-* Ubuntu 13.04 (see [VMware KB2050666](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2050666 and [bug #12](https://github.com/craigwatson/puppet-vmwaretools/issues/12))
+* Ubuntu 13.04 - see [VMware KB2050666](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2050666) and [bug #12](https://github.com/craigwatson/puppet-vmwaretools/issues/12)
 
 ##Development
 
