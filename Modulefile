@@ -1,5 +1,5 @@
 name 'craigwatson1987-vmwaretools'
-version '0.1.0'
+version '0.1.1'
 author 'Craig Watson'
 license 'GNU General Public License v3'
 summary 'Manage installation of VMware Tools via the archive distributed with vSphere, either via Puppet or HTTP.'

@@ -100,6 +100,10 @@ class vmwaretools (
     fail 'Not a VMware platform.'
   }
 
+  if $::lsbdistcodename == 'raring' {
+    fail 'Ubuntu 13.04 is not supported by this module'
+  }
+
   include vmwaretools::params
   include vmwaretools::kernel_upgrade
   include vmwaretools::install

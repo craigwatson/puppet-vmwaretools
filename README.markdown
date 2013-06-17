@@ -79,6 +79,10 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * Red Hat family (RHEL 5 and 6 tested)
 * Debian family (written but untested - reports appreciated)
 
+###Unsupported Operating Systems:
+
+* Ubuntu 13.04 (see [VMware KB2050666](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2050666 and [bug #12](https://github.com/craigwatson/puppet-vmwaretools/issues/12))
+
 ##Development
 
 * Copyright (C) 2013 Craig Watson - <craig@cwatson.org>
@@ -87,6 +91,14 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * Further contributions and testing reports are extremely welcome - please submit a pull request or issue on [GitHub](https://github.com/craigwatson/puppet-vmwaretools)
 
 ##Release Notes
+
+### 0.1.1
+* Readme
+  * Adding Ubuntu 13.04 to Unsupported Operating Systems
+* `vmwaretools`
+  * Now fails when run on Ubuntu 13.04 (Raring)
+* `vmwaretools::kernel_upgrade`
+  * Moving `creates` attribute to `/lib/modules/${::kernelrelease}/kernel/drivers/scsi/vmw_pvscsi.ko` as suggested in [bug #12](https://github.com/craigwatson/puppet-vmwaretools/issues/12)
 
 ### 0.1.0
 * `vmwaretools_version` fact
