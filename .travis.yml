@@ -3,10 +3,10 @@ rvm:
   - 1.9.3
   - 1.9.2
   - 1.8.7
-before_install: "gem install bundler"
-script: - "rake erb"
-        - "rake syntax"
-        - "rake style"
+before_install: gem install bundler
+script: - rake erb
+        - rake syntax
+        - rake style
 branches:
   only:
     - master
