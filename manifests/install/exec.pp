@@ -29,9 +29,8 @@ class vmwaretools::install::exec {
   if $vmwaretools::archive_url != 'puppet' {
     exec { 'download_vmwaretools':
       command => "${vmwaretools::working_dir}/download.sh",
-      require => File["${vmwaretools::working_dir}/download.sh"],
+      require => [Package['curl'],File["${vmwaretools::working_dir}/download.sh"]],
       notify  => Exec['uncompress_vmwaretools'],
-      require => Package['curl'],
     }
 
     Exec['uncompress_vmwaretools'] {
