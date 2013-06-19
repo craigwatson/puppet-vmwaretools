@@ -46,14 +46,12 @@ class vmwaretools::params {
 
   $config_creates = $::osfamily ? {
     'Debian' => "/lib/modules/${::kernelrelease}/kernel/drivers/net/vmxnet3/vmxnet3.ko",
-
     'RedHat' => $::lsbmajdistrelease ? {
       '5'     => "/lib/modules/${::kernelrelease}/misc/vmxnet3.ko",
       '6'     => "/lib/modules/${::kernelrelease}/kernel/drivers/net/vmxnet3/vmxnet3.ko",
-      default => "Red Hat release ${::lsbmajdistrelease} not supported."
-    }
-
-    default  => fail "${::osfamily} not supported."
+      default => 'unsupported',
+    },
+    default  => 'unsupported',
   }
 
   $awk_path = $::osfamily ? {
