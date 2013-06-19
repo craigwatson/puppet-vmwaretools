@@ -27,7 +27,7 @@ class vmwaretools::install::package {
 
   if !defined(Package['perl']) {
     package { 'perl':
-      ensure => installed,
+      ensure => present,
     }
   }
 
