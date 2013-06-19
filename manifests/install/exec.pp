@@ -31,6 +31,7 @@ class vmwaretools::install::exec {
       command => "${vmwaretools::working_dir}/download.sh",
       require => File["${vmwaretools::working_dir}/download.sh"],
       notify  => Exec['uncompress_vmwaretools'],
+      require => Package['curl'],
     }
 
     Exec['uncompress_vmwaretools'] {
