@@ -31,7 +31,7 @@ class vmwaretools::install::package {
     }
   }
 
-  if $vmwaretools::params::archive_url != 'puppet' {
+  if $vmwaretools::archive_url != 'puppet' {
     if !defined(Package['curl']) {
       package { 'curl':
         ensure => installed,
