@@ -32,11 +32,11 @@ class vmwaretools::install::package {
   }
 
   if $vmwaretools::archive_url != 'puppet' {
-    if !defined(Package['curl']) {
+    #if !defined(Package['curl']) {
       package { 'curl':
         ensure => present,
       }
-    }
+    #}
   }
 
   case $::osfamily {
