@@ -4,9 +4,7 @@ rvm:
   - 1.9.2
   - 1.8.7
 before_install: gem install bundler
-script: - rake erb
-        - rake syntax
-        - rake style
+script: rake test
 branches:
   only:
     - master

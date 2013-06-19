@@ -8,6 +8,13 @@ Bundler.require(:rake)
 
 require 'rake/clean'
 
+desc "All test tasks"
+task :test do
+  Rake::Task["syntax"].invoke
+  Rake::Task["style"].invoke
+  Rake::Task["erb"].invoke
+end
+
 desc "Check puppet module syntax."
 task :syntax do
   begin
