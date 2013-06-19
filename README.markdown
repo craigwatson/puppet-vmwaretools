@@ -75,9 +75,9 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ###Supported Operating Systems
 
-* Ubuntu (12.04 LTS tested)
-* Red Hat family (RHEL 5 and 6 tested)
-* Debian family (written but untested - reports appreciated)
+* Ubuntu - 12.04 LTS (Precise) and 10.04 LTS (Lucid) tested
+* Red Hat family - RHEL 5 and 6 tested
+* Debian family - written but untested, reports appreciated
 
 ###Unsupported Operating Systems
 
@@ -91,6 +91,12 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * Further contributions and testing reports are extremely welcome - please submit a pull request or issue on [GitHub](https://github.com/craigwatson/puppet-vmwaretools)
 
 ##Release Notes
+
+### 0.1.2
+* `vmwaretools::kernel_upgrade`
+  * Changing `creates` attribute again - this time, to O/S-dependent kernel module
+* `vmwaretools::params`
+  * Adding logic for choosing the above attribute
 
 ### 0.1.1
 * Readme
