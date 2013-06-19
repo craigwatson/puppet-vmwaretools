@@ -19,7 +19,7 @@ class vmwaretools::kernel_upgrade {
 
   # The vmxnet3 driver isn't in the same place across every flavor of Linux,
   # so we need to specify where that file is found across the distros.
-  case $osfamily {
+  case $::osfamily {
     /(?i-mx:debian)/: {
       $vmxnet_driver = "/lib/modules/${::kernelrelease}/kernel/drivers/net/vmxnet3/vmxnet3.ko"
     }
