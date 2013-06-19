@@ -34,7 +34,7 @@ class vmwaretools::install::package {
   if $vmwaretools::archive_url != 'puppet' {
     if !defined(Package['curl']) {
       package { 'curl':
-        ensure => installed,
+        ensure => present,
       }
     }
   }
@@ -44,12 +44,12 @@ class vmwaretools::install::package {
     'Debian' : {
       if ! defined(Package['build-essential']) {
         package{'build-essential':
-          ensure => installed,
+          ensure => present,
         }
       }
       if ! defined(Package["linux-headers-${::kernelrelease}"]) {
         package{"linux-headers-${::kernelrelease}":
-          ensure => installed,
+          ensure => present,
         }
       }
     }
@@ -58,12 +58,12 @@ class vmwaretools::install::package {
       if $vmwaretools::redhat_install_devel == true {
         if ! defined(Package["kernel-devel-${::kernelrelease}"]) {
           package{"kernel-devel-${::kernelrelease}":
-            ensure => installed,
+            ensure => present,
           }
         }
         if ! defined(Package['gcc']) {
           package{'gcc':
-            ensure => installed,
+            ensure => present,
           }
         }
       }
