@@ -44,15 +44,7 @@ class vmwaretools::params {
     }
   }
 
-  $config_creates = $::osfamily ? {
-    'Debian' => "/lib/modules/${::kernelrelease}/kernel/drivers/net/vmxnet3/vmxnet3.ko",
-    'RedHat' => $::lsbmajdistrelease ? {
-      '5'     => "/lib/modules/${::kernelrelease}/misc/vmxnet3.ko",
-      '6'     => "/lib/modules/${::kernelrelease}/kernel/drivers/net/vmxnet3/vmxnet3.ko",
-      default => 'unsupported',
-    },
-    default  => 'unsupported',
-  }
+  $config_creates = "/lib/modules/${::kernelrelease}/misc/vmci.ko"
 
   $awk_path = $::osfamily ? {
     'RedHat' => '/bin/awk',
