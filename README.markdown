@@ -92,6 +92,11 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Release Notes
 
+### 0.1.3
+* `vmwaretools::params`
+  * Moving back to `vmci.ko` - see discussion on [GitHub Issue #14](https://github.com/craigwatson/puppet-vmwaretools/pull/14), huge thanks to [Ryan McKern](https://github.com/mckern) 
+for the investigative work!
+
 ### 0.1.2
 * `vmwaretools::kernel_upgrade`
   * Changing `creates` attribute again - this time, to O/S-dependent kernel module
