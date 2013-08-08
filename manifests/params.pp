@@ -52,4 +52,8 @@ class vmwaretools::params {
     default  => '/usr/bin/awk',
   }
 
+  # assumes default install directory, which this module installs to
+  $toolbox_path = '/usr/bin'
+  $toolbox_cmd  = 'vmware-toolbox-cmd'
+
 }
