@@ -46,6 +46,12 @@
 #   is set in the version parameter, do not downgrade the tools.
 #   Default: true (boolean)
 #
+# [*timesync*]
+#   If defined this parameter is passed to `vmwaretools::timesync` as an
+#   ensure parameter, the values 'disable' or 'absent' will turn off
+#   timesync. The values 'enable', 'present', or any other value turns
+#   on timesync.
+#
 # == Actions:
 #
 # * Compares installed version with the configured version
@@ -90,6 +96,7 @@ class vmwaretools (
   $fail_on_non_vmware   = false,
   $keep_working_dir     = false,
   $prevent_downgrade    = true,
+  $timesync             = undef,
 ) {
 
   if $archive_url != 'puppet' and $archive_md5 == '' {
@@ -108,5 +115,11 @@ class vmwaretools (
   include vmwaretools::kernel_upgrade
   include vmwaretools::install
   include vmwaretools::config
+
+  if $timesync and ! defined(Class['vmwaretools::timesync']){
+    class{'vmwaretools::timesync': 
+      ensure  => $timesync,
+    }
+  }
 
 }
