@@ -47,7 +47,7 @@
 #   Default: true (boolean)
 #
 # [*timesync*]
-#   Should the node synchronise thier system clock with the vSphere server?
+#   Should the node synchronise their system clock with the vSphere server?
 #   Acceptable values are true, false (both literal booleans, NOT quoted
 #   strings) or undef (literal). Booleans will either enable or disable
 #   synchronisation, and undef will disable management of timesync altogether.

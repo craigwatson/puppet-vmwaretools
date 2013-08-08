@@ -17,21 +17,25 @@
 #
 class vmwaretools::timesync {
 
-  $cmd_grep   = $vmwaretools::timesync ? {
-    true    => 'Disabled'
-    false   => 'Enabled'
-    default => { fail "Unsupported value ${vmwaretools::timesync} for vmwaretools::timesync." }
-  }
+  case $vmwaretools::timesync {
+    true: {
+      $cmd_action = 'enable'
+      $cmd_grep   = 'Disabled'
+    }
 
-  $cmd_action   = $vmwaretools::timesync ? {
-    true    => 'enable'
-    false   => 'disable'
-    default => { fail "Unsupported value ${vmwaretools::timesync} for vmwaretools::timesync." }
+    false: {
+      $cmd_action = 'disable'
+      $cmd_grep   = 'Enabled'
+    }
+
+    default: {
+      fail "Unsupported value ${vmwaretools::timesync} for vmwaretools::timesync."
+    }
   }
 
   exec { "vmwaretools_timesync_${cmd_action}":
     command => "/usr/bin/vmware-toolbox-cmd timesync ${cmd_action}",
-    onlyif  => "/usr/bin/vmware-toolbox-cmd timesync status | grep ${cmd_grep}"
+    onlyif  => "/usr/bin/vmware-toolbox-cmd timesync status | grep ${cmd_grep}",
   }
 
 }
