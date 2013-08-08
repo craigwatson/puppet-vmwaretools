@@ -47,10 +47,11 @@
 #   Default: true (boolean)
 #
 # [*timesync*]
-#   If defined this parameter is passed to `vmwaretools::timesync` as an
-#   ensure parameter, the values 'disable' or 'absent' will turn off
-#   timesync. The values 'enable', 'present', or any other value turns
-#   on timesync.
+#   Should the node synchronise thier system clock with the vSphere server?
+#   Acceptable values are true, false (both literal booleans, NOT quoted
+#   strings) or undef (literal). Booleans will either enable or disable
+#   synchronisation, and undef will disable management of timesync altogether.
+#   Default: undef (UNDEFINED)
 #
 # == Actions:
 #
@@ -112,14 +113,12 @@ class vmwaretools (
   }
 
   include vmwaretools::params
-  include vmwaretools::kernel_upgrade
   include vmwaretools::install
   include vmwaretools::config
+  include vmwaretools::config_tools
 
-  if $timesync and ! defined(Class['vmwaretools::timesync']){
-    class{'vmwaretools::timesync': 
-      ensure  => $timesync,
-    }
+  if $timesync != undef {
+    include vmwaretools::timesync
   }
 
 }

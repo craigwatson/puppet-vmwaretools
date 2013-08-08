@@ -1,6 +1,6 @@
-# == Class: vmwaretools::kernel_upgrade
+# == Class: vmwaretools::config_tools
 #
-# This class handles re-compiling VMware Tools after a kernel upgrade.
+# This class handles running the 'vmware-config-tools' command.
 #
 # == Actions:
 #
@@ -15,7 +15,7 @@
 # Copyright (C) 2013 Craig Watson
 # Published under the GNU General Public License v3
 #
-class vmwaretools::kernel_upgrade {
+class vmwaretools::config_tools {
 
   if $vmwaretools::params::deploy_files {
     Exec['vmware_config_tools'] {

@@ -1,21 +1,37 @@
-class vmwaretools::timesync (
-  $ensure  = 'enabled'
-){
+# == Class: vmwaretools::timesync
+#
+# This class handles synchronising the node's clock with vSphere
+#
+# == Actions:
+#
+# Either enables or disables timesync
+#
+# === Authors:
+#
+# Craig Watson <craig@cwatson.org>
+#
+# === Copyright:
+#
+# Copyright (C) 2013 Craig Watson
+# Published under the GNU General Public License v3
+#
+class vmwaretools::timesync {
 
-  $cmd = "${vmwaretools::params::toolbox_path}/${vmwaretools::params::toolbox_cmd}"
+  $cmd_grep   = $vmwaretools::timesync ? {
+    true    => 'Disabled'
+    false   => 'Enabled'
+    default => { fail "Unsupported value ${vmwaretools::timesync} for vmwaretools::timesync." }
+  }
 
+  $cmd_action   = $vmwaretools::timesync ? {
+    true    => 'enable'
+    false   => 'disable'
+    default => { fail "Unsupported value ${vmwaretools::timesync} for vmwaretools::timesync." }
+  }
 
-  case $ensure {
-    'disable', 'absent':  {
-      exec{"${cmd} timesync disable":
-        onlyif => "${cmd} timesync status | grep Enabled",
-      }
-    }
-    default:              {
-      exec{"${cmd} timesync enable":
-        onlyif => "${cmd} timesync status | grep Disabled",
-      }
-    }
+  exec { "vmwaretools_timesync_${cmd_action}":
+    command => "/usr/bin/vmware-toolbox-cmd timesync ${cmd_action}",
+    onlyif  => "/usr/bin/vmware-toolbox-cmd timesync status | grep ${cmd_grep}"
   }
 
 }

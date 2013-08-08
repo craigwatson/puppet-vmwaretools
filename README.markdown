@@ -69,7 +69,8 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * `vmwaretools::install::exec` - Declares all `exec` commands run by the module.
 * `vmwaretools::install::archive` - Handles the archive distribution (either places a download script or the archive).
 * `vmwaretools::params` - O/S-specific and module configuration (e.g. paths to binaries and a boolean variable to control file deployment)
-* `vmwaretools::kernel_upgrade` - Executes `vmware-config-tools.pl -d` if the `vmci.ko` module doesn't exist for the running kernel
+* `vmwaretools::config_tools` - Executes `vmware-config-tools.pl -d` if the `vmci.ko` module doesn't exist for the running kernel
+* `vmwaretools::timesync` - Handles time synchronisation between the virtual machine and host
 
 ##Limitations
 
@@ -92,10 +93,17 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ##Release Notes
 
+### 0.2.0
+* `vmwaretools::timesync`
+  * New class: Handles management of time sychronisation with vSphere. Thanks to [Aaron Hicks](https://github.com/Aethylred) for the pull request [GitHub Issue #18](https://github.com/craigwatson/puppet-vmwaretools/pull/18)!
+* `vmwaretools::config_tools`
+  * Renamed class: was previously `vmwaretools::kernel_upgrade`
+* `vmwaretools`
+  * New parameter: `timesync`. This paramter enables/disables the timesync feature of the VMware Tools. Defaults to undef (literal), which will leave time synchronisation unmanaged. Valid managed values are `true` to enable timesync and `false` to disable timesync, both literal booleans.
+
 ### 0.1.2
 * `vmwaretools::params`
-  * Moving back to `vmci.ko` - see discussion on [GitHub Issue #14](https://github.com/craigwatson/puppet-vmwaretools/pull/14), huge thanks to [Ryan McKern](https://github.com/mckern) 
-for the investigative work!
+  * Moving back to `vmci.ko` - see discussion on [GitHub Issue #14](https://github.com/craigwatson/puppet-vmwaretools/pull/14), huge thanks to [Ryan McKern](https://github.com/mckern) for the investigative work!
 
 ### 0.1.1
 * Readme
