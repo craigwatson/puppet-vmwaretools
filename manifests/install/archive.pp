@@ -20,8 +20,7 @@
 #
 class vmwaretools::install::archive {
 
-  file { "${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz":
-    mode    => '0600',
+  File {
     owner   => 'root',
     group   => 'root',
     require => File[$vmwaretools::working_dir],
@@ -29,8 +28,9 @@ class vmwaretools::install::archive {
 
   if $vmwaretools::archive_url == 'puppet' {
 
-    File["${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz"] {
+    file { "${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz":
       ensure  => file,
+      mode    => '0600',
       source  => "puppet:///modules/vmwaretools/VMwareTools-${vmwaretools::version}.tar.gz",
       notify  => Exec['uncompress_vmwaretools'],
     }
@@ -39,11 +39,8 @@ class vmwaretools::install::archive {
 
     file { "${vmwaretools::working_dir}/download.sh":
       content => template('vmwaretools/download.sh.erb'),
-      owner   => 'root',
-      group   => 'root',
       mode    => '0700',
       notify  => Exec['download_vmwaretools'],
-      require => File[$vmwaretools::working_dir];
     }
 
   }
