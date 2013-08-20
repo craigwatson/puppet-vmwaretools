@@ -64,6 +64,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ###Facts
 * `vmwaretools_version` - Detects any existing VMware Tools installations and, if found, reports the installed version.
+* `esx_version` - Detects the underlying ESX version from `dmidecode`, thanks to [François Deppierraz](https://github.com/ctrlaltdel) for the [pull request](https://github.com/craigwatson/puppet-vmwaretools/pull/20)!
 
 ###Classes
 * `vmwaretools::install::exec` - Declares all `exec` commands run by the module.
@@ -94,6 +95,8 @@ To specify a non-default version, working directory and HTTP URL (other variable
 ##Release Notes
 
 ### 0.2.0
+* `esx_version` fact
+  * New fact: reports the version of vSphere.
 * `vmwaretools::timesync`
   * New class: Handles management of time sychronisation with vSphere. Thanks to [Aaron Hicks](https://github.com/Aethylred) for the pull request [GitHub Issue #18](https://github.com/craigwatson/puppet-vmwaretools/pull/18)!
 * `vmwaretools::config_tools`
