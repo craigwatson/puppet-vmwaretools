@@ -1,4 +1,4 @@
-name 'craigwatson1987-vmwaretools'
+name 'CraigWatson1987-vmwaretools'
 version '0.2.0'
 author 'Craig Watson'
 license 'GNU General Public License v3'
