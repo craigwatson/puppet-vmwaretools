@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.2.1
+-----
+
+2013-??-??
+
+Ongoing release
+
+  * Changes TBD
+
 0.2.0
 -----
 
