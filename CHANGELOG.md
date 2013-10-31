@@ -4,11 +4,11 @@ CHANGELOG
 0.2.1
 -----
 
-2013-??-??
+2013-10-31
 
-Ongoing release
+Minor functionality improvement
 
-  * Changes TBD
+  * esx_version -- Adding support for vSphere 5.5. Thanks to [Ryan McKern](https://github.com/mckern) for the pull request [GitHub Issue #18](https://github.com/craigwatson/puppet-vmwaretools/pull/22)!
 
 0.2.0
 -----
