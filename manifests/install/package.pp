@@ -9,6 +9,7 @@
 # * Installs curl if we're using the download script
 # * If we're running on a Debian system, install kernel headers and build tools
 # * On a Red Hat system and we really want to install kernel headers, do it.
+# * Purges VMware Tools OSP packages
 #
 # === Authors:
 #
@@ -22,7 +23,7 @@
 class vmwaretools::install::package {
 
   package { ['open-vm-tools','open-vm-dkms']:
-    ensure => purged,
+    ensure => absent,
   }
 
   if !defined(Package['perl']) {

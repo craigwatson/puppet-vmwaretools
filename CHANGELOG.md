@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+0.2.2
+-----
+
+2014-03-05
+
+Bugfix release
+
+  * vmwaretools::install      -- Packages will now be purged/installed all the time, not just when we install VMware Tools -- raised by [cdenneen](https://github.com/cdenneen) in [bug #27](https://github.com/craigwatson/puppet-vmwaretools/issues/27)
+  * templates/download.sh.erb -- Added removal of the archive on an MD5 mismatch - raised by [herwigbogaert](https://github.com/herwigbogaert) in [bug #30](https://github.com/craigwatson/puppet-vmwaretools/issues/30)
+
+
 0.2.1
 -----
 
