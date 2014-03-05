@@ -17,12 +17,12 @@
 #
 class vmwaretools::install {
 
+  include vmwaretools::install::package
+
   if $vmwaretools::params::deploy_files == true {
     include vmwaretools::install::archive
-    include vmwaretools::install::package
     include vmwaretools::install::exec
 
-    Class['vmwaretools::install::package'] ->
     Class['vmwaretools::install::archive'] ->
     Class['vmwaretools::install::exec']
   }
