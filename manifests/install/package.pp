@@ -22,8 +22,8 @@
 #
 class vmwaretools::install::package {
 
-  package { ['open-vm-tools','open-vm-dkms']:
-    ensure => absent,
+  package { ['open-vm-tools','open-vm-dkms', 'vmware-tools-services']:
+    ensure => purged,
   }
 
   if !defined(Package['perl']) {
