@@ -44,7 +44,11 @@ class vmwaretools::params {
     }
   }
 
-  $config_creates = "/lib/modules/${::kernelrelease}/misc/vmci.ko"
+  $config_creates = $::operatingsystem ? {
+    'Ubuntu' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
+    'CentOS' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
+    default  => "/lib/modules/${::kernelrelease}/misc/vmci.ko",
+  }
 
   $awk_path = $::osfamily ? {
     'RedHat' => '/bin/awk',
