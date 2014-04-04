@@ -1,8 +1,7 @@
 source :rubygems
 
 group :rake do
-  gem 'rails'
   gem 'rake'
-  gem 'puppet', :require => "puppet/face"
+  gem 'puppet-syntax'
   gem 'puppet-lint'
 end
