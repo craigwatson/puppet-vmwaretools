@@ -44,9 +44,9 @@ class vmwaretools::params {
     }
   }
 
-  $config_creates = $::operatingsystem ? {
-    'Ubuntu' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
-    'CentOS' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
+  $config_creates = $::osfamily ? {
+    'Debian' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
+    'RedHat' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
     default  => "/lib/modules/${::kernelrelease}/misc/vmci.ko",
   }
 

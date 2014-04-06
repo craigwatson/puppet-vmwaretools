@@ -15,12 +15,9 @@
 # Copyright (C) 2013 Craig Watson
 # Published under the GNU General Public License v3
 #
-class vmwaretools::config_tools (
-  $config_creates = $vmwaretools::params::config_creates,
-  $deploy_files = $vmwaretools::params::deploy_files,
-) inherits vmwaretools::params {
+class vmwaretools::config_tools {
 
-  if $deploy_files {
+  if $vmwaretools::params::deploy_files {
     Exec['vmware_config_tools'] {
       require => Exec['clean_vmwaretools'],
     }
@@ -28,7 +25,7 @@ class vmwaretools::config_tools (
 
   exec { 'vmware_config_tools':
     command => '/usr/bin/vmware-config-tools.pl -d',
-    creates => $config_creates,
+    creates => $vmwaretools::params::config_creates,
   }
 
 }
