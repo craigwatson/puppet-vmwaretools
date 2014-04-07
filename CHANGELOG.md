@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+0.2.3
+-----
+
+2014-04-07
+
+Bugfix release
+
+  * vmwaretools::install::package -- We now purge the vmware-tools-services package as well as open-vm-tools - [pull request #34](https://github.com/craigwatson/puppet-vmwaretools/pull/34)
+  * vmwaretools::params           -- $config_creates is now different across Debian and RedHat osfamilys - [pull request #34](https://github.com/craigwatson/puppet-vmwaretools/pull/34)
+
+
 0.2.2
 -----
 
