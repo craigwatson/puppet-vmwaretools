@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.2.4
+-----
+
+2014-04-09
+
+Bugfix release
+
+  * vmwaretools -- Fixing logic in init.pp to silently fail if the module is included on non-VMware hardware and the $fail_on_non_vmware parameter is not set to true.
+
 0.2.3
 -----
 

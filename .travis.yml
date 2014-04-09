@@ -8,7 +8,7 @@ script: bundle exec rake test
 notifications:
   email:
     - craig@cwatson.org
-gemfile: .gemfile
+gemfile: Gemfile
 env:
   - PUPPET_VERSION="~> 2.7.0"
   - PUPPET_VERSION="~> 3.1.0"

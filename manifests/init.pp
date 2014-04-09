@@ -100,25 +100,25 @@ class vmwaretools (
   $timesync             = undef,
 ) {
 
-  if $archive_url != 'puppet' and $archive_md5 == '' {
-    fail 'MD5 not given for VMware Tools installer package'
-  }
+  if $::virtual == 'vmware' {
 
-  if $::virtual != 'vmware' and $fail_on_non_vmware == true {
+    if $archive_url != 'puppet' and $archive_md5 == '' {
+      fail 'MD5 not given for VMware Tools installer package'
+    }
+
+    if $::lsbdistcodename == 'raring' {
+      fail 'Ubuntu 13.04 is not supported by this module'
+    }
+
+    include vmwaretools::params
+    include vmwaretools::install
+    include vmwaretools::config
+    include vmwaretools::config_tools
+
+    if $timesync != undef {
+      include vmwaretools::timesync
+    }
+  } elseif $fail_on_non_vmware == true {
     fail 'Not a VMware platform.'
   }
-
-  if $::lsbdistcodename == 'raring' {
-    fail 'Ubuntu 13.04 is not supported by this module'
-  }
-
-  include vmwaretools::params
-  include vmwaretools::install
-  include vmwaretools::config
-  include vmwaretools::config_tools
-
-  if $timesync != undef {
-    include vmwaretools::timesync
-  }
-
 }
