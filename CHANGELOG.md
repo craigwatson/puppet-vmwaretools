@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.2.5
+-----
+
+2014-04-10
+
+Bugfix release
+
+  * vmwaretools -- Facter facts are strings, not literal booleans!
+
 0.2.4
 -----
 
@@ -97,12 +106,12 @@ Adding major functionality improvements
 
 Bugfix release
 
-  vmwaretools::install::exec -- archive_location replaced by archive_url
-  vmwaretools                -- Parameter Typo fixed
+  * vmwaretools::install::exec -- archive_location replaced by archive_url
+  * vmwaretools                -- Parameter Typo fixed
 
 0.0.4
 -----
 
 2013-05-03
 
-Including new README format and starting Changelogs.
+  * Including new README format and starting Changelogs.

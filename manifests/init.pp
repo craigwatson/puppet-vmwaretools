@@ -100,7 +100,7 @@ class vmwaretools (
   $timesync             = undef,
 ) {
 
-  if $::is_virtual == true and $::virtual == 'vmware' {
+  if $::is_virtual == 'true' and $::virtual == 'vmware' {
 
     if $archive_url != 'puppet' and $archive_md5 == '' {
       fail 'MD5 not given for VMware Tools installer package'
