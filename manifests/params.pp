@@ -44,10 +44,14 @@ class vmwaretools::params {
     }
   }
 
-  $config_creates = $::osfamily ? {
-    'Debian' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
-    'RedHat' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
-    default  => "/lib/modules/${::kernelrelease}/misc/vmci.ko",
+  if $vmwaretools::config_creates == undef {
+    $config_creates_real = $::osfamily ? {
+      'Debian' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
+      'RedHat' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
+      default  => "/lib/modules/${::kernelrelease}/misc/vmci.ko",
+    }
+  } else {
+    $config_creates_real == $vmwaretools::config_creates
   }
 
   $awk_path = $::osfamily ? {

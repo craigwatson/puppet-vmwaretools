@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.3.0
+-----
+
+Major functionality improvement
+
+  * vmwaretools               -- Adding config_creates parameter to main class declaration
+  * vmwaretools::params       -- Renaming config_creates to config_creates_real
+  * vmwaretools::config_tools -- Using vmwaretools::params::config_creates_real instead of vmwaretools::params::config_creates
+
 0.2.5
 -----
 
