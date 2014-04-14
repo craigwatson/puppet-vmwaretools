@@ -18,6 +18,8 @@
 #
 class vmwaretools::params {
 
+  $config_creates_default = "/lib/modules/${::kernelrelease}/misc/vmci.ko"
+
   if $::vmwaretools_version == 'not installed' {
     # If nothing is installed, deploy.
     $deploy_files = true
@@ -46,9 +48,12 @@ class vmwaretools::params {
 
   if $vmwaretools::config_creates == undef {
     $config_creates_real = $::osfamily ? {
-      'Debian' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
+      'Debian' => $::operatingsystem ? {
+        'Ubuntu' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
+        default  => $vmwaretools::params::config_creates_default,
+      },
       'RedHat' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
-      default  => "/lib/modules/${::kernelrelease}/misc/vmci.ko",
+      default  => $vmwaretools::params::config_creates_default,
     }
   } else {
     $config_creates_real == $vmwaretools::config_creates
