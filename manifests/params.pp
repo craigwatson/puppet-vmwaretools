@@ -56,7 +56,7 @@ class vmwaretools::params {
       default  => $vmwaretools::params::config_creates_default,
     }
   } else {
-    $config_creates_real == $vmwaretools::config_creates
+    $config_creates_real = $vmwaretools::config_creates
   }
 
   $awk_path = $::osfamily ? {

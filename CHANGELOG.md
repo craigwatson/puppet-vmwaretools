@@ -1,8 +1,17 @@
 CHANGELOG
 =========
 
+0.3.1
+-----
+
+2014-04-14
+
+* vmwaretools::params -- Correcting typo in config_creates assignment
+
 0.3.0
 -----
+
+2014-04-14
 
 Major functionality improvement
 
