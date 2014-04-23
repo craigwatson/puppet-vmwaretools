@@ -49,7 +49,9 @@ class vmwaretools::params {
   if $vmwaretools::config_creates == undef {
     $config_creates_real = $::osfamily ? {
       'Debian' => $::operatingsystem ? {
-        'Ubuntu' => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko",
+        'Ubuntu' => $::lsbdistcodename ? {
+          'lucid' => $vmwaretools::params::config_creates_default,
+          default  => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko", }
         default  => $vmwaretools::params::config_creates_default,
       },
       'RedHat' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
