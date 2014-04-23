@@ -47,16 +47,23 @@ class vmwaretools::params {
   }
 
   if $vmwaretools::config_creates == undef {
-    $config_creates_real = $::osfamily ? {
-      'Debian' => $::operatingsystem ? {
-        'Ubuntu' => $::lsbdistcodename ? {
-          'lucid' => $vmwaretools::params::config_creates_default,
-          default  => "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko", }
-        default  => $vmwaretools::params::config_creates_default,
-      },
-      'RedHat' => "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko",
-      default  => $vmwaretools::params::config_creates_default,
+
+    case $osfamily {
+      'RedHat': { $config_creates_real = "/lib/modules/${::kernelrelease}/weak-updates/vmware-tools-vmci/vmci.ko"  } # apply the redhat class
+      'Debian':{
+        case $operatingsystem {
+          'Ubuntu':{
+            case $lsbdistcodename {
+              'lucid':{ $config_creates_real = $config_creates_default }
+              default:{ $config_creates_real = "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko" } # apply the generic class
+             }
+          } 
+          default:{ $config_creates_real = $config_creates_default } # apply the generic class
+        }
+      }
+      default:{ $config_creates_real = $config_creates_default } # apply the generic class
     }
+
   } else {
     $config_creates_real = $vmwaretools::config_creates
   }
