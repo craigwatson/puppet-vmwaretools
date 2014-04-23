@@ -32,7 +32,7 @@ class vmwaretools::install::package {
     }
   }
 
-  if $vmwaretools::download_vmwaretools = true {
+  if $vmwaretools::download_vmwaretools == true {
     if !defined(Package['curl']) {
       package { 'curl':
         ensure => present,

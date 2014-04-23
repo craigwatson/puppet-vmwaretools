@@ -118,7 +118,7 @@ class vmwaretools (
       $download_tools = true
     }
 
-    if (  $download_tools = true and $archive_md5 == '' ) {
+    if (  $download_tools == true and $archive_md5 == '' ) {
       fail 'MD5 not given for VMware Tools installer package'
     }
 

@@ -26,7 +26,7 @@ class vmwaretools::install::exec {
     timeout     => 0,
   }
 
-  if $vmwaretools::download_vmwaretools = true {
+  if $vmwaretools::download_vmwaretools == true {
     exec { 'download_vmwaretools':
       command => "${vmwaretools::working_dir}/download.sh",
       require => [Package['curl'],File["${vmwaretools::working_dir}/download.sh"]],
