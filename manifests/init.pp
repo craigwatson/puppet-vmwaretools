@@ -112,7 +112,7 @@ class vmwaretools (
 
   if $::is_virtual == 'true' and $::virtual == 'vmware' {
 
-    if ( ( $archive_url = 'puppet' ) or ( 'puppet://' in $archive_url ) ) {
+    if ( ( $archive_url == 'puppet' ) or ( 'puppet://' in $archive_url ) ) {
       $download_tools = false
     } else {
       $download_tools = true
