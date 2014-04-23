@@ -44,6 +44,7 @@ class vmwaretools::install::archive {
     }
 
   } else {
+    
     file { "${vmwaretools::working_dir}/download.sh":
       content => template('vmwaretools/download.sh.erb'),
       owner   => 'root',
