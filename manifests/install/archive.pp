@@ -35,7 +35,7 @@ class vmwaretools::install::archive {
       notify  => Exec['uncompress_vmwaretools'],
     }
 
-  } elsif 'puppet://' in $vmwaretools::archive_url {
+  } elsif ( 'puppet://' in $vmwaretools::archive_url ) {
 
     File["${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz"] {
       ensure  => file,
@@ -44,7 +44,6 @@ class vmwaretools::install::archive {
     }
 
   } else {
-    
     file { "${vmwaretools::working_dir}/download.sh":
       content => template('vmwaretools/download.sh.erb'),
       owner   => 'root',
