@@ -32,7 +32,7 @@ class vmwaretools::install::package {
     }
   }
 
-  if $vmwaretools::archive_url != 'puppet' {
+  if $vmwaretools::download_vmwaretools == true {
     if !defined(Package['curl']) {
       package { 'curl':
         ensure => present,
