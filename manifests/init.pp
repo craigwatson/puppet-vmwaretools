@@ -111,9 +111,10 @@ class vmwaretools (
 ) {
 
   # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
-  # the quoted-boolean warning here.
-  # Related links: * https://tickets.puppetlabs.com/browse/FACT-151
-  #                * https://projects.puppetlabs.com/issues/3704
+  # the quoted-boolean warning here. Related links below:
+  # https://tickets.puppetlabs.com/browse/FACT-151
+  # https://projects.puppetlabs.com/issues/3704
+
   if $::is_virtual == 'true' and $::virtual == 'vmware' {
 
     if (($archive_url == 'puppet') or ('puppet://' in $archive_url)) {
