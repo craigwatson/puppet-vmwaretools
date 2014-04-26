@@ -39,7 +39,7 @@ class vmwaretools::install::archive {
 
     File["${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz"] {
       ensure  => file,
-      source  => "$vmwaretools::archive_url/VMwareTools-${vmwaretools::version}.tar.gz",
+      source  => "${vmwaretools::archive_url}/VMwareTools-${vmwaretools::version}.tar.gz",
       notify  => Exec['uncompress_vmwaretools'],
     }
 

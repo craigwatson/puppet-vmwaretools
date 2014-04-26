@@ -56,8 +56,8 @@ class vmwaretools::params {
             case $::lsbdistcodename {
               'lucid':{ $config_creates_real = $config_creates_default }
               default:{ $config_creates_real = "/lib/modules/${::kernelrelease}/kernel/drivers/misc/vmw_vmci/vmw_vmci.ko" } # apply the generic class
-             }
-          } 
+            }
+          }
           default:{ $config_creates_real = $config_creates_default } # apply the generic class
         }
       }
