@@ -7,7 +7,7 @@ before_install: rm Gemfile.lock || true
 script: bundle exec rake test
 notifications:
   email:
-    - sam.keeley@gmail.com
+    - craig@cwatson.org
 gemfile: Gemfile
 env:
   - PUPPET_VERSION="~> 2.7.0"
