@@ -110,15 +110,19 @@ class vmwaretools (
   $config_creates       = undef
 ) {
 
-  if $::is_virtual == true and $::virtual == 'vmware' {
+  # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
+  # the quoted-boolean warning here.
+  # Related links: * https://tickets.puppetlabs.com/browse/FACT-151
+  #                * https://projects.puppetlabs.com/issues/3704
+  if $::is_virtual == 'true' and $::virtual == 'vmware' {
 
-    if ( ( $archive_url == 'puppet' ) or ( 'puppet://' in $archive_url ) ) {
+    if (($archive_url == 'puppet') or ('puppet://' in $archive_url)) {
       $download_tools = false
     } else {
       $download_tools = true
     }
 
-    if (  $download_tools == true and $archive_md5 == '' ) {
+    if (($download_tools == true) and ($archive_md5 == '')) {
       fail 'MD5 not given for VMware Tools installer package'
     }
 
