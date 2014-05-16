@@ -118,12 +118,12 @@ class vmwaretools (
   if $::is_virtual == 'true' and $::virtual == 'vmware' {
 
     if (($archive_url == 'puppet') or ('puppet://' in $archive_url)) {
-      $download_tools = false
+      $download_vmwaretools = false
     } else {
-      $download_tools = true
+      $download_vmwaretools = true
     }
 
-    if (($download_tools == true) and ($archive_md5 == '')) {
+    if (($download_vmwaretools == true) and ($archive_md5 == '')) {
       fail 'MD5 not given for VMware Tools installer package'
     }
 
