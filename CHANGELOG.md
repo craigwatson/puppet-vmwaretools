@@ -1,10 +1,22 @@
 CHANGELOG
 =========
 
+0.4.0
+-----
+
+2014-05-16
+
+Major functionality improvement
+
+* vmwaretools         -- Improving support for downloading VMware Tools via external Puppet modules (thanks to [Sam Keeley](https://github.com/keeleysam) and [Aedu](https://github.com/Aedu) for Pull Requests [#36](https://github.com/craigwatson/puppet-vmwaretools/pull/36) and [#37](https://github.com/craigwatson/puppet-vmwaretools/pull/37) respectively)
+* vmwaretools::params -- Adding Ubuntu 10.04 LTC (Lucid Lynx) override for config_creates_real variable
+
 0.3.1
 -----
 
 2014-04-14
+
+Bugfix release
 
 * vmwaretools::params -- Correcting typo in config_creates assignment
 
