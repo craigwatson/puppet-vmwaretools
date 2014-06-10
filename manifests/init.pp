@@ -53,15 +53,6 @@
 #   synchronisation, and undef will disable management of timesync altogether.
 #   Default: undef (UNDEFINED)
 #
-# [*config_creates*]
-#   Allows customisation of the "creates" parameter used in the exec resource
-#   that runs `vmware-config-tools.pl`. This file should be something that
-#   **only** the VMware Tools archive creates. The parameter  should only be
-#   sed for debugging or testing new OS support. When the correct file has been
-#   found, please do add your osfamily and osversion to the module and submit a
-#   Pull Request via GitHub for your configuration to be merged.
-#   Default: undef (UNDEFINED)
-#
 # == Actions:
 #
 # * Compares installed version with the configured version
@@ -107,7 +98,6 @@ class vmwaretools (
   $keep_working_dir     = false,
   $prevent_downgrade    = true,
   $timesync             = undef,
-  $config_creates       = undef
 ) {
 
   # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
