@@ -2,6 +2,12 @@
 
 [![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
 
+###Wanted: User Reports & Testimonials
+
+I'd like to put together a small set of reports and testimonials from Puppet users who have implemented this module within their infrastructure.
+
+If you'd like to get involved, please reach out via email [craig@cwatson.org](mailto:craig@cwatson.org), Twitter [@craigwatson1987](https://twitter.com/craigwatson1987) or [Google+](https://plus.google.com/u/0/+CraigWatson1987).
+
 ####Table of Contents
 
 1. [Overview - What is the puppet-vmwaretools module?](#overview)
@@ -91,3 +97,4 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * VMware Tools fact by [janorn](https://github.com/janorn/puppet-vmwaretools)
 * Distributed under the terms of the GNU General Public License v3 - see LICENSE file for details.
 * Further contributions and testing reports are extremely welcome - please submit a pull request or issue on [GitHub](https://github.com/craigwatson/puppet-vmwaretools)
+* Testing environment kindly donated by [Sleek Networks Ltd (An Adapt Company](http://www.sleek.net/)
