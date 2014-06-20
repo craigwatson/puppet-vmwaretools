@@ -61,7 +61,7 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
     class { 'vmwaretools':
       version     => '8.6.5-621624',
-      working_dir => '/tmp/vmwaretools'
+      working_dir => '/tmp/vmwaretools',
       archive_url => 'http://server.local/my/dir',
       archive_md5 => '9df56c317ecf466f954d91f6c5ce8a6f',
     }
