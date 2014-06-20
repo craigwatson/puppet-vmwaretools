@@ -9,6 +9,7 @@ CHANGELOG
 Bugfix release
 
 * vmwaretools                -- Deprecating config_creates override
+                             -- Documentation syntax correction - [pull request #42](https://github.com/craigwatson/puppet-vmwaretools/pull/42)
 * vmwaretools::params        -- Remvoing config_creates references
 * vmwaretools::config_tools  -- Replacing 'creates' paramter with a more straightforward 'unless' check using lsmod to check for the vmci kernel module that should be installed when vmware-config-tools.pl runs
 
