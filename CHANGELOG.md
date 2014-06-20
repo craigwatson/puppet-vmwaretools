@@ -4,7 +4,7 @@ CHANGELOG
 0.4.1
 -----
 
-2014-06-10 (TBC)
+2014-06-20
 
 Bugfix release
 
