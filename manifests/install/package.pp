@@ -43,16 +43,28 @@ class vmwaretools::install::package {
   case $::osfamily {
 
     'Debian' : {
-      if ! defined(Package['build-essential']) {
-        package{'build-essential':
-          ensure => present,
+      case $::operatingsystem {
+        'Ubuntu' : {
+          if ! defined(Package['build-essential']) {
+            package{'build-essential':
+              ensure => present,
+            }
+          }
+          if ! defined(Package["linux-headers-${::kernelrelease}"]) {
+            package{"linux-headers-${::kernelrelease}":
+              ensure => present,
+            }
+          }
         }
-      }
-      if ! defined(Package["linux-headers-${::kernelrelease}"]) {
-        package{"linux-headers-${::kernelrelease}":
-          ensure => present,
+        'Debain' : {
+          if ! defined(Package["linux-headers-${::kernelrelease}"]) {
+            package{"linux-headers-${::kernelrelease}":
+              ensure => present,
+            }
+          }
         }
-      }
+
+        default : { fail "${::operatingsystem} not supported yet." }
     }
 
     'RedHat' : {
