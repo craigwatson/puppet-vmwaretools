@@ -56,7 +56,7 @@ class vmwaretools::install::package {
             }
           }
         }
-        'Debain' : {
+        'Debian' : {
           if ! defined(Package["linux-headers-${::kernelrelease}"]) {
             package{"linux-headers-${::kernelrelease}":
               ensure => present,
