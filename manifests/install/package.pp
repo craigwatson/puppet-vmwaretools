@@ -65,6 +65,7 @@ class vmwaretools::install::package {
         }
 
         default : { fail "${::operatingsystem} not supported yet." }
+      }
     }
 
     'RedHat' : {
