@@ -108,7 +108,7 @@ class vmwaretools (
   if $::is_virtual == 'true' and $::virtual == 'vmware' {
 
     if $::vmwaretools_version == undef {
-      fail 'vmwaretools fact not present, please check your pluginsync configuraton.'
+      fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
     }
 
     if (($archive_url == 'puppet') or ('puppet://' in $archive_url)) {
