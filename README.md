@@ -45,7 +45,7 @@ Upgrading of currently installed VMware Tools packages is also supported - the m
 ###Setup Requirements
 
 * Perl must be installed on the target systems in order to run the VMware Tools installer.
-* Pluginsync must be enabled, due to the vmwaretools custom fact distributed with this module.
+* Pluginsync must be enabled, due to the `vmwaretools_version` custom fact distributed with this module. If the module cannot access the fact, the Puppet run will fail.
 	
 ###Beginning with puppet-vmwaretools	
 
@@ -97,4 +97,4 @@ To specify a non-default version, working directory and HTTP URL (other variable
 * VMware Tools fact by [janorn](https://github.com/janorn/puppet-vmwaretools)
 * Distributed under the terms of the GNU General Public License v3 - see LICENSE file for details.
 * Further contributions and testing reports are extremely welcome - please submit a pull request or issue on [GitHub](https://github.com/craigwatson/puppet-vmwaretools)
-* Testing environment kindly donated by [Sleek Networks Ltd (An Adapt Company](http://www.sleek.net/)
+* Testing environment kindly donated by [Sleek Networks Ltd (An Adapt Company)](http://www.sleek.net)
