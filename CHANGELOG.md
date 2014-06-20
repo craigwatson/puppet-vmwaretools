@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.4.2
+-----
+
+TBC
+
+Bugifx release
+
+* vmwaretools::install::package -- Only installing build-essential on Debian - [pull request #43](https://github.com/craigwatson/puppet-vmwaretools/pull/43)
+
 0.4.1
 -----
 
