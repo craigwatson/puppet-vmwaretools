@@ -8,9 +8,9 @@ TBC
 
 Bugifx release
 
-* vmwaretools::params           -- Adding new parameter for RH 5.x PAE/xen kernels for kernel-devel package
+* vmwaretools::params           -- Adding new parameter for RH 5.x PAE/xen kernels for kernel-devel package (thanks Mark Stunnenberg!)
 * vmwaretools::install::package -- Only installing build-essential on Debian - [pull request #43](https://github.com/craigwatson/puppet-vmwaretools/pull/43)
-                                -- Changing RedHat kernel-devel package name to account for PAE/xen kernels on RH 5.x
+                                -- Changing RedHat kernel-devel package name to account for PAE/xen kernels on RH 5.x (thanks Mark Stunnenberg!)
 0.4.1
 -----
 
