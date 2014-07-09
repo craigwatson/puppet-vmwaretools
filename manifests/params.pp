@@ -54,7 +54,7 @@ class vmwaretools::params {
     if ('PAE' in $::kernelrelease) {
       $kernel_extension = regsubst($::kernelrelease, 'PAE$', '')
       $redhat_devel_package = "kernel-PAE-devel-${kernel_extension}"
-    } elseif ('xen' in $::kernelrelease) {
+    } elsif ('xen' in $::kernelrelease) {
       $kernel_extension = regsubst($::kernelrelease, 'xen$', '')
       $redhat_devel_package = "kernel-xen-devel-${kernel_extension}"
     } else {
