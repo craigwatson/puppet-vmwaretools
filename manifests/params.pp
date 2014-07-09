@@ -50,7 +50,7 @@ class vmwaretools::params {
     default  => '/usr/bin/awk',
   }
 
-  if $::osfamily == 'RedHat' and $::lsbmajdistrelease == 5 {
+  if $::osfamily == 'RedHat' and $::lsbmajdistrelease == '5' {
     if ('PAE' in $::kernelrelease) {
       $kernel_extension = regsubst($::kernelrelease, 'PAE$', '')
       $redhat_devel_package = "kernel-PAE-devel-${kernel_extension}"
