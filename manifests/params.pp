@@ -50,4 +50,17 @@ class vmwaretools::params {
     default  => '/usr/bin/awk',
   }
 
+  if $::osfamily == 'RedHat' and $::lsbmajdistrelease == 5 {
+    if ('PAE' in $::kernelrelease) {
+      $kernel_extension = regsubst($::kernelrelease, 'PAE$', '')
+      $redhat_devel_package = "kernel-PAE-devel-${kernel_extension}"
+    } elseif ('xen' in $::kernelrelease) {
+      $kernel_extension = regsubst($::kernelrelease, 'xen$', '')
+      $redhat_devel_package = "kernel-xen-devel-${kernel_extension}"
+    } else {
+      $redhat_devel_package = "kernel-devel-${::kernelrelease}"
+    }
+  } else {
+    $redhat_devel_package = "kernel-devel-${::kernelrelease}"
+  }
 }

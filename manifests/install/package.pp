@@ -70,8 +70,8 @@ class vmwaretools::install::package {
 
     'RedHat' : {
       if $vmwaretools::redhat_install_devel == true {
-        if ! defined(Package["kernel-devel-${::kernelrelease}"]) {
-          package{"kernel-devel-${::kernelrelease}":
+        if ! defined(Package[$vmwaretools::params::redhat_devel_package]) {
+          package{$vmwaretools::params::redhat_devel_package:
             ensure => present,
           }
         }
