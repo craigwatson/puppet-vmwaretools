@@ -22,7 +22,7 @@
 #
 class vmwaretools::install::package {
 
-  package { ['open-vm-tools','open-vm-dkms', 'vmware-tools-services']:
+  package { $vmwaretools::params::purge_package_list:
     ensure => absent,
   }
 
