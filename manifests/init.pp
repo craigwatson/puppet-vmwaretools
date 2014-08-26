@@ -125,10 +125,16 @@ class vmwaretools (
       fail 'Ubuntu 13.04 is not supported by this module'
     }
 
-    include vmwaretools::params
-    include vmwaretools::install
-    include vmwaretools::config
-    include vmwaretools::config_tools
+    case $::kernel {
+      'Linux': {
+        include vmwaretools::params
+        include vmwaretools::install
+        include vmwaretools::config
+        include vmwaretools::config_tools
+      }
+      'Windows': {
+      }
+    }
 
     if $timesync != undef {
       include vmwaretools::timesync
