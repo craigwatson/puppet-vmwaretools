@@ -133,7 +133,7 @@ class vmwaretools (
     if $timesync != undef {
       include vmwaretools::timesync
     }
-  } elsif $fail_on_non_vmware == true and and $::is_virtual == 'false' and $::virtual != 'vmware' {
+  } elsif $fail_on_non_vmware == true and ($::is_virtual == 'false' or $::virtual != 'vmware') {
     fail 'Not a VMware platform.'
   }
 }
