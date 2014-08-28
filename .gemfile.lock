@@ -23,6 +23,6 @@ PLATFORMS
 
 DEPENDENCIES
   puppet
-  puppet-lint
+  puppet-lint (= 0.3.2)
   puppet-syntax
   rake

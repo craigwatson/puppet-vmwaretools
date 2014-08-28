@@ -4,6 +4,7 @@ rvm:
   - 1.9.3
   - 2.0.0
 script: "rake test"
+before_install: rm .gemfile.lock || true
 notifications:
   email:
     - craig@cwatson.org
