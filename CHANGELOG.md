@@ -1,12 +1,21 @@
 CHANGELOG
 =========
 
+0.4.3
+-----
+
+2014-09-08
+
+Bugfix release
+
+* vmwaretools -- We now only parse the module on Linux kernels, fixes [ticket #47]https://github.com/craigwatson/puppet-vmwaretools/pull/47), thanks to [thesysadm](https://github.com/thesysadm)!
+
 0.4.2
 -----
 
-TBC
+2014-08-06
 
-Bugifx release
+Bugfix release
 
 * vmwaretools::params           -- Adding new parameter for RH 5.x PAE/xen kernels for kernel-devel package (thanks Mark Stunnenberg!)
                                 -- Adding new parameter for the list of packages to purge
