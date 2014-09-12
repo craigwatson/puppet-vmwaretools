@@ -23,6 +23,7 @@ class vmwaretools::install {
     include vmwaretools::install::archive
     include vmwaretools::install::exec
 
+    Class['vmwaretools::install::package'] ->
     Class['vmwaretools::install::archive'] ->
     Class['vmwaretools::install::exec']
   }

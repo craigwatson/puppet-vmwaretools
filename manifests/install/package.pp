@@ -23,7 +23,7 @@
 class vmwaretools::install::package {
 
   package { $vmwaretools::params::purge_package_list:
-    ensure => absent,
+    ensure => purged,
   }
 
   if !defined(Package['perl']) {
