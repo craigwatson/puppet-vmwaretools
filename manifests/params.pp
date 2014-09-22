@@ -14,7 +14,7 @@
 # === Copyright:
 #
 # Copyright (C) 2013 Craig Watson
-# Published under the GNU General Public License v3
+# Published under the Apache License v2.0
 #
 class vmwaretools::params {
 
