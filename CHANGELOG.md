@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+0.4.4
+-----
+
+TBD
+
+Bugfix release
+
+* vmwaretools fact -- Fixes vmwaretools fact detection for failed tools installs - thanks [Markus Frosch](https://github.com/lazyfrosch) for [pull request #49](https://github.com/craigwatson/puppet-vmwaretools/pull/49)!
+* vmwaretools      -- open-vm-tools is now purged rather than just absent thanks [Markus Frosch](https://github.com/lazyfrosch) for [pull request #49](https://github.com/craigwatson/puppet-vmwaretools/pull/49)!
+
 0.4.3
 -----
 
@@ -8,7 +18,7 @@ CHANGELOG
 
 Bugfix release
 
-* vmwaretools -- We now only parse the module on Linux kernels, fixes [ticket #47]https://github.com/craigwatson/puppet-vmwaretools/pull/47), thanks to [thesysadm](https://github.com/thesysadm)!
+* vmwaretools -- We now only parse the module on Linux kernels, fixes [ticket #47](https://github.com/craigwatson/puppet-vmwaretools/pull/47), thanks to [thesysadm](https://github.com/thesysadm)!
 
 0.4.2
 -----
