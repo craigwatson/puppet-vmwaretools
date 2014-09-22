@@ -8,6 +8,7 @@
   "project_page": "https://github.com/craigwatson/puppet-vmwaretools",
   "issues_url": "https://github.com/craigwatson/puppet-vmwaretools/issues",
   "description": "Manages the installation of VMware Tools via the archive distributed with vSphere, either transferring the source via Puppet or HTTP with MD5.",
+  "tags" [ "vmware","tools","vmwaretools"],
   "dependencies": [
     { "name": "puppetlabs/stdlib", "version_requirement": ">=3.2.0 <5.0.0" },
   ]
