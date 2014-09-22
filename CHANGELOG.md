@@ -1,12 +1,14 @@
 CHANGELOG
 =========
 
-0.4.4
+1.0.0
 -----
 
 TBD
 
-Bugfix release
+Major release
+
+* The module is now licenced with the Apache Licence v2.0
 
 * vmwaretools fact -- Fixes vmwaretools fact detection for failed tools installs - thanks [Markus Frosch](https://github.com/lazyfrosch) for [pull request #49](https://github.com/craigwatson/puppet-vmwaretools/pull/49)!
 * vmwaretools      -- open-vm-tools is now purged rather than just absent thanks [Markus Frosch](https://github.com/lazyfrosch) for [pull request #49](https://github.com/craigwatson/puppet-vmwaretools/pull/49)!
