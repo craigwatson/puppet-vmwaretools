@@ -100,6 +100,16 @@ class vmwaretools (
   $timesync             = undef,
 ) {
 
+  # Validate parameters where appropriate
+  validate_string($version)
+  validate_absolute_path($working_dir)
+  validate_bool($redhat_install_devel)
+  validate_string($archive_url)
+  validate_string($archive_md5)
+  validate_bool($fail_on_non_vmware)
+  validate_bool($keep_working_dir)
+  validate_bool($prevent_downgrade)
+
   # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
   # the quoted-boolean warning here. Related links below:
   # https://tickets.puppetlabs.com/browse/FACT-151
