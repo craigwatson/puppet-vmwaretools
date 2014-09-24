@@ -44,8 +44,9 @@ Upgrading of currently installed VMware Tools packages is also supported - the m
 
 ###Setup Requirements
 
-* Perl must be installed on the target systems in order to run the VMware Tools installer.
+* Perl must be installed on the target systems in order to run the VMware Tools installer - installation of Perl is not handled by the module.
 * Pluginsync must be enabled, due to the `vmwaretools_version` custom fact distributed with this module. If the module cannot access the fact, the Puppet run will fail.
+* As of version 1.0.0, the module requires the [PuppetLabs stdlib module](https://github.come/puppetlabs/puppetlabs-stdlib) module to be available within your Puppet code.
 	
 ###Beginning with puppet-vmwaretools	
 

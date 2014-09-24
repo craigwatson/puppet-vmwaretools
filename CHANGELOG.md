@@ -4,15 +4,15 @@ CHANGELOG
 1.0.0
 -----
 
-TBD
+2014-09-24
 
 Major release
 
-* Module-wide change: This and all future versions of the module are now distributed under the Apache Licence v2.0! Previous versions are still licensed under the GNU General Public Licence v3.
+* Module-wide changes -- This and all future versions of the module are now distributed under the Apache Licence v2.0! Previous versions are still licensed under the GNU General Public Licence v3.
+                      -- This module is now dependant on [PuppetLabs' stdlib module](https://github.come/puppetlabs/puppetlabs-stdlib). Please make sure this module is available within your Puppet codebase.
 
 * vmwaretools fact -- Fixes vmwaretools fact detection for failed tools installs - thanks [Markus Frosch](https://github.com/lazyfrosch) for [pull request #49](https://github.com/craigwatson/puppet-vmwaretools/pull/49)!
 * vmwaretools      -- open-vm-tools is now purged rather than just absent thanks [Markus Frosch](https://github.com/lazyfrosch) for [pull request #49](https://github.com/craigwatson/puppet-vmwaretools/pull/49)!
-                   -- We now use PuppetLabs' [stdlib](https://github.come/puppetlabs/puppetlabs-stdlib) to validate parameters passed to the module
 
 0.4.3
 -----

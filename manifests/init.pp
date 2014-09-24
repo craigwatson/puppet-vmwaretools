@@ -115,7 +115,7 @@ class vmwaretools (
   # https://tickets.puppetlabs.com/browse/FACT-151
   # https://projects.puppetlabs.com/issues/3704
 
-  if $::is_virtual == 'true' and $::virtual == 'vmware' and $::kernel == 'Linux' {
+  if $::is_virtual == true and $::virtual == 'vmware' and $::kernel == 'Linux' {
 
     if $::vmwaretools_version == undef {
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
@@ -143,7 +143,7 @@ class vmwaretools (
     if $timesync != undef {
       include vmwaretools::timesync
     }
-  } elsif $fail_on_non_vmware == true and ($::is_virtual == 'false' or $::virtual != 'vmware') {
+  } elsif $fail_on_non_vmware == true and ($::is_virtual == false or $::virtual != 'vmware') {
     fail 'Not a VMware platform.'
   }
 }
