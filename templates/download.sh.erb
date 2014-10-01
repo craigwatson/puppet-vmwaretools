@@ -19,12 +19,17 @@ check_exec "/usr/bin/md5sum"
 check_exec "<%= scope.lookupvar('vmwaretools::params::awk_path') %>"
 
 /usr/bin/curl -s ${DOWNLOAD_URL} -o ${DOWNLOAD_LOCATION}
+if [ $? -gt 0 ]; then
+  echo "Download failed from url ${DOWNLOAD_URL}" >&2
+  exit 1
+fi
+
 chmod 600 ${DOWNLOAD_LOCATION}
 
 DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum ${DOWNLOAD_LOCATION} | <%= scope.lookupvar('vmwaretools::params::awk_path') %> '{ print $1 }')
 
 if [ "${DOWNLOADED_CHECKSUM}" != "${GOOD_CHECKSUM}" ]; then
-  echo "Checksum mismatch. Got ${DOWNLOADED_CHECKSUM}, should have been ${GOOD_CHECKSUM} -- removing downloaded archive."
+  echo "Checksum mismatch. Got ${DOWNLOADED_CHECKSUM}, should have been ${GOOD_CHECKSUM} -- removing downloaded archive." >&2
   rm ${DOWNLOAD_LOCATION}
   exit 1
 else
