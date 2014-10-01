@@ -4,8 +4,11 @@
 
 ### TBD - Bugfix release
 
-#### ChangeLog
+#### Change Log
   * Major overhaul and Markdown prettification!
+
+#### Readme
+  * Minor Markdown formatting changes
 
 ## 1.0.1
 
@@ -57,7 +60,7 @@
   * Documentation syntax correction - [pull request #42](https://github.com/craigwatson/puppet-vmwaretools/pull/42)
   * Added check fof the `vmwaretools_version` fact - the module will hard-fail if this cannot be found
 
-#### `vmwaretools::params` 
+#### `vmwaretools::params`
   * Remvoing `config_creates` references
 
 #### `vmwaretools::config_tools`
@@ -87,7 +90,7 @@
 #### `vmwaretools` main class
   * Adding `config_creates` parameter to main class declaration
 
-#### vmwaretools::params` 
+#### vmwaretools::params`
   * Renaming `config_creates` to `config_creates_real`
   * Adding case statement for Ubuntu/Debian within the Debian osfamily case
 
@@ -142,7 +145,7 @@
 #### `esx_version` fact
   * New fact: reports the version of vSphere.
 
-#### `vmwaretools::timesync` 
+#### `vmwaretools::timesync`
   * New class: Handles management of time sychronisation with vSphere. Thanks to [Aaron Hicks](https://github.com/Aethylred) for the pull request [GitHub Issue #18](https://github.com/craigwatson/puppet-vmwaretools/pull/18)!
 
 #### vmwaretools::config_tools
@@ -201,7 +204,7 @@
 #### vmwaretools::install::exec
   * `archive_location` replaced by `archive_url`
 
-#### `vmwaretools` main class 
+#### `vmwaretools` main class
   * Parameter Typo fixed
 
 ##0.0.4
