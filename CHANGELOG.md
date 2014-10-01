@@ -1,8 +1,16 @@
 # Change Log
 
-## 1.0.2
+## 1.1.0
 
-### TBD - Bugfix release
+### TBD - Feature Improvement
+
+#### `vmwaretools::params`
+
+  * Added `vmware-tools-foundation` to purge_package_list to fully remove OSP tools - thanks to [Christian Groschupp](https://github.com/cgroschupp)
+
+#### `download.sh` ERB Template
+
+  * Redirect error output to standard error, and exit early if the download fails - thanks to [Christian Groschupp](https://github.com/cgroschupp)
 
 #### Change Log
   * Major overhaul and Markdown prettification!
@@ -12,14 +20,14 @@
 
 ## 1.0.1
 
-### 2014-10-01 - Bugfix release
+### 2014-10-01 - Bugfix Release
 
 #### vmwaretools
   * Fixed regression bug [#51](https://github.com/craigwatson/puppet-vmwaretools/issues/51) caused by facts being returned as strings, using stdlib's str2bool function - thanks [Justin T.](https://github.com/thesysadm)!
 
 ## 1.0.0
 
-### 2014-09-24 - Major release
+### 2014-09-24 - Major Release
 
 #### Module-wide changes
   * This and all future versions of the module are now distributed under the **Apache Licence v2.0**! Previous versions are still licensed under the GNU General Public Licence v3.
@@ -33,14 +41,14 @@
 
 ## 0.4.3
 
-### 2014-09-08 - Bugfix release
+### 2014-09-08 - Bugfix Release
 
 #### vmwaretools` main class
   * We now only parse the module on Linux kernels, fixes [ticket #47](https://github.com/craigwatson/puppet-vmwaretools/pull/47), thanks to [thesysadm](https://github.com/thesysadm)!
 
 ## 0.4.2
 
-### 2014-08-06 - Bugfix release
+### 2014-08-06 - Bugfix Release
 
 #### `vmwaretools::params`
   * Adding new parameter for RH 5.x PAE/xen kernels for kernel-devel package (thanks Mark Stunnenberg!)
@@ -53,7 +61,7 @@
 
 ## 0.4.1
 
-### 2014-06-20 - Bugfix release
+### 2014-06-20 - Bugfix Release
 
 #### `vmwaretools` main class
   * Removing `config_creates` override
@@ -68,7 +76,7 @@
 
 ## 0.4.0
 
-### 2014-05-16 - Major functionality improvement
+### 2014-05-16 - Functionality Improvement
 
 #### `vmwaretools` main class
   * Improving support for downloading VMware Tools via external Puppet modules (thanks to [Sam Keeley](https://github.com/keeleysam) and [Aedu](https://github.com/Aedu) for Pull Requests [#36](https://github.com/craigwatson/puppet-vmwaretools/pull/36) and [#37](https://github.com/craigwatson/puppet-vmwaretools/pull/37) respectively)
@@ -78,14 +86,14 @@
 
 ## 0.3.1
 
-### 2014-04-14 - Bugfix release
+### 2014-04-14 - Bugfix Release
 
 #### `vmwaretools::params`
   * Correcting typo in config_creates assignment
 
 ## 0.3.0
 
-### 2014-04-14 - Major functionality improvement
+### 2014-04-14 - Functionality Improvement
 
 #### `vmwaretools` main class
   * Adding `config_creates` parameter to main class declaration
@@ -99,21 +107,21 @@
 
 ## 0.2.5
 
-### 2014-04-10 - Bugfix release
+### 2014-04-10 - Bugfix Release
 
 #### `vmwaretools` main class
   * Facter facts are strings, not literal booleans!
 
 ## 0.2.4
 
-### 2014-04-09 - Bugfix release
+### 2014-04-09 - Bugfix Release
 
 #### `vmwaretools` main class
   * Fixing logic in init.pp to silently fail if the module is included on non-VMware hardware and the $fail_on_non_vmware parameter is not set to true (bug reported by Marcus Johansson by email - thanks!)
 
 ## 0.2.3
 
-### 2014-04-07 - Bugfix release
+### 2014-04-07 - Bugfix Release
 
 #### `vmwaretools::install::package`
   * We now remove the vmware-tools-services package as well as open-vm-tools - [pull request #34](https://github.com/craigwatson/puppet-vmwaretools/pull/34) and packages are now purged rather than removed
@@ -123,7 +131,7 @@
 
 ## 0.2.2
 
-### 2014-03-05 - Bugfix release
+### 2014-03-05 - Bugfix Release
 
 #### `vmwaretools::install`
   * Packages will now be purged/installed all the time, not just when we install VMware Tools -- raised by [cdenneen](https://github.com/cdenneen) in [bug #27](https://github.com/craigwatson/puppet-vmwaretools/issues/27)
@@ -133,14 +141,14 @@
 
 ## 0.2.1
 
-### 2013-10-31 - Minor functionality improvement
+### 2013-10-31 - Functionality Improvement (non-SemVer increment)
 
 #### `esx_version` fact
   * Adding support for vSphere 5.5. Thanks to [Ryan McKern](https://github.com/mckern) for the pull request [GitHub Issue #18](https://github.com/craigwatson/puppet-vmwaretools/pull/22)!
 
 ## 0.2.0
 
-### 2013-09-11 - Major functionality improvements
+### 2013-09-11 - Functionality Improvements
 
 #### `esx_version` fact
   * New fact: reports the version of vSphere.
@@ -158,14 +166,14 @@
 
 ## 0.1.2
 
-### 2013-06-20 - Bugfix release
+### 2013-06-20 - Bugfix Release
 
 #### `vmwaretools::params`
   * Moving back to `vmci.ko` - see discussion on [GitHub Issue #14](https://github.com/craigwatson/puppet-vmwaretools/pull/14), huge thanks to [Ryan McKern](https://github.com/mckern) for the investigative work!
 
 ## 0.1.1
 
-### 2013-06-19 - Bugfix release
+### 2013-06-19 - Bugfix Release
 
 #### Readme
   * Adding Ubuntu 13.04 to Unsupported Operating Systems
@@ -178,7 +186,7 @@
 
 ## 0.1.0
 
-### 2013-05-17 - Major functionality improvements
+### 2013-05-17 - Functionality Improvements
 
 #### `vmwaretools_version` fact
   * Added "not installed" output if VMware Tools isn't installed
@@ -199,7 +207,7 @@
 
 ## 0.0.5
 
-### 2013-05-07 - Bugfix release
+### 2013-05-07 - Bugfix Release
 
 #### vmwaretools::install::exec
   * `archive_location` replaced by `archive_url`
