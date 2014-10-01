@@ -1,14 +1,18 @@
 # Change Log
 
+## 1.0.2
+
+### TBD - Bugfix release
+
+#### ChangeLog
+  * Major overhaul and Markdown prettification!
+
 ## 1.0.1
 
 ### 2014-10-01 - Bugfix release
 
 #### vmwaretools
   * Fixed regression bug [#51](https://github.com/craigwatson/puppet-vmwaretools/issues/51) caused by facts being returned as strings, using stdlib's str2bool function - thanks [Justin T.](https://github.com/thesysadm)!
-
-#### ChangeLog
-  * Major overhaul and Markdown prettification!
 
 ## 1.0.0
 
