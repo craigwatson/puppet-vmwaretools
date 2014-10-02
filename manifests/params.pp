@@ -50,6 +50,15 @@ class vmwaretools::params {
     default  => '/usr/bin/awk',
   }
 
+  # Workaround for 'purge' bug on RH-based systems
+  # https://projects.puppetlabs.com/issues/2833
+  # https://projects.puppetlabs.com/issues/11450
+  # https://tickets.puppetlabs.com/browse/PUP-1198
+  $purge_package_ensure = $::osfamily ? {
+    'RedHat' => absent,
+    default  => purged,
+  }
+
   if $::osfamily == 'RedHat' and $::lsbmajdistrelease == '5' {
     if ('PAE' in $::kernelrelease) {
       $kernel_extension = regsubst($::kernelrelease, 'PAE$', '')

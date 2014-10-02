@@ -79,9 +79,18 @@ To specify a non-default version, working directory and HTTP URL (other variable
 
 ### Classes
 
+#### `vmaretools::config`
+
+  * Deploys the working directory in which the module downloads and extracts the archive, and  runs the Perl installer.
+
 #### `vmwaretools::install::exec`
 
   * Declares all `exec` commands run by the module.
+
+#### `vmwaretools::install::package`
+
+  * Handles installing the required tools to compile and install the archive, as well as purging OSP and open-source VMware Tools packages.
+  * **NOTE:** Due to bugs in Puppet's `yum` provider, the OSP/open-source packages are only marked as `absent`, not `purged`.
 
 #### `vmwaretools::install::archive`
 
