@@ -22,8 +22,15 @@
 #
 class vmwaretools::install::package {
 
-  package { $vmwaretools::params::purge_package_list:
-    ensure => purged,
+  if $::osfamily == 'RedHat' {
+    # Puppet's handling of 'purged' isn't consistent on RHEL/clones; use 'absent' instead
+    package { $vmwaretools::params::purge_package_list:
+      ensure => absent,
+    }
+  } else {
+    package { $vmwaretools::params::purge_package_list:
+      ensure => purged,
+    }
   }
 
   if !defined(Package['perl']) {
