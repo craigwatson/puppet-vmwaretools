@@ -1,3 +1,4 @@
-pkg
 *.save
+pkg
 runrake.sh
+spec/fixtures
