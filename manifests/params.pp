@@ -18,8 +18,6 @@
 #
 class vmwaretools::params {
 
-  $deploy_files = ' '
-
   if $::vmwaretools_version == 'not installed' {
     # If nothing is installed, deploy.
     $deploy_files = true
@@ -42,7 +40,7 @@ class vmwaretools::params {
       }
     }
 
-    if $deploy_files == ' ' {
+    if $deploy_files == undef {
 
       # If tools are installed and we're not preventing a downgrade or upgrade, deploy on version mismatch
       $deploy_files = $::vmwaretools_version ? {
