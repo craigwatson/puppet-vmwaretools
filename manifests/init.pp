@@ -46,6 +46,13 @@
 #   is set in the version parameter, do not downgrade the tools.
 #   Default: true (boolean)
 #
+# [*prevent_upgrade*]
+#   If the system has a version of the tools installed which is older that what
+#   is set in the version parameter, do not upgrade the tools.
+#   Note: This will still allow tools to be downgraded unless prevent_downgrade
+#   also is set.
+#   Default: false (boolean)
+#
 # [*timesync*]
 #   Should the node synchronise their system clock with the vSphere server?
 #   Acceptable values are true, false (both literal booleans, NOT quoted
@@ -97,6 +104,7 @@ class vmwaretools (
   $fail_on_non_vmware   = false,
   $keep_working_dir     = false,
   $prevent_downgrade    = true,
+  $prevent_upgrade      = false,
   $timesync             = undef,
 ) {
 
@@ -109,6 +117,7 @@ class vmwaretools (
   validate_bool($fail_on_non_vmware)
   validate_bool($keep_working_dir)
   validate_bool($prevent_downgrade)
+  validate_bool($prevent_upgrade)
 
   # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
   # the quoted-boolean warning here. Related links below:
@@ -121,7 +130,7 @@ class vmwaretools (
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
     }
 
-    if (($archive_url == 'puppet') or ('puppet://' in $archive_url)) {
+    if (($archive_url == 'puppet') or ($archive_url =~ /^puppet:\/\//)) {
       $download_vmwaretools = false
     } else {
       $download_vmwaretools = true
