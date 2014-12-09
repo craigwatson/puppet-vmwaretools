@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.2.0
+
+### 2014-12-09 - Feature Improvement
+
+#### Class: `vmwaretools`
+  * Added `prevent_upgrade` parameter to does not deploy files if the Puppet version is higher than the installed version)
+  * Modified the regex for how to download vmwaretools to fix a Lint issue with the previous syntax
+  * Huge thanks to [esalberg](https://github.com/esalberg) for Pull Request [#58](https://github.com/craigwatson/puppet-vmwaretools/pull/58)!
+
 ## 1.1.0
 
 ### 2014-10-02 - Feature Improvement
