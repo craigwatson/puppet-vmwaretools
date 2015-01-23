@@ -26,64 +26,69 @@ class vmwaretools::install::package {
     ensure => $vmwaretools::params::purge_package_ensure,
   }
 
-  if !defined(Package['perl']) {
-    package { 'perl':
-      ensure => present,
-    }
-  }
-
-  if $vmwaretools::download_vmwaretools == true {
-    if !defined(Package['curl']) {
-      package { 'curl':
+  if $::vmwaretools::manage_perl_pkgs {
+    if !defined(Package['perl']) {
+      package { 'perl':
         ensure => present,
       }
     }
   }
 
-  case $::osfamily {
-
-    'Debian' : {
-      case $::operatingsystem {
-        'Ubuntu' : {
-          if ! defined(Package['build-essential']) {
-            package{'build-essential':
-              ensure => present,
-            }
-          }
-          if ! defined(Package["linux-headers-${::kernelrelease}"]) {
-            package{"linux-headers-${::kernelrelease}":
-              ensure => present,
-            }
-          }
-        }
-        'Debian' : {
-          if ! defined(Package["linux-headers-${::kernelrelease}"]) {
-            package{"linux-headers-${::kernelrelease}":
-              ensure => present,
-            }
-          }
-        }
-
-        default : { fail "${::operatingsystem} not supported yet." }
-      }
-    }
-
-    'RedHat' : {
-      if $vmwaretools::redhat_install_devel == true {
-        if ! defined(Package[$vmwaretools::params::redhat_devel_package]) {
-          package{$vmwaretools::params::redhat_devel_package:
-            ensure => present,
-          }
-        }
-        if ! defined(Package['gcc']) {
-          package{'gcc':
-            ensure => present,
-          }
+  if $::vmwaretools::manage_curl_pkgs {
+    if $vmwaretools::download_vmwaretools == true {
+      if !defined(Package['curl']) {
+        package { 'curl':
+          ensure => present,
         }
       }
     }
+  }
 
-    default : { fail "${::osfamily} not supported yet." }
+  if $::vmwaretools::manage_dev_pkgs {
+    case $::osfamily {
+      'Debian' : {
+        case $::operatingsystem {
+          'Ubuntu' : {
+            if ! defined(Package['build-essential']) {
+              package{'build-essential':
+                ensure => present,
+              }
+            }
+            if ! defined(Package["linux-headers-${::kernelrelease}"]) {
+              package{"linux-headers-${::kernelrelease}":
+                ensure => present,
+              }
+            }
+          }
+          'Debian' : {
+            if ! defined(Package["linux-headers-${::kernelrelease}"]) {
+              package{"linux-headers-${::kernelrelease}":
+                ensure => present,
+              }
+            }
+          }
+
+          default : { fail "${::operatingsystem} not supported yet." }
+        }
+      }
+
+      'RedHat' : {
+        if $vmwaretools::redhat_install_devel == true {
+          if ! defined(Package[$vmwaretools::params::redhat_devel_package]) {
+            package{$vmwaretools::params::redhat_devel_package:
+              ensure => present,
+            }
+          }
+          if ! defined(Package['gcc']) {
+            package{'gcc':
+              ensure => present,
+            }
+          }
+        }
+      }
+
+      default : { fail "${::osfamily} not supported yet." }
+    }
   }
 
 }

@@ -67,6 +67,12 @@ To specify a non-default version, working directory and HTTP URL (other variable
       archive_md5 => '9df56c317ecf466f954d91f6c5ce8a6f',
     }
 
+To stop `vmwaretools` from trying to install the development packages, Perl package, or curl package use the following paramters to disable their management with this module:
+
+* `manage_dev_pkgs` set to false to prevent development packages being managed
+* `manage_perl_pkgs` set to false to prevent Perl packages being managed
+* `manage_curl_pkgs` set to false to prevent curl packages being managed
+
 ## Reference
 
 ### Facts

@@ -106,12 +106,15 @@ class vmwaretools (
   $prevent_downgrade    = true,
   $prevent_upgrade      = false,
   $timesync             = undef,
+  $manage_dev_pkgs      = true,
+  $manage_perl_pkgs     = true,
+  $manage_curl_pkgs     = true
 ) {
 
   # Validate parameters where appropriate
   validate_string($version)
   validate_absolute_path($working_dir)
-  validate_bool($redhat_install_devel)
+  validate_bool($redhat_install_devel, $manage_dev_pkgs)
   validate_string($archive_url)
   validate_string($archive_md5)
   validate_bool($fail_on_non_vmware)
