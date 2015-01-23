@@ -26,25 +26,19 @@ class vmwaretools::install::package {
     ensure => $vmwaretools::params::purge_package_ensure,
   }
 
-  if $::vmwaretools::manage_perl_pkgs {
-    if !defined(Package['perl']) {
-      package { 'perl':
-        ensure => present,
-      }
+  if (($vmwaretools::manage_perl_pkgs == true) and (!defined(Package['perl']))) {
+    package { 'perl':
+      ensure => present,
     }
   }
 
-  if $::vmwaretools::manage_curl_pkgs {
-    if $vmwaretools::download_vmwaretools == true {
-      if !defined(Package['curl']) {
-        package { 'curl':
-          ensure => present,
-        }
-      }
+  if (($vmwaretools::manage_curl_pkgs) and ($vmwaretools::download_vmwaretools == true) and (!defined(Package['curl']))) {
+    package { 'curl':
+      ensure => present,
     }
   }
 
-  if $::vmwaretools::manage_dev_pkgs {
+  if $vmwaretools::manage_dev_pkgs == true {
     case $::osfamily {
       'Debian' : {
         case $::operatingsystem {
