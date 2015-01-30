@@ -14,7 +14,7 @@
 #
 # === Copyright:
 #
-# Copyright (C) 2013 Craig Watson
+# Copyright (C) Craig Watson
 # Published under the Apache License v2.0
 #
 class vmwaretools::install::archive {
