@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.3.0
+
+### 2015-01-30 - Feature Improvement
+
+### Class: `vmwaretools`
+  * Added parameters to manage the installation of certain supporting packages - thanks to [Aaron Hicks](https://github.com/Aethylred) for Pull Request [#60](https://github.com/craigwatson/puppet-vmwaretools/pull/60)
+
+### Class: `vmwaretools::install::package`
+  * Adjusted class to use above parameters
+
 ## 1.2.0
 
 ### 2014-12-09 - Feature Improvement
