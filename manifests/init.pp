@@ -127,7 +127,7 @@ class vmwaretools (
   # https://tickets.puppetlabs.com/browse/FACT-151
   # https://projects.puppetlabs.com/issues/3704
 
-  if str2bool($::is_virtual) and $::virtual == 'vmware' and $::kernel == 'Linux' {
+  if str2bool("${::is_virtual}") and $::virtual == 'vmware' and $::kernel == 'Linux' {
 
     if $::vmwaretools_version == undef {
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'

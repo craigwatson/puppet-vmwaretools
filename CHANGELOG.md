@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.3.1
+
+### 2015-02-09 - Buggix Release
+
+#### Class: `vmwaretools`
+  * Fixed bug where facter passing literal boolean  was causing `str2bool` to fail - thanks to Arkadi Colson for reporting the bug!
+
 ## 1.3.0
 
 ### 2015-01-30 - Feature Improvement
