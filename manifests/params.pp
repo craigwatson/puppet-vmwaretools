@@ -56,6 +56,12 @@ class vmwaretools::params {
     default  => '/usr/bin/awk',
   }
 
+  if $vmwaretools::force_install == true {
+    $install_command = "echo 'yes' | ${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl"
+  } else {
+    $install_command = "${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl -d"
+  }
+
   # Workaround for 'purge' bug on RH-based systems
   # https://projects.puppetlabs.com/issues/2833
   # https://projects.puppetlabs.com/issues/11450
