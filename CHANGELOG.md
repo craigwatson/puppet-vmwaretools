@@ -1,8 +1,21 @@
 # Change Log
 
+## 1.4.0
+
+### 2015-03-27 - Feature Improvement
+
+#### Class: `vmwaretools`
+  * Added new `force_install` parameter to trigger echoing 'yes' to the VMware Tools install script. Thanks to [Anthony Somerset](https://github.com/anthonysomerset) and [Mattias Geniar](https://github.com/mattiasgeniar) for the help with the issue!
+
+#### Class: `vmwaretools::params`
+  * Adding new parameter `$install_command` to handle adding the `echo` if `force_install` is passed to the module.
+
+#### Class: `vmwaretools::install::exec`
+  * Changed the `install_vmwaretools` exec resource to use the new `$vmwaretools::params::install_command` variable.
+
 ## 1.3.1
 
-### 2015-02-09 - Buggix Release
+### 2015-02-09 - Bugfix Release
 
 #### Class: `vmwaretools`
   * Fixed bug where facter passing literal boolean  was causing `str2bool` to fail - thanks to Arkadi Colson for reporting the bug!

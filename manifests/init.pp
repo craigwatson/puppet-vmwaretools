@@ -41,6 +41,14 @@
 #   Keep the working dir on disk after installation.
 #   Default: false (boolean)
 #
+# [*force_install*]
+#   Forces installation by piping 'yes' to the VMware Tools install script.
+#   This is necessary to install on operating systems where VMware has opted
+#   to favour the open-vm-tools pacakge. NOTE: The tools will still fail to
+#   install on these operating systems, so it is recommended to set this
+#   parameter to true.
+#   Default: false (boolean)
+#
 # [*prevent_downgrade*]
 #   If the system has a version of the tools installed which is newer that what
 #   is set in the version parameter, do not downgrade the tools.
@@ -103,6 +111,7 @@ class vmwaretools (
   $archive_md5          = '',
   $fail_on_non_vmware   = false,
   $keep_working_dir     = false,
+  $force_install        = false,
   $prevent_downgrade    = true,
   $prevent_upgrade      = false,
   $timesync             = undef,

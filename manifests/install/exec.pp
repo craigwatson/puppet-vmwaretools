@@ -49,7 +49,7 @@ class vmwaretools::install::exec {
       command => "tar -xf ${vmwaretools::working_dir}/VMwareTools-${vmwaretools::version}.tar.gz",
       notify  => Exec['install_vmwaretools'];
     'install_vmwaretools':
-      command => "${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl -d",
+      command => $vmwaretools::params::install_command,
       require => Exec['uncompress_vmwaretools'],
       notify  => Exec['clean_vmwaretools'];
     'clean_vmwaretools':
