@@ -30,6 +30,8 @@ Facter.add(:esx_version) do
               '5'
             when '0xEA0C0'
               '5.1'
+            when '0xE9AB0'
+              '5.1 update 3'
             when '0xEA050'
               '5.5'
             else
