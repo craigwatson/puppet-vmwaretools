@@ -13,6 +13,9 @@
 #### Class: `vmwaretools::install::exec`
   * Changed the `install_vmwaretools` exec resource to use the new `$vmwaretools::params::install_command` variable.
 
+#### Fact: `esx_version`
+  * Added ESXi 6 to the list
+
 ## 1.3.1
 
 ### 2015-02-09 - Bugfix Release
