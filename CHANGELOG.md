@@ -2,7 +2,7 @@
 
 ## 1.4.0
 
-### 2015-03-27 - Feature Improvement
+### 2015-04-13 - Feature Improvement
 
 #### Class: `vmwaretools`
   * Added new `force_install` parameter to trigger echoing 'yes' to the VMware Tools install script. Thanks to [Anthony Somerset](https://github.com/anthonysomerset) and [Mattias Geniar](https://github.com/mattiasgeniar) for the help with the issue!
