@@ -5,7 +5,7 @@
 [![Forge Endorsement](https://img.shields.io/puppetforge/e/CraigWatson1987/vmwaretools.svg)](https://forge.puppetlabs.com/CraigWatson1987/vmwaretools)
 [![Forge Downloads](https://img.shields.io/puppetforge/dt/CraigWatson1987/vmwaretools.svg)](https://forge.puppetlabs.com/CraigWatson1987/vmwaretools)
 
-#### Table of Contents
+## Table of Contents
 
 1. [Overview - What is the puppet-vmwaretools module?](#overview)
 1. [Module Description - What does the module do?](#module-description)
