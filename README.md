@@ -2,12 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/craigwatson/puppet-vmwaretools.png?branch=master)](http://travis-ci.org/craigwatson/puppet-vmwaretools)
 [![Puppet Forge](http://img.shields.io/puppetforge/v/CraigWatson1987/vmwaretools.svg)](https://forge.puppetlabs.com/CraigWatson1987/vmwaretools)
-
-### Wanted: User Reports & Testimonials
-
-I'd like to put together a small set of reports and testimonials from Puppet users who have implemented this module within their infrastructure.
-
-If you'd like to get involved, please reach out via email [craig@cwatson.org](mailto:craig@cwatson.org), Twitter [@craigwatson1987](https://twitter.com/craigwatson1987) or [Google+](https://plus.google.com/u/0/+CraigWatson1987).
+[![Forge Endorsement](https://img.shields.io/puppetforge/e/CraigWatson1987/vmwaretools.svg)](https://forge.puppetlabs.com/CraigWatson1987/vmwaretools)
+[![Forge Downloads](https://img.shields.io/puppetforge/dt/CraigWatson1987/vmwaretools.svg)](https://forge.puppetlabs.com/CraigWatson1987/vmwaretools)
 
 #### Table of Contents
 
