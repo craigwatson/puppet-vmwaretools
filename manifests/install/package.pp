@@ -81,6 +81,18 @@ class vmwaretools::install::package {
         }
       }
 
+      'Suse'   : {
+        if $vmwaretools::redhat_install_devel == true {
+          if ! defined(Package['kernel-source']) {
+            package { 'kernel-source': ensure => present, }
+          }
+
+          if ! defined(Package['gcc']) {
+            package { 'gcc': ensure => present, }
+          }
+        }
+      }
+
       default : { fail "${::osfamily} not supported yet." }
     }
   }
