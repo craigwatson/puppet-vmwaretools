@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.4.1
+
+### 2015-05-05 - Bug Fix
+
+#### Fact: `esx_version`
+  * Updated `dmidecode` values and version numbers
+
 ## 1.4.0
 
 ### 2015-04-13 - Feature Improvement

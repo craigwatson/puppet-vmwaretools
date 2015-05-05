@@ -18,16 +18,14 @@ Facter.add(:esx_version) do
               '2.5'
             when '0xE7C70'
               '3.0'
-            when '0xE7910'
+            when '0xE66C0'
               '3.5'
-            when '0xEA6C0'
-              '4'
             when '0xEA550'
-              '4 update 1'
+              '4.0'
             when '0xEA2E0'
               '4.1'
             when '0xE72C0'
-              '5'
+              '5.0'
             when '0xEA0C0'
               '5.1'
             when '0xE9AB0'
@@ -35,7 +33,7 @@ Facter.add(:esx_version) do
             when '0xEA050'
               '5.5'
             when '0xE9A40'
-              '6'
+              '6.0'
             else
               "unknown, please report #{bios_address}"
           end
