@@ -16,9 +16,9 @@
 #   The directory to store files in.
 #   Default: '/tmp/vmwaretools' (string)
 #
-# [*redhat_install_devel*]
-#   If you really want to install kernel headers on RedHat-derivative operating
-#   systems - you will likely not need this as most RH distros have
+# [*install_devel*]
+#   If you really want to install kernel headers on RedHat- or Suse-derivative
+#   operating systems - you will likely not need this as most RH distros have
 #   pre-compiled kernel modules.
 #   Default: false (boolean)
 #
@@ -106,7 +106,7 @@
 class vmwaretools (
   $version              = '9.0.0-782409',
   $working_dir          = '/tmp/vmwaretools',
-  $redhat_install_devel = false,
+  $install_devel        = false,
   $archive_url          = 'puppet',
   $archive_md5          = '',
   $fail_on_non_vmware   = false,
@@ -123,7 +123,7 @@ class vmwaretools (
   # Validate parameters where appropriate
   validate_string($version)
   validate_absolute_path($working_dir)
-  validate_bool($redhat_install_devel, $manage_dev_pkgs)
+  validate_bool($install_devel, $manage_dev_pkgs)
   validate_string($archive_url)
   validate_string($archive_md5)
   validate_bool($fail_on_non_vmware)
