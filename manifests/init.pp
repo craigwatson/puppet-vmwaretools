@@ -106,7 +106,7 @@
 class vmwaretools (
   $version              = '9.0.0-782409',
   $working_dir          = '/tmp/vmwaretools',
-  $redhat_install_devel = false,
+  $install_devel        = false,
   $archive_url          = 'puppet',
   $archive_md5          = '',
   $fail_on_non_vmware   = false,
