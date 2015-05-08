@@ -68,6 +68,7 @@ class vmwaretools::params {
   # https://tickets.puppetlabs.com/browse/PUP-1198
   $purge_package_ensure = $::osfamily ? {
     'RedHat' => absent,
+    'Suse'   => absent,
     default  => purged,
   }
 

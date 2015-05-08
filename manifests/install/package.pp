@@ -67,7 +67,7 @@ class vmwaretools::install::package {
       }
 
       'RedHat' : {
-        if $vmwaretools::redhat_install_devel == true {
+        if $vmwaretools::install_devel == true {
           if ! defined(Package[$vmwaretools::params::redhat_devel_package]) {
             package{$vmwaretools::params::redhat_devel_package:
               ensure => present,
@@ -77,6 +77,18 @@ class vmwaretools::install::package {
             package{'gcc':
               ensure => present,
             }
+          }
+        }
+      }
+
+      'Suse'   : {
+        if $vmwaretools::install_devel == true {
+          if ! defined(Package['kernel-source']) {
+            package { 'kernel-source': ensure => present, }
+          }
+
+          if ! defined(Package['gcc']) {
+            package { 'gcc': ensure => present, }
           }
         }
       }
