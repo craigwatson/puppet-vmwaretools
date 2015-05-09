@@ -82,10 +82,6 @@ To stop `vmwaretools` from trying to install the development packages, Perl pack
 
 ### Classes
 
-#### `vmaretools::config`
-
-  * Deploys the working directory in which the module downloads and extracts the archive, and  runs the Perl installer.
-
 #### `vmwaretools::install::exec`
 
   * Declares all `exec` commands run by the module.
