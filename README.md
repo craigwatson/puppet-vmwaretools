@@ -111,9 +111,9 @@ To stop `vmwaretools` from trying to install the development packages, Perl pack
 
 ### Supported Operating Systems
 
-* Ubuntu - 12.04 LTS (Precise) and 10.04 LTS (Lucid) tested
-* Red Hat family - RHEL 5 and 6 tested
-* Debian family - written but untested, reports appreciated
+* Ubuntu/Debian
+* CentOS/RedHat
+* SuSE/SLES
 
 ### Unsupported Operating Systems
 
@@ -121,7 +121,7 @@ To stop `vmwaretools` from trying to install the development packages, Perl pack
 
 ## Development
 
-* Copyright (C) 2013 Craig Watson - <craig@cwatson.org>
+* Copyright (C) 2013 to 2015 Craig Watson - <craig@cwatson.org>
 * VMware Tools fact by [janorn](https://github.com/janorn/puppet-vmwaretools)
 * Distributed under the terms of the Apache License v2.0 - see LICENSE file for details.
 * **Please note** that the module was licensed under the terms of the GNU General Public License v3 until commit [fea91b58241481fc3fc4aa0e02996cc9ef0f131e](https://github.com/craigwatson/puppet-vmwaretools/commit/fea91b58241481fc3fc4aa0e02996cc9ef0f131e)
