@@ -158,7 +158,6 @@ class vmwaretools (
 
     include vmwaretools::params
     include vmwaretools::install
-    include vmwaretools::config
     include vmwaretools::config_tools
 
     if $timesync != undef {

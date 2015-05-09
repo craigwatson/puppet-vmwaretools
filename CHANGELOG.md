@@ -1,5 +1,22 @@
 # Change Log
 
+## 2.0.0
+
+### 2015-05-09 - Major release
+
+#### Class: `vmwaretools`
+  * Renamed `redhat_install_devel` parameter to `install_devel` to support SuSE-based OS families.
+
+#### Class: `vmwaretools::params`
+  * Added support for installing development tools on SuSE-based OS families.
+
+#### Class: `vmwaretools::install`
+  * Moved working directory declaration into this subclass to cut down on logic sprawl.
+  * Changed "arrow" relationship to explicit `require` parameters.
+
+#### Class: `vmwaretools::config`
+  * Removed.
+
 ## 1.4.1
 
 ### 2015-05-05 - Bug Fix
