@@ -2,7 +2,7 @@
 
 ## 2.0.0
 
-### 2015-05-09 - Major release
+### 2015-05-14 - Major release
 
 #### Class: `vmwaretools`
   * Renamed `redhat_install_devel` parameter to `install_devel` to support SuSE-based OS families.
