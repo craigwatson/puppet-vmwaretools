@@ -33,6 +33,12 @@ class vmwaretools::timesync {
     }
   }
 
+  if $vmwaretools::params::deploy_files == true {
+    Exec["vmwaretools_timesync_${cmd_action}"] {
+      require => Exec['vmware_config_tools'],
+    }
+  }
+
   exec { "vmwaretools_timesync_${cmd_action}":
     command => "/usr/bin/vmware-toolbox-cmd timesync ${cmd_action}",
     onlyif  => "/usr/bin/vmware-toolbox-cmd timesync status | grep ${cmd_grep}",

@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.0.1
+
+### TBC - Bugfix release
+
+### Class: `vmwaretools::timesync`
+  * Added dependency on Exec['vmware_config_tools'] if VMware Tools are being deployed this run - fixes [#71](https://github.com/craigwatson/puppet-vmwaretools/issues/71)
+
 ## 2.0.0
 
 ### 2015-05-14 - Major release
