@@ -41,6 +41,12 @@
 #   Keep the working dir on disk after installation.
 #   Default: false (boolean)
 #
+# [*ignore_autodetect*]
+#   Ignores the automatic platform detection, and forces the module to be
+#   loaded, regardless of the underlying system. Only really useful for testing
+#   as it could have unpredictable results.
+#   Default: false (boolean)
+#
 # [*force_install*]
 #   Forces installation by piping 'yes' to the VMware Tools install script.
 #   This is necessary to install on operating systems where VMware has opted
@@ -102,7 +108,6 @@
 #
 # Copyright (C) Craig Watson
 # Published under the Apache License v2.0
-#
 class vmwaretools (
   $version              = '9.0.0-782409',
   $working_dir          = '/tmp/vmwaretools',
@@ -111,6 +116,7 @@ class vmwaretools (
   $archive_md5          = '',
   $fail_on_non_vmware   = false,
   $keep_working_dir     = false,
+  $ignore_autodetect    = false,
   $force_install        = false,
   $prevent_downgrade    = true,
   $prevent_upgrade      = false,
@@ -123,9 +129,11 @@ class vmwaretools (
   # Validate parameters where appropriate
   validate_string($version)
   validate_absolute_path($working_dir)
-  validate_bool($install_devel, $manage_dev_pkgs)
   validate_string($archive_url)
   validate_string($archive_md5)
+  validate_bool($ignore_autodetect)
+  validate_bool($install_devel)
+  validate_bool($manage_dev_pkgs)
   validate_bool($fail_on_non_vmware)
   validate_bool($keep_working_dir)
   validate_bool($prevent_downgrade)
@@ -136,9 +144,9 @@ class vmwaretools (
   # https://tickets.puppetlabs.com/browse/FACT-151
   # https://projects.puppetlabs.com/issues/3704
 
-  if str2bool("${::is_virtual}") and $::virtual == 'vmware' and $::kernel == 'Linux' {
+  if ($ignore_autodetect == true) or ((str2bool("${::is_virtual}")) and ($::virtual == 'vmware') and ($::kernel == 'Linux')) {
 
-    if $::vmwaretools_version == undef {
+    if ($::vmwaretools_version == undef) {
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
     }
 
@@ -152,7 +160,7 @@ class vmwaretools (
       fail 'MD5 not given for VMware Tools installer package'
     }
 
-    if $::lsbdistcodename == 'raring' {
+    if ($::lsbdistcodename == 'raring') {
       fail 'Ubuntu 13.04 is not supported by this module'
     }
 
@@ -160,10 +168,10 @@ class vmwaretools (
     include vmwaretools::install
     include vmwaretools::config_tools
 
-    if $timesync != undef {
+    if ($timesync != undef) {
       include vmwaretools::timesync
     }
-  } elsif $fail_on_non_vmware == true and (str2bool($::is_virtual) == false or $::virtual != 'vmware') {
+  } elsif ($fail_on_non_vmware == true) and ((str2bool($::is_virtual) == false) or ($::virtual != 'vmware')) {
     fail 'Not a VMware platform.'
   }
 }

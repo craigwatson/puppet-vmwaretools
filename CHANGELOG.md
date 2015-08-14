@@ -1,10 +1,21 @@
 # Change Log
 
+## 2.1.0
+
+### TBD - Feature Release
+
+#### Class: `vmwaretools`
+  * New parameter: `ignore_autodetect` - this will allow bypassing of the autodetection mechanism that only runs the module on certain platforms. Only useful for testing, 
+defaults to `false`.
+
+#### Fact: `vmwaretools_version`
+  * Removed the confine so that the fact now reports on non-VMware platforms.
+
 ## 2.0.1
 
 ### 2015-06-25 - Bugfix release
 
-### Class: `vmwaretools::timesync`
+#### Class: `vmwaretools::timesync`
   * Added dependency on Exec['vmware_config_tools'] if VMware Tools are being deployed this run - fixes [#71](https://github.com/craigwatson/puppet-vmwaretools/issues/71)
 
 ## 2.0.0
@@ -33,7 +44,7 @@
 
 ## 1.4.0
 
-### 2015-04-13 - Feature Improvement
+### 2015-04-13 - Feature Release
 
 #### Class: `vmwaretools`
   * Added new `force_install` parameter to trigger echoing 'yes' to the VMware Tools install script. Thanks to [Anthony Somerset](https://github.com/anthonysomerset) and [Mattias Geniar](https://github.com/mattiasgeniar) for the help with the issue!
@@ -56,7 +67,7 @@
 
 ## 1.3.0
 
-### 2015-01-30 - Feature Improvement
+### 2015-01-30 - Feature Release
 
 ### Class: `vmwaretools`
   * Added parameters to manage the installation of certain supporting packages - thanks to [Aaron Hicks](https://github.com/Aethylred) for Pull Request [#60](https://github.com/craigwatson/puppet-vmwaretools/pull/60)
@@ -66,7 +77,7 @@
 
 ## 1.2.0
 
-### 2014-12-09 - Feature Improvement
+### 2014-12-09 - Feature Release
 
 #### Class: `vmwaretools`
   * Added `prevent_upgrade` parameter to does not deploy files if the Puppet version is higher than the installed version)
@@ -75,7 +86,7 @@
 
 ## 1.1.0
 
-### 2014-10-02 - Feature Improvement
+### 2014-10-02 - Feature Release
 
 #### Class: `vmwaretools::params`
   * Added `vmware-tools-foundation` to purge_package_list to fully remove OSP tools - thanks to [Christian Groschupp](https://github.com/cgroschupp)
@@ -151,7 +162,7 @@
 
 ## 0.4.0
 
-### 2014-05-16 - Functionality Improvement
+### 2014-05-16 - Feature Release
 
 #### Class: `vmwaretools`
   * Improving support for downloading VMware Tools via external Puppet modules (thanks to [Sam Keeley](https://github.com/keeleysam) and [Aedu](https://github.com/Aedu) for Pull Requests [#36](https://github.com/craigwatson/puppet-vmwaretools/pull/36) and [#37](https://github.com/craigwatson/puppet-vmwaretools/pull/37) respectively)
@@ -168,7 +179,7 @@
 
 ## 0.3.0
 
-### 2014-04-14 - Functionality Improvement
+### 2014-04-14 - Feature Release
 
 #### Class: `vmwaretools` main
   * Adding `config_creates` parameter to main class declaration
@@ -216,14 +227,14 @@
 
 ## 0.2.1
 
-### 2013-10-31 - Functionality Improvement (non-SemVer increment)
+### 2013-10-31 - Feature Release (non-SemVer)
 
 #### Fact: `esx_version`
   * Adding support for vSphere 5.5. Thanks to [Ryan McKern](https://github.com/mckern) for the pull request [GitHub Issue #18](https://github.com/craigwatson/puppet-vmwaretools/pull/22)!
 
 ## 0.2.0
 
-### 2013-09-11 - Functionality Improvements
+### 2013-09-11 - Feature Release
 
 #### Fact: `esx_version`
   * New fact: reports the version of vSphere.
@@ -261,7 +272,7 @@
 
 ## 0.1.0
 
-### 2013-05-17 - Functionality Improvements
+### 2013-05-17 - Feature Release
 
 #### Fact: `vmwaretools_version`
   * Added "not installed" output if VMware Tools isn't installed
