@@ -2,7 +2,7 @@
 
 ## 2.1.0
 
-### TBD - Feature Release
+### 2015-08-15 - Feature Release
 
 #### Class: `vmwaretools`
   * New parameter: `ignore_autodetect` - this will allow bypassing of the autodetection mechanism that only runs the module on certain platforms. Only useful for testing, 
