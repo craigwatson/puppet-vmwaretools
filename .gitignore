@@ -1,6 +1,7 @@
 *.save
 pkg
 runrake.sh
+acceptance.sh
 spec/fixtures
 Gemfile
 Gemfile.lock
