@@ -88,10 +88,9 @@ class vmwaretools::params {
 
   $purge_package_list = [ 'open-vm-tools', 'open-vm-dkms', 'vmware-tools-services',
                           'vmware-tools-foundation', 'open-vm-tools-desktop',
-                          'open-vm-source', 'open-vm-toolbox', 'open-vm-tools',
-                          'open-vm-tools-dbg', 'open-vm-tools-gui', 'vmware-kmp-debug',
-                          'vmware-kmp-default', 'vmware-kmp-pae', 'vmware-kmp-trace',
-                          'vmware-guest-kmp-debug', 'vmware-guest-kmp-default',
-                          'vmware-guest-kmp-desktop', 'vmware-guest-kmp-pae',
-                          'libvmtools-devel', 'libvmtools0' ]
+                          'open-vm-source', 'open-vm-toolbox', 'open-vm-tools-dbg',
+                          'open-vm-tools-gui', 'vmware-kmp-debug', 'vmware-kmp-default',
+                          'vmware-kmp-pae', 'vmware-kmp-trace', 'vmware-guest-kmp-debug',
+                          'vmware-guest-kmp-default', 'vmware-guest-kmp-desktop',
+                          'vmware-guest-kmp-pae', 'libvmtools-devel', 'libvmtools0' ]
 }
