@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.1.2
+
+### 2015-09-10 - Bugfix Release
+
+#### Class: `vmwaretools::params`
+  * Corrected double declaration of `open-vm-tools` package - thanks to [SyBernot](https://github.com/SyBernot) for pull request [#74](https://github.com/craigwatson/puppet-vmwaretools/pull/74).
+
 ## 2.1.1
 
 ### 2015-09-03 - Bugfix Release
