@@ -37,7 +37,7 @@ Upgrading of currently installed VMware Tools packages is also supported - the m
 * Compares installed version with the configured version via the `vmwaretools` fact
 * Transfer the VMware Tools archive to the target agent (via Puppet or HTTP)
 * Untar the archive and run vmware-install-tools.pl (warning: this installer is run with the `-d` flag to accept all default answers).
-* Removes the `open-vm-tools` package.
+* Removes several packages, see [params.pp](https://github.com/craigwatson/puppet-vmwaretools/blob/master/manifests/params.pp#L89) for the complete list.
 
 ### Setup Requirements
 

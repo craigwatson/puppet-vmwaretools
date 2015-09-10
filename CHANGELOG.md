@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.1.1
+
+### 2015-09-03 - Bugfix Release
+
+#### Class: `vmwaretools::params`
+  * Adding packages to purge list, thanks to [Juan José Presa](https://github.com/juaningan) for PR [#73](https://github.com/craigwatson/puppet-vmwaretools/pull/73) (solves bug [#72](https://github.com/craigwatson/puppet-vmwaretools/issues/72)) - for full package list, see [params.pp](https://github.com/craigwatson/puppet-vmwaretools/blob/master/manifests/params.pp#L89).
+
 ## 2.1.0
 
 ### 2015-08-15 - Feature Release

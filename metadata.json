@@ -1,6 +1,6 @@
 {
   "name": "CraigWatson1987-vmwaretools",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "Craig Watson",
   "summary": "Manage installation of VMware Tools via the archive distributed with vSphere, either via Puppet or HTTP.",
   "license": "Apache-2.0",
