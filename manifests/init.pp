@@ -123,7 +123,8 @@ class vmwaretools (
   $timesync             = undef,
   $manage_dev_pkgs      = true,
   $manage_perl_pkgs     = true,
-  $manage_curl_pkgs     = true
+  $manage_curl_pkgs     = true,
+  $curl_proxy           = undef
 ) {
 
   # Validate parameters where appropriate
