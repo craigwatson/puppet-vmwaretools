@@ -13,12 +13,13 @@ function check_exec {
 DOWNLOAD_URL="<%= scope.lookupvar('vmwaretools::archive_url') %>/VMwareTools-<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
 DOWNLOAD_LOCATION="<%= scope.lookupvar('vmwaretools::working_dir') %>/VMwareTools-<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
 GOOD_CHECKSUM="<%= scope.lookupvar('vmwaretools::archive_md5') %>"
+CURL_PROXY="<%= scope.lookupvar('vmwaretools::curl_proxy') %>"
 
 check_exec "/usr/bin/curl"
 check_exec "/usr/bin/md5sum"
 check_exec "<%= scope.lookupvar('vmwaretools::params::awk_path') %>"
 
-/usr/bin/curl -s ${DOWNLOAD_URL} -o ${DOWNLOAD_LOCATION} <% if @curl_proxy -%>-x <%= @curl_proxy %><% end %>
+/usr/bin/curl -s ${DOWNLOAD_URL} -o ${DOWNLOAD_LOCATION} <% if scope.lookupvar('vmwaretools::curl_proxy') -%>-x ${CURL_PROXY}<% end %>
 
 if [ $? -gt 0 ]; then
   echo "Download failed from url ${DOWNLOAD_URL}" >&2
