@@ -33,6 +33,11 @@
 #   md5sum of the archive - required if using an HTTP location above.
 #   Default: '' (empty string)
 #
+# [*curl_proxy*]
+#   Specify an HTTP proxy to be used with curl when downloading the archive.
+#   This can be of the format http://<hostname>:<port>
+#   Default: undef (no proxy usage)
+#
 # [*fail_on_non_vmware*]
 #   Output a hard failure message if the module is run on non-vmware hardware.
 #   Default: false (boolean)
