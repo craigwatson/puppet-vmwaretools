@@ -1,5 +1,15 @@
 # Change Log
 
+## 2.2.0
+
+### 2016-03-14 - Feature Release
+
+### Class: `vmwaretools`
+  * New parameter: `curl_proxy` (default: `undef`). This controls the passing of proxy options to the download.sh script - thanks [dutsmiller](https://github.com/dutsmiller) for pull request [#78](https://github.com/craigwatson/puppet-vmwaretools/pull/78)
+
+### Template: `download.sh.erb`
+  * Optionally pass `-x` to `curl`
+
 ## 2.1.2
 
 ### 2015-09-10 - Bugfix Release
@@ -19,7 +29,7 @@
 ### 2015-08-15 - Feature Release
 
 #### Class: `vmwaretools`
-  * New parameter: `ignore_autodetect` - this will allow bypassing of the autodetection mechanism that only runs the module on certain platforms. Only useful for testing, 
+  * New parameter: `ignore_autodetect` - this will allow bypassing of the autodetection mechanism that only runs the module on certain platforms. Only useful for testing,
 defaults to `false`.
 
 #### Fact: `vmwaretools_version`
