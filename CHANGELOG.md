@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.2.1
+
+### 2016-03-25 - Bugfix Release
+
+### Class: `vmwaretools`
+  * Fixing Puppet 4 issue with `undef` default value for `curl_proxy` parameter (new default - `false`) - thanks [dutsmiller](https://github.com/dutsmiller) for pull request [#79](https://github.com/craigwatson/puppet-vmwaretools/pull/79)
+
 ## 2.2.0
 
 ### 2016-03-14 - Feature Release
