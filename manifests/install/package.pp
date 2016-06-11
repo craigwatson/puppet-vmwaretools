@@ -22,20 +22,14 @@
 #
 class vmwaretools::install::package {
 
-  package { $vmwaretools::params::purge_package_list:
-    ensure => $vmwaretools::params::purge_package_ensure,
+  ensure_packages([$vmwaretools::params::purge_package_list], {'ensure' => $vmwaretools::params::purge_package_ensure})
+
+  if $vmwaretools::manage_perl_pkgs == true {
+    ensure_packages(['perl'], {'ensure' => 'present'})
   }
 
-  if (($vmwaretools::manage_perl_pkgs == true) and (!defined(Package['perl']))) {
-    package { 'perl':
-      ensure => present,
-    }
-  }
-
-  if (($vmwaretools::manage_curl_pkgs) and ($vmwaretools::download_vmwaretools == true) and (!defined(Package['curl']))) {
-    package { 'curl':
-      ensure => present,
-    }
+  if ($vmwaretools::manage_curl_pkgs == true) and ($vmwaretools::download_vmwaretools == true) {
+    ensure_packages(['curl'], {'ensure' => 'present'})
   }
 
   if $vmwaretools::manage_dev_pkgs == true {
@@ -43,53 +37,24 @@ class vmwaretools::install::package {
       'Debian' : {
         case $::operatingsystem {
           'Ubuntu' : {
-            if ! defined(Package['build-essential']) {
-              package{'build-essential':
-                ensure => present,
-              }
-            }
-            if ! defined(Package["linux-headers-${::kernelrelease}"]) {
-              package{"linux-headers-${::kernelrelease}":
-                ensure => present,
-              }
-            }
+            ensure_packages(['build-essential',"linux-headers-${::kernelrelease}"], {'ensure' => 'present'})
           }
           'Debian' : {
-            if ! defined(Package["linux-headers-${::kernelrelease}"]) {
-              package{"linux-headers-${::kernelrelease}":
-                ensure => present,
-              }
-            }
+            ensure_packages(["linux-headers-${::kernelrelease}"], {'ensure' => 'present'})
           }
-
           default : { fail "${::operatingsystem} not supported yet." }
         }
       }
 
       'RedHat' : {
         if $vmwaretools::install_devel == true {
-          if ! defined(Package[$vmwaretools::params::redhat_devel_package]) {
-            package{$vmwaretools::params::redhat_devel_package:
-              ensure => present,
-            }
-          }
-          if ! defined(Package['gcc']) {
-            package{'gcc':
-              ensure => present,
-            }
-          }
+          ensure_packages([$vmwaretools::params::redhat_devel_package,'gcc'], {'ensure' => 'present'})
         }
       }
 
       'Suse'   : {
         if $vmwaretools::install_devel == true {
-          if ! defined(Package['kernel-source']) {
-            package { 'kernel-source': ensure => present, }
-          }
-
-          if ! defined(Package['gcc']) {
-            package { 'gcc': ensure => present, }
-          }
+          ensure_packages(['kernel-source','gcc'], {'ensure' => 'present'})
         }
       }
 

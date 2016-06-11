@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.2.2
+
+### 2016-06-11 - Bugfix Release
+
+### Class: `vmwaretools::install::package`
+  * Now using stdlib's `ensure_packages` function rather than declaring packages manually to reduce the risk of collisions
+
 ## 2.2.1
 
 ### 2016-03-25 - Bugfix Release
