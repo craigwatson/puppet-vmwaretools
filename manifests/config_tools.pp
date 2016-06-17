@@ -17,7 +17,7 @@
 #
 class vmwaretools::config_tools {
 
-  if $vmwaretools::params::deploy_files {
+  if $::vmwaretools::params::deploy_files {
     Exec['vmware_config_tools'] {
       require => Exec['clean_vmwaretools'],
     }

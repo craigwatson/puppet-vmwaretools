@@ -22,17 +22,17 @@
 #
 class vmwaretools::install::package {
 
-  ensure_packages([$vmwaretools::params::purge_package_list], {'ensure' => $vmwaretools::params::purge_package_ensure})
+  ensure_packages([$::vmwaretools::params::purge_package_list], {'ensure' => $::vmwaretools::params::purge_package_ensure})
 
-  if $vmwaretools::manage_perl_pkgs == true {
+  if $::vmwaretools::manage_perl_pkgs == true {
     ensure_packages(['perl'], {'ensure' => 'present'})
   }
 
-  if ($vmwaretools::manage_curl_pkgs == true) and ($vmwaretools::download_vmwaretools == true) {
+  if ($::vmwaretools::manage_curl_pkgs == true) and ($::vmwaretools::download_vmwaretools == true) {
     ensure_packages(['curl'], {'ensure' => 'present'})
   }
 
-  if $vmwaretools::manage_dev_pkgs == true {
+  if $::vmwaretools::manage_dev_pkgs == true {
     case $::osfamily {
       'Debian' : {
         case $::operatingsystem {
@@ -47,13 +47,13 @@ class vmwaretools::install::package {
       }
 
       'RedHat' : {
-        if $vmwaretools::install_devel == true {
+        if $::vmwaretools::install_devel == true {
           ensure_packages([$vmwaretools::params::redhat_devel_package,'gcc'], {'ensure' => 'present'})
         }
       }
 
       'Suse'   : {
-        if $vmwaretools::install_devel == true {
+        if $::vmwaretools::install_devel == true {
           ensure_packages(['kernel-source','gcc'], {'ensure' => 'present'})
         }
       }

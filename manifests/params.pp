@@ -18,34 +18,38 @@
 #
 class vmwaretools::params {
 
+  $_deploy_files = undef
+
   # If nothing is installed, deploy.
   if $::vmwaretools_version == 'not installed' {
-    $deploy_files = true
+    $_deploy_files = true
   } else {
 
     # Do not deploy if the Puppet version is lower than the installed version
-    if $vmwaretools::prevent_downgrade == true {
-      if versioncmp($vmwaretools::version,$::vmwaretools_version) < 0 {
-        $deploy_files = false
+    if $::vmwaretools::prevent_downgrade == true {
+      if versioncmp($::vmwaretools::version,$::vmwaretools_version) < 0 {
+        $_deploy_files = false
       }
     }
 
     # Do not deploy if the Puppet version is higher than the installed version
-    if $vmwaretools::prevent_upgrade == true {
-      if versioncmp($vmwaretools::version,$::vmwaretools_version) > 0 {
-        $deploy_files = false
+    if $::vmwaretools::prevent_upgrade == true {
+      if versioncmp($::vmwaretools::version,$::vmwaretools_version) > 0 {
+        $_deploy_files = false
       }
     }
 
     # If tools are installed and we're not preventing a downgrade or upgrade, deploy on version mismatch
-    if ($vmwaretools::prevent_downgrade == false) and ($vmwaretools::prevent_upgrade == false)  {
-      if $::vmwaretools_version == $vmwaretools::version {
-        $deploy_files = false
+    if ($::vmwaretools::prevent_downgrade == false) and ($::vmwaretools::prevent_upgrade == false)  {
+      if $::vmwaretools_version == $::vmwaretools::version {
+        $_deploy_files = false
       } else {
-        $deploy_files = true
+        $_deploy_files = true
       }
     }
   }
+
+  $deploy_files = pick($_deploy_files, false)
 
   $awk_path = $::osfamily ? {
     'RedHat' => '/bin/awk',
@@ -53,8 +57,8 @@ class vmwaretools::params {
     default  => '/usr/bin/awk',
   }
 
-  if $vmwaretools::force_install == true {
-    $install_command = "echo 'yes' | ${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl"
+  if $::vmwaretools::force_install == true {
+    $install_command = "echo 'yes' | ${::vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl"
   } else {
     $install_command = "${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl -d"
   }

@@ -17,7 +17,7 @@
 #
 class vmwaretools::timesync {
 
-  case $vmwaretools::timesync {
+  case $::vmwaretools::timesync == true {
     true: {
       $cmd_action = 'enable'
       $cmd_grep   = 'Disabled'
@@ -29,11 +29,11 @@ class vmwaretools::timesync {
     }
 
     default: {
-      fail "Unsupported value ${vmwaretools::timesync} for vmwaretools::timesync."
+      fail "Unsupported value ${::vmwaretools::timesync} for ::vmwaretools::timesync."
     }
   }
 
-  if $vmwaretools::params::deploy_files == true {
+  if $::vmwaretools::params::deploy_files == true {
     Exec["vmwaretools_timesync_${cmd_action}"] {
       require => Exec['vmware_config_tools'],
     }

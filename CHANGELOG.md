@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.2.4
+
+### TBC - Bugfix Release
+
+#### Global
+  * Fixing `Unknown variable: 'deploy_files'` warnings properly
+  * Using top-scope everywhere within the module
+
 ## 2.2.3
 
 ### 2016-06-17 - Bugfix Release
