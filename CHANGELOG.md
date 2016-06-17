@@ -1,5 +1,15 @@
 # Change Log
 
+## 2.2.3
+
+### 2016-06-17 - Bugfix Release
+
+### Class: `vmwaretools::params`
+  * Changing logic behind `deploy_files` parameter to fix `Unknown variable: 'deploy_files'` warnings
+
+### Global
+  * Fixing permissions issues reported in [#81](https://github.com/craigwatson/puppet-vmwaretools/issues/81)
+
 ## 2.2.2
 
 ### 2016-06-11 - Bugfix Release

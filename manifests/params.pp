@@ -18,34 +18,31 @@
 #
 class vmwaretools::params {
 
+  # If nothing is installed, deploy.
   if $::vmwaretools_version == 'not installed' {
-    # If nothing is installed, deploy.
     $deploy_files = true
   } else {
 
-    # If tools are installed, are we handling downgrades or upgrades?
-    if $vmwaretools::prevent_downgrade {
-
+    # Do not deploy if the Puppet version is lower than the installed version
+    if $vmwaretools::prevent_downgrade == true {
       if versioncmp($vmwaretools::version,$::vmwaretools_version) < 0 {
-        # Do not deploy if the Puppet version is lower than the installed version
         $deploy_files = false
       }
     }
 
-    if $vmwaretools::prevent_upgrade {
-
+    # Do not deploy if the Puppet version is higher than the installed version
+    if $vmwaretools::prevent_upgrade == true {
       if versioncmp($vmwaretools::version,$::vmwaretools_version) > 0 {
-        # Do not deploy if the Puppet version is higher than the installed version
         $deploy_files = false
       }
     }
 
-    if $deploy_files == undef {
-
-      # If tools are installed and we're not preventing a downgrade or upgrade, deploy on version mismatch
-      $deploy_files = $::vmwaretools_version ? {
-        $vmwaretools::version => false,
-        default               => true,
+    # If tools are installed and we're not preventing a downgrade or upgrade, deploy on version mismatch
+    if ($vmwaretools::prevent_downgrade == false) and ($vmwaretools::prevent_upgrade == false)  {
+      if $::vmwaretools_version == $vmwaretools::version {
+        $deploy_files = false
+      } else {
+        $deploy_files = true
       }
     }
   }
