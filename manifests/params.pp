@@ -45,7 +45,7 @@ class vmwaretools::params {
     default => '0'
   }
 
-  if (($archive_url == 'puppet') or ($archive_url =~ /^puppet:\/\//)) {
+  if ($::vmwaretools::archive_url == 'puppet') or ($::vmwaretools::archive_url =~ /^puppet:\/\//) {
     $download_vmwaretools = false
   } else {
     $download_vmwaretools = true
@@ -73,11 +73,11 @@ class vmwaretools::params {
     default  => purged,
   }
 
-  if $::osfamily == 'RedHat' and $::lsbmajdistrelease == '5' {
-    if ('PAE' in $::kernelrelease) {
+  if ($::osfamily == 'RedHat') and ($::lsbmajdistrelease == '5') {
+    if 'PAE' in $::kernelrelease {
       $kernel_extension = regsubst($::kernelrelease, 'PAE$', '')
       $redhat_devel_package = "kernel-PAE-devel-${kernel_extension}"
-    } elsif ('xen' in $::kernelrelease) {
+    } elsif 'xen' in $::kernelrelease {
       $kernel_extension = regsubst($::kernelrelease, 'xen$', '')
       $redhat_devel_package = "kernel-xen-devel-${kernel_extension}"
     } else {

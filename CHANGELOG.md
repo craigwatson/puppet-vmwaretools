@@ -14,6 +14,10 @@
 ### Class: `vmwaretools::install::exec`
   * Do not require the `curl` package is `vmwaretools::manage_curl_pkgs` is `false` (possible dependency problem)
 
+### Template: `download.sh.erb`
+  * Adding failed download clean-up function
+  * Making the script slightly more glob-proof
+
 #### Global
   * Using top-scope everywhere within the module
 

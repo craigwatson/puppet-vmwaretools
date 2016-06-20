@@ -178,24 +178,24 @@ class vmwaretools (
 
   if ($ignore_autodetect == true) or ((str2bool("${::is_virtual}")) and ($::virtual == 'vmware') and ($::kernel == 'Linux')) {
 
-    if ($::vmwaretools_version == undef) {
+    if $::vmwaretools_version == undef {
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
     }
 
-    if ($::lsbdistcodename == 'raring') {
+    if $::lsbdistcodename == 'raring' {
       fail 'Ubuntu 13.04 is not supported by this module'
     }
 
     include ::vmwaretools::params
 
-    if (($::vmwaretools::params::download_vmwaretools == true) and ($archive_md5 == '')) {
+    if ($::vmwaretools::params::download_vmwaretools == true) and ($archive_md5 == '') {
       fail 'MD5 not given for VMware Tools installer package'
     }
 
     include ::vmwaretools::install
     include ::vmwaretools::config_tools
 
-    if ($timesync != undef) {
+    if $timesync != undef {
       include ::vmwaretools::timesync
     }
   } elsif ($fail_on_non_vmware == true) and ((str2bool($::is_virtual) == false) or ($::virtual != 'vmware')) {
