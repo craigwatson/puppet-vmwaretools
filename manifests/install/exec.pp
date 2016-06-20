@@ -37,7 +37,7 @@ class vmwaretools::install::exec {
     exec { 'download_vmwaretools':
       command     => "${::vmwaretools::working_dir}/download.sh",
       creates     => "${::vmwaretools::working_dir}/VMwareTools-${::vmwaretools::version}.tar.gz",
-      require     => $download_require
+      require     => $download_require,
       refreshonly => false,
       notify      => Exec['uncompress_vmwaretools'],
     }
