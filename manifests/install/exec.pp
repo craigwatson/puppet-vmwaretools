@@ -26,10 +26,17 @@ class vmwaretools::install::exec {
     timeout     => 0,
   }
 
-  if $::vmwaretools::download_vmwaretools == true {
+  if $::vmwaretools::params::download_vmwaretools == true {
+
+    if $::vmwaretools::manage_curl_pkgs == true {
+      $download_require = [Package['curl'],File["${::vmwaretools::working_dir}/download.sh"]]
+    } else {
+      $download_require = File["${::vmwaretools::working_dir}/download.sh"]
+    }
+
     exec { 'download_vmwaretools':
       command => "${::vmwaretools::working_dir}/download.sh",
-      require => [Package['curl'],File["${::vmwaretools::working_dir}/download.sh"]],
+      require => $download_require,
       notify  => Exec['uncompress_vmwaretools'],
     }
 

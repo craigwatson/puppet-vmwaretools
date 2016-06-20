@@ -18,38 +18,38 @@
 #
 class vmwaretools::params {
 
-  $_deploy_files = undef
-
-  # If nothing is installed, deploy.
   if $::vmwaretools_version == 'not installed' {
-    $_deploy_files = true
-  } else {
-
-    # Do not deploy if the Puppet version is lower than the installed version
+    # If nothing is installed, deploy.
+    $deploy_files = true
+  } elsif versioncmp($::vmwaretools::version,$::vmwaretools_version) == 0 {
+    # If versions are the same, do not deploy.
+    $deploy_files = false
+  } elsif versioncmp($::vmwaretools::version,$::vmwaretools_version) < 0 {
+    # Action would be a downgrade
     if $::vmwaretools::prevent_downgrade == true {
-      if versioncmp($::vmwaretools::version,$::vmwaretools_version) < 0 {
-        $_deploy_files = false
-      }
+      $deploy_files = false
+    } else {
+      $deploy_files = true
     }
-
-    # Do not deploy if the Puppet version is higher than the installed version
+  } elsif versioncmp($::vmwaretools::version,$::vmwaretools_version) > 0 {
+    # Action would be an upgrade
     if $::vmwaretools::prevent_upgrade == true {
-      if versioncmp($::vmwaretools::version,$::vmwaretools_version) > 0 {
-        $_deploy_files = false
-      }
-    }
-
-    # If tools are installed and we're not preventing a downgrade or upgrade, deploy on version mismatch
-    if ($::vmwaretools::prevent_downgrade == false) and ($::vmwaretools::prevent_upgrade == false)  {
-      if $::vmwaretools_version == $::vmwaretools::version {
-        $_deploy_files = false
-      } else {
-        $_deploy_files = true
-      }
+      $deploy_files = false
+    } else {
+      $deploy_files = true
     }
   }
 
-  $deploy_files = pick($_deploy_files, false)
+  $clean_failed = $::vmwaretools::clean_failed_download ? {
+    true    => '1',
+    default => '0'
+  }
+
+  if (($archive_url == 'puppet') or ($archive_url =~ /^puppet:\/\//)) {
+    $download_vmwaretools = false
+  } else {
+    $download_vmwaretools = true
+  }
 
   $awk_path = $::osfamily ? {
     'RedHat' => '/bin/awk',

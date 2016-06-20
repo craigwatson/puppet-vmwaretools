@@ -1,7 +1,7 @@
 #! /bin/bash
 
-# Published under the GNU General Public License v3
-# Copyright (c) Craig Watson 2012
+# Published under the Apache License v2.0
+# Copyright (c) Craig Watson
 
 function check_exec {
   if [ ! -x $1 ]; then
@@ -10,28 +10,39 @@ function check_exec {
   fi
 }
 
-DOWNLOAD_URL="<%= scope.lookupvar('vmwaretools::archive_url') %>/VMwareTools-<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
-DOWNLOAD_LOCATION="<%= scope.lookupvar('vmwaretools::working_dir') %>/VMwareTools-<%= scope.lookupvar('vmwaretools::version') %>.tar.gz"
-GOOD_CHECKSUM="<%= scope.lookupvar('vmwaretools::archive_md5') %>"
+function clean_download {
+  if [ ${CLEAN_FAILED_DOWNLOAD} -eq 1 ]; then
+    if [ -f "${DOWNLOAD_LOCATION}" ]; then
+      echo "Removing downloaded archive." >&2
+      rm "${DOWNLOAD_LOCATION}"
+    fi
+  fi
+}
+
+DOWNLOAD_URL="<%= scope['::vmwaretools::archive_url'] %>/VMwareTools-<%= scope.['::vmwaretools::version'] %>.tar.gz"
+DOWNLOAD_LOCATION="<%= scope['::vmwaretools::working_dir'] %>/VMwareTools-<%= scope['::vmwaretools::version'] %>.tar.gz"
+GOOD_CHECKSUM="<%= scope['::vmwaretools::archive_md5'] %>"
+CLEAN_FAILED_DOWNLOAD=<%= scope['::vmwaretools::params::clean_failed'] %>
 
 check_exec "/usr/bin/curl"
 check_exec "/usr/bin/md5sum"
-check_exec "<%= scope.lookupvar('vmwaretools::params::awk_path') %>"
+check_exec "<%= scope['::vmwaretools::params::awk_path'] %>"
 
-/usr/bin/curl -s ${DOWNLOAD_URL} -o ${DOWNLOAD_LOCATION}<% if scope.lookupvar('vmwaretools::curl_proxy') -%> -x <%= scope.lookupvar('vmwaretools::curl_proxy') %><% end %>
+/usr/bin/curl -s ${DOWNLOAD_URL} -o "${DOWNLOAD_LOCATION}"<% if scope['::vmwaretools::curl_proxy'] -%> -x <%= scope['::vmwaretools::curl_proxy'] %><% end %>
 
 if [ $? -gt 0 ]; then
   echo "Download failed from url ${DOWNLOAD_URL}" >&2
+  clean_download
   exit 1
 fi
 
 chmod 600 ${DOWNLOAD_LOCATION}
 
-DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum ${DOWNLOAD_LOCATION} | <%= scope.lookupvar('vmwaretools::params::awk_path') %> '{ print $1 }')
+DOWNLOADED_CHECKSUM=$(/usr/bin/md5sum "${DOWNLOAD_LOCATION}" | <%= scope['::vmwaretools::params::awk_path'] %> '{ print $1 }')
 
 if [ "${DOWNLOADED_CHECKSUM}" != "${GOOD_CHECKSUM}" ]; then
-  echo "Checksum mismatch. Got ${DOWNLOADED_CHECKSUM}, should have been ${GOOD_CHECKSUM} -- removing downloaded archive." >&2
-  rm ${DOWNLOAD_LOCATION}
+  echo "Checksum mismatch. Got ${DOWNLOADED_CHECKSUM}, should have been ${GOOD_CHECKSUM}." >&2
+  clean_download
   exit 1
 else
   exit 0

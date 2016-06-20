@@ -33,11 +33,6 @@
 #   md5sum of the archive - required if using an HTTP location above.
 #   Default: '' (empty string)
 #
-# [*curl_proxy*]
-#   Specify an HTTP proxy to be used with curl when downloading the archive.
-#   This can be of the format http://<hostname>:<port>
-#   Default: false (no proxy usage)
-#
 # [*fail_on_non_vmware*]
 #   Output a hard failure message if the module is run on non-vmware hardware.
 #   Default: false (boolean)
@@ -79,6 +74,35 @@
 #   synchronisation, and undef will disable management of timesync altogether.
 #   Default: undef (UNDEFINED)
 #
+# [*manage_dev_pkgs*]
+#   Whether to install kernel devel packages which are used for compiling VMware
+#   Tools on operating systems without pre-built binaries.
+#   Default: true (boolean)
+#
+# [*manage_perl_pkgs*]
+#   Whether to install perl, which is used to run the installer. Useful when
+#   other modules are managing the package, although we use stdlib's
+#   ensure_package resource which should eliminate most issues.
+#   NOTE that the installer will fail without perl present on the sytem.
+#   Default: true (boolean)
+#
+# [*manage_curl_pkgs*]
+#   Whether to install curl, which is used to download the VMware Tools from an
+#   HTTP location. Useful when other modules are managing the package, although
+#   we use stdlib's ensure_package resource which should eliminate most issues.
+#   Default: true (boolean)
+#
+# [*clean_failed_download*]
+#   Whether to remove failed HTTP downloads. This ensures that broken downloads
+#   are automatically retried on the next Puppet run.
+#   NOTE: This will default to true in a later release of this module.
+#   Default: false (boolean)
+#
+# [*curl_proxy*]
+#   Specify an HTTP proxy to be used with curl when downloading the archive.
+#   This can be of the format http://<hostname>:<port>
+#   Default: false (no proxy usage)
+#
 # == Actions:
 #
 # * Compares installed version with the configured version
@@ -114,22 +138,23 @@
 # Copyright (C) Craig Watson
 # Published under the Apache License v2.0
 class vmwaretools (
-  $version              = '9.0.0-782409',
-  $working_dir          = '/tmp/vmwaretools',
-  $install_devel        = false,
-  $archive_url          = 'puppet',
-  $archive_md5          = '',
-  $fail_on_non_vmware   = false,
-  $keep_working_dir     = false,
-  $ignore_autodetect    = false,
-  $force_install        = false,
-  $prevent_downgrade    = true,
-  $prevent_upgrade      = false,
-  $timesync             = undef,
-  $manage_dev_pkgs      = true,
-  $manage_perl_pkgs     = true,
-  $manage_curl_pkgs     = true,
-  $curl_proxy           = false
+  $version               = '9.0.0-782409',
+  $working_dir           = '/tmp/vmwaretools',
+  $install_devel         = false,
+  $archive_url           = 'puppet',
+  $archive_md5           = '',
+  $fail_on_non_vmware    = false,
+  $keep_working_dir      = false,
+  $ignore_autodetect     = false,
+  $force_install         = false,
+  $prevent_downgrade     = true,
+  $prevent_upgrade       = false,
+  $timesync              = undef,
+  $manage_dev_pkgs       = true,
+  $manage_perl_pkgs      = true,
+  $manage_curl_pkgs      = true,
+  $curl_proxy            = false,
+  $clean_failed_download = false,
 ) {
 
   # Validate parameters where appropriate
@@ -144,6 +169,7 @@ class vmwaretools (
   validate_bool($keep_working_dir)
   validate_bool($prevent_downgrade)
   validate_bool($prevent_upgrade)
+  validate_bool($clean_failed_download)
 
   # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
   # the quoted-boolean warning here. Related links below:
@@ -156,26 +182,21 @@ class vmwaretools (
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
     }
 
-    if (($archive_url == 'puppet') or ($archive_url =~ /^puppet:\/\//)) {
-      $download_vmwaretools = false
-    } else {
-      $download_vmwaretools = true
-    }
-
-    if (($download_vmwaretools == true) and ($archive_md5 == '')) {
-      fail 'MD5 not given for VMware Tools installer package'
-    }
-
     if ($::lsbdistcodename == 'raring') {
       fail 'Ubuntu 13.04 is not supported by this module'
     }
 
-    include vmwaretools::params
-    include vmwaretools::install
-    include vmwaretools::config_tools
+    include ::vmwaretools::params
+
+    if (($::vmwaretools::params::download_vmwaretools == true) and ($archive_md5 == '')) {
+      fail 'MD5 not given for VMware Tools installer package'
+    }
+
+    include ::vmwaretools::install
+    include ::vmwaretools::config_tools
 
     if ($timesync != undef) {
-      include vmwaretools::timesync
+      include ::vmwaretools::timesync
     }
   } elsif ($fail_on_non_vmware == true) and ((str2bool($::is_virtual) == false) or ($::virtual != 'vmware')) {
     fail 'Not a VMware platform.'

@@ -28,7 +28,7 @@ class vmwaretools::install::package {
     ensure_packages(['perl'], {'ensure' => 'present'})
   }
 
-  if ($::vmwaretools::manage_curl_pkgs == true) and ($::vmwaretools::download_vmwaretools == true) {
+  if ($::vmwaretools::manage_curl_pkgs == true) and ($::vmwaretools::params::download_vmwaretools == true) {
     ensure_packages(['curl'], {'ensure' => 'present'})
   }
 

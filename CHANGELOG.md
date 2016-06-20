@@ -1,11 +1,20 @@
 # Change Log
 
-## 2.2.4
+## 2.3.0
 
-### TBC - Bugfix Release
+### TBC - Feature Release
+
+### Class: `vmwaretools`
+  * New parameter: `clean_failed_downloads` (default: `false`). As requested in [#80](https://github.com/craigwatson/puppet-vmwaretools/issues/80), setting this to `true` will cause the HTTP download script to remove the downloaded copy of the archive on failure. **NOTE** that this will be default to `true` in a future release.
+
+### Class: `vmwaretools::params`
+  * Majorly reworked logic for `deploy_files` to fully remove `Unknown variable` warnings and odd deployment behaviour on Puppet 3.
+  * Moved `download_vmwaretools` variable from main class
+
+### Class: `vmwaretools::install::exec`
+  * Do not require the `curl` package is `vmwaretools::manage_curl_pkgs` is `false` (possible dependency problem)
 
 #### Global
-  * Fixing `Unknown variable: 'deploy_files'` warnings properly
   * Using top-scope everywhere within the module
 
 ## 2.2.3
