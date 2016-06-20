@@ -34,7 +34,7 @@ class vmwaretools::install::archive {
       notify  => Exec['uncompress_vmwaretools'],
     }
 
-  } elsif ( 'puppet://' in $::vmwaretools::archive_url ) {
+  } elsif $::vmwaretools::archive_url =~ /^puppet:\/\// {
 
     File["${::vmwaretools::working_dir}/VMwareTools-${::vmwaretools::version}.tar.gz"] {
       ensure  => file,
