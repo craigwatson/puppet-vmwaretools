@@ -19,7 +19,7 @@ function clean_download {
   fi
 }
 
-DOWNLOAD_URL="<%= scope['::vmwaretools::archive_url'] %>/VMwareTools-<%= scope.['::vmwaretools::version'] %>.tar.gz"
+DOWNLOAD_URL="<%= scope['::vmwaretools::archive_url'] %>/VMwareTools-<%= scope['::vmwaretools::version'] %>.tar.gz"
 DOWNLOAD_LOCATION="<%= scope['::vmwaretools::working_dir'] %>/VMwareTools-<%= scope['::vmwaretools::version'] %>.tar.gz"
 GOOD_CHECKSUM="<%= scope['::vmwaretools::archive_md5'] %>"
 CLEAN_FAILED_DOWNLOAD=<%= scope['::vmwaretools::params::clean_failed'] %>
