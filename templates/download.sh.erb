@@ -28,7 +28,7 @@ check_exec "/usr/bin/curl"
 check_exec "/usr/bin/md5sum"
 check_exec "<%= scope['::vmwaretools::params::awk_path'] %>"
 
-/usr/bin/curl -s ${DOWNLOAD_URL} -o "${DOWNLOAD_LOCATION}"<% if scope['::vmwaretools::curl_proxy'] -%> -x <%= scope['::vmwaretools::curl_proxy'] %><% end %>
+/usr/bin/curl -s "${DOWNLOAD_URL}" -o "${DOWNLOAD_LOCATION}"<% if scope['::vmwaretools::curl_proxy'] -%> -x <%= scope['::vmwaretools::curl_proxy'] %><% end %>
 
 if [ $? -gt 0 ]; then
   echo "Download failed from url ${DOWNLOAD_URL}" >&2
