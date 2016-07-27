@@ -34,6 +34,8 @@ Facter.add(:esx_version) do
               '5.5'
             when '0xE9A40'
               '6.0'
+            when '0xE99E0'
+              '6.0 update 2'
             else
               "unknown, please report #{bios_address}"
           end
