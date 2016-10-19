@@ -2,7 +2,7 @@
 
 ## 2.3.0
 
-### TBC - Feature Release
+### 2016-06-20 - Feature Release
 
 ### Class: `vmwaretools`
   * New parameter: `clean_failed_downloads` (default: `false`). As requested in [#80](https://github.com/craigwatson/puppet-vmwaretools/issues/80), setting this to `true` will cause the HTTP download script to remove the downloaded copy of the archive on failure. **NOTE** that this will be default to `true` in a future release.
