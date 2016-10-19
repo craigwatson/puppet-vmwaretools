@@ -176,7 +176,9 @@ class vmwaretools (
   # https://tickets.puppetlabs.com/browse/FACT-151
   # https://projects.puppetlabs.com/issues/3704
 
+  # lint:ignore:only_variable_string
   if ($ignore_autodetect == true) or ((str2bool("${::is_virtual}")) and ($::virtual == 'vmware') and ($::kernel == 'Linux')) {
+  # lint:endignore
 
     if $::vmwaretools_version == undef {
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'

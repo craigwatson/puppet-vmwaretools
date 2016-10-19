@@ -62,7 +62,9 @@ class vmwaretools::install::exec {
       require => Exec['uncompress_vmwaretools'],
       notify  => Exec['clean_vmwaretools'];
     'clean_vmwaretools':
+      # lint:ignore:140chars
       command => "rm -rf ${::vmwaretools::working_dir}/vmware-tools-distrib && find ${::vmwaretools::working_dir}/*.tar.gz -not -name VMwareTools-${::vmwaretools::version}.tar.gz -delete",
+      # lint:endignore
       require => Exec['install_vmwaretools'];
   }
 

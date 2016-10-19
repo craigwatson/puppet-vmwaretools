@@ -268,7 +268,7 @@ GEM
     puppet-blacksmith (3.3.1)
       puppet (>= 2.7.16)
       rest-client
-    puppet-lint (0.3.2)
+    puppet-lint (2.0.2)
     puppet-syntax (2.1.0)
       rake
     puppetlabs_spec_helper (1.1.1)
@@ -363,9 +363,11 @@ DEPENDENCIES
   beaker
   beaker-rspec
   guard-rake
+  json (< 2.0.0)
+  json_pure (< 2.0.0)
   puppet (~> 3.8.7)
   puppet-blacksmith
-  puppet-lint (= 0.3.2)
+  puppet-lint (= 2.0.2)
   puppet-syntax
   puppetlabs_spec_helper
   rake
