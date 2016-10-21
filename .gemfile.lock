@@ -256,6 +256,9 @@ GEM
       shellany (~> 0.0)
     open_uri_redirections (0.2.1)
     os (0.9.6)
+    parallel (1.9.0)
+    parallel_tests (2.10.0)
+      parallel
     pkg-config (1.1.7)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -365,6 +368,7 @@ DEPENDENCIES
   guard-rake
   json (< 2.0.0)
   json_pure (< 2.0.0)
+  parallel_tests
   puppet (~> 3.8.7)
   puppet-blacksmith
   puppet-lint (= 2.0.2)
