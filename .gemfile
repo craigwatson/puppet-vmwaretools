@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 group :test do
   gem "rake"
-  gem 'parallel_tests'
   gem "puppet", ENV['PUPPET_VERSION'] || '~> 3.8.7'
   gem 'safe_yaml', '~> 1.0.4'
   gem "puppet-lint", '2.0.2'
