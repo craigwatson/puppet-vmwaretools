@@ -158,18 +158,19 @@ class vmwaretools (
 ) {
 
   # Validate parameters where appropriate
-  validate_string($version)
-  validate_absolute_path($working_dir)
-  validate_string($archive_url)
   validate_string($archive_md5)
-  validate_bool($ignore_autodetect)
-  validate_bool($install_devel)
-  validate_bool($manage_dev_pkgs)
-  validate_bool($fail_on_non_vmware)
-  validate_bool($keep_working_dir)
-  validate_bool($prevent_downgrade)
-  validate_bool($prevent_upgrade)
-  validate_bool($clean_failed_download)
+  validate_string($archive_url)
+  validate_string($version)
+
+  validate_legacy('Stdlib::Compat::Absolute_Path', 'validate_absolute_path', $working_dir)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $ignore_autodetect)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $install_devel)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $manage_dev_pkgs)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $fail_on_non_vmware)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $keep_working_dir)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $prevent_downgrade)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $prevent_upgrade)
+  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $clean_failed_download)
 
   # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
   # the quoted-boolean warning here. Related links below:
