@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rodjek/rspec-puppet.git
-  revision: 57e461d0b6f49120a2004a81bddf248906519548
+  revision: 186fcc36a2b8656856ab34fc926939a7f75e2349
   specs:
     rspec-puppet (2.5.0)
       rspec
