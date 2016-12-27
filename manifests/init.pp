@@ -159,7 +159,7 @@ class vmwaretools (
 
   # Validate parameters where appropriate
   validate_string($version)
-  validate_absolute_path($working_dir)
+  validate_legacy('Stdlib::Compat::Absolute_Path', 'validate_absolute_path', $working_dir)
   validate_string($archive_url)
   validate_string($archive_md5)
   validate_bool($ignore_autodetect)
