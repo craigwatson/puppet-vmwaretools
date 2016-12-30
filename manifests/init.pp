@@ -158,9 +158,9 @@ class vmwaretools (
 ) {
 
   # Validate parameters where appropriate
-  validate_string($archive_md5)
-  validate_string($archive_url)
-  validate_string($version)
+  validate_legacy('Stdlib::Compat::String','validate_string', $archive_md5)
+  validate_legacy('Stdlib::Compat::String','validate_string', $archive_url)
+  validate_legacy('Stdlib::Compat::String','validate_string', $version)
 
   validate_legacy('Stdlib::Compat::Absolute_Path', 'validate_absolute_path', $working_dir)
   validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $ignore_autodetect)
