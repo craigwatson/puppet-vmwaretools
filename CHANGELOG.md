@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.4.1
+
+### 2016-12-30 - Bugfix Release
+
+#### Class: `vmwaretools`
+  * Fixing more stdlib deprecation warnings
+
 ## 2.4.0
 
 ### 2016-12-30 - Feature Release
