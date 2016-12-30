@@ -1,20 +1,30 @@
 # Change Log
 
+## 2.4.0
+
+### 2016-12-30 - Feature Release
+
+#### Class: `vmwaretools`
+  * Fixing stdlib deprecation warnings
+
+#### Fact: `vmwaretools_version`
+  * Adding fact output for vSphere 6.5 as reported in [#81](https://github.com/craigwatson/puppet-vmwaretools/issues/80) by [topei](https://github.com/toepi)
+
 ## 2.3.0
 
 ### 2016-06-20 - Feature Release
 
-### Class: `vmwaretools`
+#### Class: `vmwaretools`
   * New parameter: `clean_failed_downloads` (default: `false`). As requested in [#80](https://github.com/craigwatson/puppet-vmwaretools/issues/80), setting this to `true` will cause the HTTP download script to remove the downloaded copy of the archive on failure. **NOTE** that this will be default to `true` in a future release.
 
-### Class: `vmwaretools::params`
+#### Class: `vmwaretools::params`
   * Majorly reworked logic for `deploy_files` to fully remove `Unknown variable` warnings and odd deployment behaviour on Puppet 3.
   * Moved `download_vmwaretools` variable from main class
 
-### Class: `vmwaretools::install::exec`
+#### Class: `vmwaretools::install::exec`
   * Do not require the `curl` package is `vmwaretools::manage_curl_pkgs` is `false` (possible dependency problem)
 
-### Template: `download.sh.erb`
+#### Template: `download.sh.erb`
   * Adding failed download clean-up function
   * Making the script slightly more glob-proof
 
@@ -25,34 +35,34 @@
 
 ### 2016-06-17 - Bugfix Release
 
-### Class: `vmwaretools::params`
+#### Class: `vmwaretools::params`
   * Changing logic behind `deploy_files` parameter to fix `Unknown variable: 'deploy_files'` warnings
 
-### Global
+#### Global
   * Fixing permissions issues reported in [#81](https://github.com/craigwatson/puppet-vmwaretools/issues/81)
 
 ## 2.2.2
 
 ### 2016-06-11 - Bugfix Release
 
-### Class: `vmwaretools::install::package`
+#### Class: `vmwaretools::install::package`
   * Now using stdlib's `ensure_packages` function rather than declaring packages manually to reduce the risk of collisions
 
 ## 2.2.1
 
 ### 2016-03-25 - Bugfix Release
 
-### Class: `vmwaretools`
+#### Class: `vmwaretools`
   * Fixing Puppet 4 issue with `undef` default value for `curl_proxy` parameter (new default - `false`) - thanks [dutsmiller](https://github.com/dutsmiller) for pull request [#79](https://github.com/craigwatson/puppet-vmwaretools/pull/79)
 
 ## 2.2.0
 
 ### 2016-03-14 - Feature Release
 
-### Class: `vmwaretools`
+#### Class: `vmwaretools`
   * New parameter: `curl_proxy` (default: `undef`). This controls the passing of proxy options to the download.sh script - thanks [dutsmiller](https://github.com/dutsmiller) for pull request [#78](https://github.com/craigwatson/puppet-vmwaretools/pull/78)
 
-### Template: `download.sh.erb`
+#### Template: `download.sh.erb`
   * Optionally pass `-x` to `curl`
 
 ## 2.1.2
