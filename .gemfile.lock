@@ -1,6 +1,6 @@
-∑GIT
+GIT
   remote: https://github.com/rodjek/rspec-puppet.git
-  revision: 186fcc36a2b8656856ab34fc926939a7f75e2349
+  revision: 57e461d0b6f49120a2004a81bddf248906519548
   specs:
     rspec-puppet (2.5.0)
       rspec
@@ -279,10 +279,6 @@ GEM
       shellany (~> 0.0)
     open_uri_redirections (0.2.1)
     os (0.9.6)
-    parallel (1.9.0)
-    parallel_tests (2.10.0)
-      parallel
-    pkg-config (1.1.7)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -392,7 +388,6 @@ DEPENDENCIES
   guard-rake
   json (< 2.0.0)
   json_pure (< 2.0.0)
-  parallel_tests
   puppet (~> 4.6.1)
   puppet-blacksmith
   puppet-lint (= 2.0.2)
