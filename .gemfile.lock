@@ -1,4 +1,4 @@
-GIT
+∑GIT
   remote: https://github.com/rodjek/rspec-puppet.git
   revision: 186fcc36a2b8656856ab34fc926939a7f75e2349
   specs:
@@ -228,8 +228,7 @@ GEM
     guard-rake (1.0.0)
       guard
       rake
-    hiera (1.3.4)
-      json_pure
+    hiera (3.3.0)
     highline (1.7.8)
     hocon (1.2.4)
     http-cookie (1.0.3)
@@ -241,7 +240,7 @@ GEM
     inifile (2.0.2)
     ipaddress (0.8.3)
     json (1.8.3)
-    json_pure (1.8.3)
+    json_pure (1.8.6)
     jwt (1.5.6)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -288,10 +287,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puppet (3.8.7)
-      facter (> 1.6, < 3)
-      hiera (~> 1.0)
-      json_pure
+    puppet (4.6.2)
+      CFPropertyList (~> 2.2.6)
+      facter (> 2.0, < 4)
+      hiera (>= 2.0, < 4)
+      json_pure (~> 1.8)
     puppet-blacksmith (3.4.0)
       puppet (>= 2.7.16)
       rest-client (~> 1.8.0)
@@ -393,7 +393,7 @@ DEPENDENCIES
   json (< 2.0.0)
   json_pure (< 2.0.0)
   parallel_tests
-  puppet (~> 3.8.7)
+  puppet (~> 4.6.1)
   puppet-blacksmith
   puppet-lint (= 2.0.2)
   puppet-syntax

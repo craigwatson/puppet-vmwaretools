@@ -138,39 +138,24 @@
 # Copyright (C) Craig Watson
 # Published under the Apache License v2.0
 class vmwaretools (
-  $version               = '9.0.0-782409',
-  $working_dir           = '/tmp/vmwaretools',
-  $install_devel         = false,
-  $archive_url           = 'puppet',
-  $archive_md5           = '',
-  $fail_on_non_vmware    = false,
-  $keep_working_dir      = false,
-  $ignore_autodetect     = false,
-  $force_install         = false,
-  $prevent_downgrade     = true,
-  $prevent_upgrade       = false,
-  $timesync              = undef,
-  $manage_dev_pkgs       = true,
-  $manage_perl_pkgs      = true,
-  $manage_curl_pkgs      = true,
-  $curl_proxy            = false,
-  $clean_failed_download = false,
+  String                 $version               = '9.0.0-782409',
+  String                 $working_dir           = '/tmp/vmwaretools',
+  Boolean                $install_devel         = false,
+  String                 $archive_url           = 'puppet',
+  String                 $archive_md5           = '',
+  Boolean                $fail_on_non_vmware    = false,
+  Boolean                $keep_working_dir      = false,
+  Boolean                $ignore_autodetect     = false,
+  Boolean                $force_install         = false,
+  Boolean                $prevent_downgrade     = true,
+  Boolean                $prevent_upgrade       = false,
+  Variant[Undef,Boolean] $timesync              = undef,
+  Boolean                $manage_dev_pkgs       = true,
+  Boolean                $manage_perl_pkgs      = true,
+  Boolean                $manage_curl_pkgs      = true,
+  Boolean                $curl_proxy            = false,
+  Boolean                $clean_failed_download = false,
 ) {
-
-  # Validate parameters where appropriate
-  validate_legacy('Stdlib::Compat::String','validate_string', $archive_md5)
-  validate_legacy('Stdlib::Compat::String','validate_string', $archive_url)
-  validate_legacy('Stdlib::Compat::String','validate_string', $version)
-
-  validate_legacy('Stdlib::Compat::Absolute_Path', 'validate_absolute_path', $working_dir)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $ignore_autodetect)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $install_devel)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $manage_dev_pkgs)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $fail_on_non_vmware)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $keep_working_dir)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $prevent_downgrade)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $prevent_upgrade)
-  validate_legacy('Stdlib::Compat::Bool', 'validate_bool', $clean_failed_download)
 
   # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
   # the quoted-boolean warning here. Related links below:
