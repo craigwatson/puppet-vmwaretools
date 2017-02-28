@@ -22,7 +22,7 @@
   * Fixing stdlib deprecation warnings
 
 #### Fact: `vmwaretools_version`
-  * Adding fact output for vSphere 6.5 as reported in [#81](https://github.com/craigwatson/puppet-vmwaretools/issues/80) by [topei](https://github.com/toepi)
+  * Adding fact output for vSphere 6.5 as reported in [#83](https://github.com/craigwatson/puppet-vmwaretools/issues/83) by [topei](https://github.com/toepi)
 
 ## 2.3.0
 

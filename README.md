@@ -22,6 +22,14 @@
 
 This module manages the installation and upgrade of VMware Tools via the source code tarballs distributed by VMware.
 
+## Puppet 3 Support
+
+**Please note that the master branch of this module does not support Puppet 3!**
+
+On 31st December 2016, support for Puppet 3.x was withdrawn. As such, this module no longer supports Puppet 3, and is actively being migrated to Puppet 4 syntax.
+
+If you require Puppet 3 compatibility, please use version [2.4.1 from the Puppet Forge](https://forge.puppet.com/CraigWatson1987/vmwaretools/readme), or the [puppet3](https://github.com/craigwatson/puppet-vmwaretools/tree/puppet3) branch in Git.
+
 ## Module Description
 
 This module is designed to replace both the OSP packages provided by VMware's repositories and also the `open-vm-tools` package. The module is O/S independent (tested on Ubuntu and Red Hat systems).
