@@ -239,7 +239,7 @@ GEM
     inflecto (0.0.2)
     inifile (2.0.2)
     ipaddress (0.8.3)
-    json (1.8.3)
+    json (1.8.6)
     json_pure (1.8.6)
     jwt (1.5.6)
     launchy (2.4.3)
@@ -401,4 +401,4 @@ DEPENDENCIES
   vagrant-wrapper
 
 BUNDLED WITH
-   1.12.4
+   1.14.6
