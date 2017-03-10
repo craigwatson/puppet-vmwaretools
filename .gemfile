@@ -10,7 +10,7 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem 'json_pure', '< 2.0.0'
   gem 'json', '< 2.0.0'
-  gem 'xmlrpc'
+  gem 'xmlrpc', :require => false if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.4.0')
 end
 
 group :development do
