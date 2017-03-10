@@ -10,6 +10,7 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem 'json_pure', '< 2.0.0'
   gem 'json', '< 2.0.0'
+  gem 'xmlrpc'
 end
 
 group :development do
