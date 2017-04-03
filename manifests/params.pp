@@ -58,7 +58,13 @@ class vmwaretools::params {
   }
 
   if $::vmwaretools::force_install == true {
-    $install_command = "echo 'yes' | ${::vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl"
+    # The version 10 installer needs to use the -f (force) flag.
+    if ( versioncmp(vmwaretools::version,'10.0') >= 0 ) {
+      $install_command = "${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl -d -f"
+    }
+    else {
+      $install_command = "echo 'yes' | ${::vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl"
+    }
   } else {
     $install_command = "${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl -d"
   }
