@@ -142,7 +142,7 @@ class vmwaretools (
   String                 $working_dir           = '/tmp/vmwaretools',
   Boolean                $install_devel         = false,
   String                 $archive_url           = 'puppet',
-  String                 $archive_md5           = '',
+  Variant[Undef,Boolean] $archive_md5           = undef,
   Boolean                $fail_on_non_vmware    = false,
   Boolean                $keep_working_dir      = false,
   Boolean                $ignore_autodetect     = false,
@@ -163,20 +163,22 @@ class vmwaretools (
   # https://projects.puppetlabs.com/issues/3704
 
   # lint:ignore:only_variable_string
-  if ($ignore_autodetect == true) or ((str2bool("${::is_virtual}")) and ($::virtual == 'vmware') and ($::kernel == 'Linux')) {
+  if ($ignore_autodetect == true) or ((str2bool("${facts[is_virtual]}")) and ($facts['virtual'] == 'vmware') and ($facts['kernel'] == 'Linux')) {
   # lint:endignore
 
-    if $::vmwaretools_version == undef {
+    if $facts['vmwaretools_version'] == undef {
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
     }
 
-    if $::lsbdistcodename == 'raring' {
-      fail 'Ubuntu 13.04 is not supported by this module'
+    if $facts['os']['name'] == 'Ubuntu' {
+      if $facts['os']['release']['major'] == '13.04' {
+        fail 'Ubuntu 13.04 is not supported by this module'
+      }
     }
 
     include ::vmwaretools::params
 
-    if ($::vmwaretools::params::download_vmwaretools == true) and ($archive_md5 == '') {
+    if ($::vmwaretools::params::download_vmwaretools == true) and ($archive_md5 == undef) {
       fail 'MD5 not given for VMware Tools installer package'
     }
 
@@ -186,7 +188,7 @@ class vmwaretools (
     if $timesync != undef {
       include ::vmwaretools::timesync
     }
-  } elsif ($fail_on_non_vmware == true) and ((str2bool($::is_virtual) == false) or ($::virtual != 'vmware')) {
+  } elsif ($fail_on_non_vmware == true) and ((str2bool($facts['is_virtual']) == false) or ($facts['virtual'] != 'vmware')) {
     fail 'Not a VMware platform.'
   }
 }

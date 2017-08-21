@@ -33,16 +33,16 @@ class vmwaretools::install::package {
   }
 
   if $::vmwaretools::manage_dev_pkgs == true {
-    case $::osfamily {
+    case $facts['os']['family'] {
       'Debian' : {
-        case $::operatingsystem {
+        case $facts['os']['name'] {
           'Ubuntu' : {
-            ensure_packages(['build-essential',"linux-headers-${::kernelrelease}"], {'ensure' => 'present'})
+            ensure_packages(['build-essential',"linux-headers-${facts[kernelrelease]}"], {'ensure' => 'present'})
           }
           'Debian' : {
-            ensure_packages(["linux-headers-${::kernelrelease}"], {'ensure' => 'present'})
+            ensure_packages(["linux-headers-${facts[kernelrelease]}"], {'ensure' => 'present'})
           }
-          default : { fail "${::operatingsystem} not supported yet." }
+          default : { fail "${facts[os][name]} not supported yet." }
         }
       }
 
@@ -58,7 +58,7 @@ class vmwaretools::install::package {
         }
       }
 
-      default : { fail "${::osfamily} not supported yet." }
+      default : { fail "${facts[os][family]} not supported yet." }
     }
   }
 

@@ -18,20 +18,20 @@
 #
 class vmwaretools::params {
 
-  if $::vmwaretools_version == 'not installed' {
+  if $facts['vmwaretools_version'] == 'not installed' {
     # If nothing is installed, deploy.
     $deploy_files = true
-  } elsif versioncmp($::vmwaretools::version,$::vmwaretools_version) == 0 {
+  } elsif versioncmp($::vmwaretools::version,$facts['vmwaretools_version']) == 0 {
     # If versions are the same, do not deploy.
     $deploy_files = false
-  } elsif versioncmp($::vmwaretools::version,$::vmwaretools_version) < 0 {
+  } elsif versioncmp($::vmwaretools::version,$facts['vmwaretools_version']) < 0 {
     # Action would be a downgrade
     if $::vmwaretools::prevent_downgrade == true {
       $deploy_files = false
     } else {
       $deploy_files = true
     }
-  } elsif versioncmp($::vmwaretools::version,$::vmwaretools_version) > 0 {
+  } elsif versioncmp($::vmwaretools::version,$facts['vmwaretools_version']) > 0 {
     # Action would be an upgrade
     if $::vmwaretools::prevent_upgrade == true {
       $deploy_files = false
@@ -51,7 +51,7 @@ class vmwaretools::params {
     $download_vmwaretools = true
   }
 
-  $awk_path = $::osfamily ? {
+  $awk_path = $facts['os']['family'] ? {
     'RedHat' => '/bin/awk',
     'Debian' => '/usr/bin/awk',
     default  => '/usr/bin/awk',
@@ -67,24 +67,24 @@ class vmwaretools::params {
   # https://projects.puppetlabs.com/issues/2833
   # https://projects.puppetlabs.com/issues/11450
   # https://tickets.puppetlabs.com/browse/PUP-1198
-  $purge_package_ensure = $::osfamily ? {
+  $purge_package_ensure = $facts['os']['family'] ? {
     'RedHat' => absent,
     'Suse'   => absent,
     default  => purged,
   }
 
-  if ($::osfamily == 'RedHat') and ($::lsbmajdistrelease == '5') {
-    if 'PAE' in $::kernelrelease {
-      $kernel_extension = regsubst($::kernelrelease, 'PAE$', '')
+  if ($facts['os']['family'] == 'RedHat') and ($facts['os']['release']['major'] == '5') {
+    if 'PAE' in $facts['kernelrelease'] {
+      $kernel_extension = regsubst($facts['kernelrelease'], 'PAE$', '')
       $redhat_devel_package = "kernel-PAE-devel-${kernel_extension}"
-    } elsif 'xen' in $::kernelrelease {
-      $kernel_extension = regsubst($::kernelrelease, 'xen$', '')
+    } elsif 'xen' in $facts['kernelrelease'] {
+      $kernel_extension = regsubst($facts['kernelrelease'], 'xen$', '')
       $redhat_devel_package = "kernel-xen-devel-${kernel_extension}"
     } else {
-      $redhat_devel_package = "kernel-devel-${::kernelrelease}"
+      $redhat_devel_package = "kernel-devel-${facts[kernelrelease]}"
     }
   } else {
-    $redhat_devel_package = "kernel-devel-${::kernelrelease}"
+    $redhat_devel_package = "kernel-devel-${facts[kernelrelease]}"
   }
 
   $purge_package_list = [ 'open-vm-dkms', 'vmware-tools-services',
