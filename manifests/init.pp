@@ -142,7 +142,7 @@ class vmwaretools (
   String                 $working_dir           = '/tmp/vmwaretools',
   Boolean                $install_devel         = false,
   String                 $archive_url           = 'puppet',
-  Variant[Undef,Boolean] $archive_md5           = undef,
+  Variant[Undef,String]  $archive_md5           = undef,
   Boolean                $fail_on_non_vmware    = false,
   Boolean                $keep_working_dir      = false,
   Boolean                $ignore_autodetect     = false,
