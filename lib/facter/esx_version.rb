@@ -5,7 +5,7 @@ require 'facter'
 # http://virtwo.blogspot.ch/2010/10/which-esx-version-am-i-running-on.html
 
 Facter.add(:esx_version) do
-  confine virtual => 'vmware'
+  confine 'virtual' => 'vmware'
   setcode do
     if File.executable?('/usr/sbin/dmidecode')
       result = Facter::Util::Resolution.exec('/usr/sbin/dmidecode 2>&1')
