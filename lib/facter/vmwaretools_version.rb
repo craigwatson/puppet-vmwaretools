@@ -5,20 +5,20 @@ require 'facter'
 
 Facter.add(:vmwaretools_version) do
   setcode do
-    if File::executable?("/usr/bin/vmware-toolbox-cmd")
-      result = Facter::Util::Resolution.exec("/usr/bin/vmware-toolbox-cmd -v")
+    if File.executable?('/usr/bin/vmware-toolbox-cmd')
+      result = Facter::Util::Resolution.exec('/usr/bin/vmware-toolbox-cmd -v')
       if result
-        version = result.sub(%r{(\d*\.\d*\.\d*)\.\d*\s+\(build(-\d*)\)},'\1\2')
-        if version.empty? or version.nil?
+        version = result.sub(%r{(\d*\.\d*\.\d*)\.\d*\s+\(build(-\d*)\)}, '\1\2')
+        if version.empty? || version.nil?
           'unknown'
         else
           version
         end
       else
-        "not installed"
+        'not installed'
       end
     else
-      "not installed"
+      'not installed'
     end
   end
 end
