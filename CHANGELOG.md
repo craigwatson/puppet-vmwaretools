@@ -1,8 +1,15 @@
 # Change Log
 
+## 3.0.1
+
+### 2017-09-01 - Bugfix Release
+
+#### Class: `vmwaretools`
+  * Fixing type regression for `$archive_md5` parameter
+
 ## 3.0.0
 
-### TBC - Major Version Release
+### 2017-03-10 - Major Version Release
 
 #### Puppet 3 Support Removed
   * This module no longer supports Puppet 3. If you require Puppet 3 functionality, please use version [2.4.1 from the Puppet Forge](https://forge.puppet.com/CraigWatson1987/vmwaretools/readme), or the [puppet3](https://github.com/craigwatson/puppet-vmwaretools/tree/puppet3) branch in Git.
