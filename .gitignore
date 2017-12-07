@@ -19,3 +19,4 @@ Puppetfile.lock
 .yardoc/
 Guardfile
 pkg
+*.log
