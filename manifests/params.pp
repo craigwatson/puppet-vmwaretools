@@ -78,7 +78,7 @@ class vmwaretools::params {
   }
 
   $redhat_devel_package = "kernel-devel-${facts[kernelrelease]}"
-  
+
   $purge_package_list   = [ 'open-vm-dkms', 'vmware-tools-services',
                           'vmware-tools-foundation', 'open-vm-tools-desktop',
                           'open-vm-source', 'open-vm-toolbox', 'open-vm-tools',

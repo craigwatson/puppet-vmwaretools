@@ -8,9 +8,9 @@ default_facts = {
     'name'    => 'CentOS',
     'family'  => 'RedHat',
     'release' => {
-      'major' => '7'
-    }
-  }
+      'major' => '7',
+    },
+  },
 }
 
 describe 'vmwaretools', 'type' => :class do
