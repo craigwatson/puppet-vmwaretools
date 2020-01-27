@@ -21,7 +21,7 @@
 class vmwaretools::install::exec {
 
   Exec {
-    path        => ['/bin','/usr/bin'],
+    path        => ['/bin','/usr/bin', '/sbin'],
     refreshonly => true,
     timeout     => 0,
   }
