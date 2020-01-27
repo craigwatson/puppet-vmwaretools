@@ -17,7 +17,7 @@
 #
 class vmwaretools::timesync {
 
-  case $::vmwaretools::timesync == true {
+  case $::vmwaretools::timesync {
     true: {
       $cmd_action = 'enable'
       $cmd_grep   = 'Disabled'
@@ -29,7 +29,7 @@ class vmwaretools::timesync {
     }
 
     default: {
-      fail "Unsupported value ${::vmwaretools::timesync} for ::vmwaretools::timesync."
+      fail "Unsupported value ${::vmwaretools::timesync} for ::vmwaretools::timesync"
     }
   }
 
