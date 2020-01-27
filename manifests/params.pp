@@ -40,21 +40,10 @@ class vmwaretools::params {
     }
   }
 
-  $clean_failed = $::vmwaretools::clean_failed_download ? {
-    true    => '1',
-    default => '0'
-  }
-
   if ($::vmwaretools::archive_url == 'puppet') or ($::vmwaretools::archive_url =~ /^puppet:\/\//) {
     $download_vmwaretools = false
   } else {
     $download_vmwaretools = true
-  }
-
-  $awk_path = $facts['os']['family'] ? {
-    'RedHat' => '/bin/awk',
-    'Debian' => '/usr/bin/awk',
-    default  => '/usr/bin/awk',
   }
 
   if $::vmwaretools::force_install == true {
@@ -77,21 +66,20 @@ class vmwaretools::params {
     default  => purged,
   }
 
-  if ($facts['os']['family'] == 'RedHat') and ($facts['os']['release']['major'] == '5') {
-    if 'PAE' in $facts['kernelrelease'] {
-      $kernel_extension = regsubst($facts['kernelrelease'], 'PAE$', '')
-      $redhat_devel_package = "kernel-PAE-devel-${kernel_extension}"
-    } elsif 'xen' in $facts['kernelrelease'] {
-      $kernel_extension = regsubst($facts['kernelrelease'], 'xen$', '')
-      $redhat_devel_package = "kernel-xen-devel-${kernel_extension}"
-    } else {
-      $redhat_devel_package = "kernel-devel-${facts[kernelrelease]}"
-    }
-  } else {
-    $redhat_devel_package = "kernel-devel-${facts[kernelrelease]}"
+  $awk_path = $facts['os']['family'] ? {
+    'RedHat' => '/bin/awk',
+    'Debian' => '/usr/bin/awk',
+    default  => '/usr/bin/awk',
   }
 
-  $purge_package_list = [ 'open-vm-dkms', 'vmware-tools-services',
+  $clean_failed = $::vmwaretools::clean_failed_download ? {
+    true    => '1',
+    default => '0'
+  }
+
+  $redhat_devel_package = "kernel-devel-${facts[kernelrelease]}"
+  
+  $purge_package_list   = [ 'open-vm-dkms', 'vmware-tools-services',
                           'vmware-tools-foundation', 'open-vm-tools-desktop',
                           'open-vm-source', 'open-vm-toolbox', 'open-vm-tools',
                           'open-vm-tools-dbg', 'open-vm-tools-gui', 'vmware-kmp-debug',
