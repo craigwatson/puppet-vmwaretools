@@ -28,12 +28,6 @@ describe 'vmwaretools', 'type' => :class do
     it { is_expected.to raise_error(Puppet::Error, %r{vmwaretools_version fact not present, please check your pluginsync configuraton.}) }
   end
 
-  context 'raring' do
-    let(:facts) { default_facts.merge('vmwaretools_version' => '9.2.0', 'os' => { 'name' => 'Ubuntu', 'family' => 'Debian', 'release' => { 'major' => '13.04' } }) }
-
-    it { is_expected.to raise_error(Puppet::Error, %r{Ubuntu 13.04 is not supported by this module}) }
-  end
-
   context 'no md5' do
     let(:facts) { default_facts.merge('vmwaretools_version' => '9.2.0') }
     let(:params) { { 'archive_url' => 'http://myserver.tld' } }
