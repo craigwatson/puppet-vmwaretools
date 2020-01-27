@@ -138,42 +138,29 @@
 # Copyright (C) Craig Watson
 # Published under the Apache License v2.0
 class vmwaretools (
-  String                 $version               = '9.0.0-782409',
-  String                 $working_dir           = '/tmp/vmwaretools',
-  Boolean                $install_devel         = false,
-  String                 $archive_url           = 'puppet',
-  Variant[Undef,String]  $archive_md5           = undef,
-  Boolean                $fail_on_non_vmware    = false,
-  Boolean                $keep_working_dir      = false,
-  Boolean                $ignore_autodetect     = false,
-  Boolean                $force_install         = false,
-  Boolean                $prevent_downgrade     = true,
-  Boolean                $prevent_upgrade       = false,
-  Variant[Undef,Boolean] $timesync              = undef,
-  Boolean                $manage_dev_pkgs       = true,
-  Boolean                $manage_perl_pkgs      = true,
-  Boolean                $manage_curl_pkgs      = true,
-  Boolean                $curl_proxy            = false,
-  Boolean                $clean_failed_download = false,
+  String           $version               = '9.0.0-782409',
+  String           $working_dir           = '/tmp/vmwaretools',
+  Boolean          $install_devel         = false,
+  String           $archive_url           = 'puppet',
+  Optional[String] $archive_md5           = undef,
+  Boolean          $fail_on_non_vmware    = false,
+  Boolean          $keep_working_dir      = false,
+  Boolean          $ignore_autodetect     = false,
+  Boolean          $force_install         = false,
+  Boolean          $prevent_downgrade     = true,
+  Boolean          $prevent_upgrade       = false,
+  Optional[String] $timesync              = undef,
+  Boolean          $manage_dev_pkgs       = true,
+  Boolean          $manage_perl_pkgs      = true,
+  Boolean          $manage_curl_pkgs      = true,
+  Boolean          $curl_proxy            = false,
+  Boolean          $clean_failed_download = false,
 ) {
 
-  # Puppet Lint gotcha -- facts are returned as strings, so we should ignore
-  # the quoted-boolean warning here. Related links below:
-  # https://tickets.puppetlabs.com/browse/FACT-151
-  # https://projects.puppetlabs.com/issues/3704
-
-  # lint:ignore:only_variable_string
-  if ($ignore_autodetect == true) or ((str2bool("${facts[is_virtual]}")) and ($facts['virtual'] == 'vmware') and ($facts['kernel'] == 'Linux')) {
-  # lint:endignore
+  if ($ignore_autodetect == true) or (($facts['is_virtual'] and $facts['virtual'] == 'vmware') and ($facts['kernel'] == 'Linux')) {
 
     if $facts['vmwaretools_version'] == undef {
       fail 'vmwaretools_version fact not present, please check your pluginsync configuraton.'
-    }
-
-    if $facts['os']['name'] == 'Ubuntu' {
-      if $facts['os']['release']['major'] == '13.04' {
-        fail 'Ubuntu 13.04 is not supported by this module'
-      }
     }
 
     include ::vmwaretools::params
@@ -188,7 +175,7 @@ class vmwaretools (
     if $timesync != undef {
       include ::vmwaretools::timesync
     }
-  } elsif ($fail_on_non_vmware == true) and ((str2bool($facts['is_virtual']) == false) or ($facts['virtual'] != 'vmware')) {
+  } elsif ($fail_on_non_vmware == true) and (($facts['is_virtual'] == false) or ($facts['virtual'] != 'vmware')) {
     fail 'Not a VMware platform.'
   }
 }
