@@ -1,6 +1,6 @@
 {
   "name": "CraigWatson1987-vmwaretools",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "author": "Craig Watson",
   "summary": "Manage installation of VMware Tools via the archive distributed with vSphere, either via Puppet or HTTP.",
   "license": "Apache-2.0",
@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/craigwatson/puppet-vmwaretools/issues",
   "dependencies": [
     {
-      "name": "puppetlabs/apt",
+      "name": "puppetlabs/stdlib",
       "version_requirement": ">=2.2.0"
     }
   ],
@@ -24,9 +24,9 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
+        "18.04",
         "16.04",
-        "14.04",
-        "12.04"
+        "14.04"
       ]
     }
   ],
