@@ -22,14 +22,6 @@
 
 This module manages the installation and upgrade of VMware Tools via the source code tarballs distributed by VMware.
 
-## Puppet 3 Support
-
-**Please note that the master branch of this module does not support Puppet 3!**
-
-On 31st December 2016, support for Puppet 3.x was withdrawn. As such, this module no longer supports Puppet 3, and is actively being migrated to Puppet 4 syntax.
-
-If you require Puppet 3 compatibility, please use version [2.4.1 from the Puppet Forge](https://forge.puppet.com/CraigWatson1987/vmwaretools/readme), or the [puppet3](https://github.com/craigwatson/puppet-vmwaretools/tree/puppet3) branch in Git.
-
 ## Module Description
 
 This module is designed to replace both the OSP packages provided by VMware's repositories and also the `open-vm-tools` package. The module is O/S independent (tested on Ubuntu and Red Hat systems).
@@ -119,17 +111,13 @@ To stop `vmwaretools` from trying to install the development packages, Perl pack
 
 ### Supported Operating Systems
 
-* Ubuntu/Debian
-* CentOS/RedHat
+* Ubuntu/Debian 14.04 and 16.04
+* CentOS/RedHat 6 and 7
 * SuSE/SLES
-
-### Unsupported Operating Systems
-
-* Ubuntu 13.04 - see [VMware KB2050666](http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2050666) and [bug #12](https://github.com/craigwatson/puppet-vmwaretools/issues/12)
 
 ## Development
 
-* Copyright (C) 2013 to 2015 Craig Watson - <craig@cwatson.org>
+* Copyright (C) 2013 to 2020 Craig Watson - <craig@cwatson.org>
 * VMware Tools fact by [janorn](https://github.com/janorn/puppet-vmwaretools)
 * Distributed under the terms of the Apache License v2.0 - see LICENSE file for details.
 * **Please note** that the module was licensed under the terms of the GNU General Public License v3 until commit [fea91b58241481fc3fc4aa0e02996cc9ef0f131e](https://github.com/craigwatson/puppet-vmwaretools/commit/fea91b58241481fc3fc4aa0e02996cc9ef0f131e)
