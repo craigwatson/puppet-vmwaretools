@@ -1,5 +1,18 @@
 # Change Log
 
+## 4.0.0
+
+### 2020-01-27 - Major Version Release
+
+### PDK: Now Supported
+  * This module is now compatible with the [PDK](https://puppet.com/docs/pdk/1.x/pdk.html)
+
+### Class: `vmwaretools::install::exec`
+  * The `/sbin/` path was missing from the install command for CentOS 6 - reported in [#89](https://github.com/craigwatson/puppet-vmwaretools/issues/89) by [fnollet](https://github.com/fnollet)
+
+## Class: `vmwaretools::params`
+  * Piping `yes` to the installer does not work with VMware Tools >= 10.0 - this has been fixed by using `-d -f` - reported in [#86](https://github.com/craigwatson/puppet-vmwaretools/pull/86) by [gabe-sky](https://github.com/gabe-sky)
+
 ## 3.0.1
 
 ### 2017-09-01 - Bugfix Release
